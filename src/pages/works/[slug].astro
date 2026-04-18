@@ -1,0 +1,158 @@
+---
+import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VisualSequence from '../../components/VisualSequence.astro';
+import { loadVisualManifest, resolveSeriesAsset } from '../../lib/visual-series';
+
+type PaperProps = {
+	kind: 'paper';
+	id: string;
+};
+
+type VisualProps = {
+	kind: 'visual';
+	id: string;
+};
+
+type PageProps = PaperProps | VisualProps;
+
+const paperStatusLabel = {
+	under_review: 'Under review',
+	submitted: 'Submitted',
+	rejected: 'Declined',
+	in_progress: 'In progress',
+	published: 'Published',
+} as const;
+
+const paperTypeLabel = {
+	paper: 'Paper',
+	project: 'Project',
+	longform: 'Longform',
+} as const;
+
+export async function getStaticPaths() {
+	const papers = await getCollection('works');
+	let visualSeries: CollectionEntry<'visualSeries'>[] = [];
+
+	try {
+		visualSeries = await getCollection('visualSeries');
+	} catch (error) {
+		if (!(error instanceof Error) || !error.message.includes('does not exist or is empty')) {
+			throw error;
+		}
+	}
+
+	return [
+		...papers.map((entry) => ({
+			params: { slug: entry.data.slug },
+			props: { kind: 'paper', id: entry.id } satisfies PaperProps,
+		})),
+		...visualSeries
+			.filter((entry) => entry.data.status === 'published')
+			.map((entry) => ({
+			params: { slug: entry.data.slug },
+			props: { kind: 'visual', id: entry.id } satisfies VisualProps,
+		})),
+	];
+}
+
+const props = Astro.props as PageProps;
+const entry =
+	props.kind === 'paper'
+		? await getEntry('works', props.id)
+		: await getEntry('visualSeries', props.id);
+
+if (!entry) {
+	throw new Error(`Could not resolve work entry for ${props.id}.`);
+}
+
+const title = entry.data.title;
+const summary = entry.data.summary;
+const { Content } = await render(entry);
+const paperEntry = props.kind === 'paper' ? (entry as CollectionEntry<'works'>) : null;
+const visualEntry = props.kind === 'visual' ? (entry as CollectionEntry<'visualSeries'>) : null;
+
+let visualManifest = undefined;
+let visualItems: Array<{
+	asset: ReturnType<typeof resolveSeriesAsset>;
+	alt: string;
+	caption?: string;
+	orientation: 'landscape' | 'portrait' | 'square';
+	crop?: string;
+}> = [];
+
+if (visualEntry) {
+	visualManifest = loadVisualManifest(visualEntry.data.manifest);
+
+	if (!visualManifest) {
+		throw new Error(`Missing visual series manifest for "${visualEntry.data.slug}".`);
+	}
+
+	visualItems = visualManifest.images.map((image) => ({
+		asset: resolveSeriesAsset(image.assetPath),
+		alt: image.alt,
+		caption: image.caption,
+		orientation: image.orientation,
+		crop: image.crop,
+	}));
+}
+---
+
+<BaseLayout title={title} description={summary}>
+	<section class="mx-auto max-w-[1040px] space-y-8 pt-6">
+		<a href="/works" class="section-label inline-flex items-center gap-3 no-underline transition hover:text-rust">
+			<span aria-hidden="true">←</span>
+			Back to works
+		</a>
+
+		<div class="surface-card px-6 py-7 sm:px-8 sm:py-10">
+			<p class="section-label">{paperEntry ? paperTypeLabel[paperEntry.data.kind] : 'Visual series'}</p>
+			<h1 class="mt-5 max-w-4xl text-[2.8rem] leading-[0.98] sm:text-[4rem]">{title}</h1>
+
+			<div class="mt-6 flex flex-wrap gap-2 text-xs uppercase tracking-[0.18em] text-ash">
+				<span class="rounded-full border border-black/8 px-3 py-1">{entry.data.year}</span>
+				{
+					paperEntry ? (
+						<span class="rounded-full border border-black/8 px-3 py-1">
+							{paperStatusLabel[paperEntry.data.status]}
+						</span>
+					) : (
+						<span class="rounded-full border border-black/8 px-3 py-1">Published selectively</span>
+					)
+				}
+				{
+					paperEntry &&
+						paperEntry.data.themes.map((theme: string) => (
+							<span class="rounded-full border border-rust/18 bg-rust/8 px-3 py-1 text-rust">
+								{theme}
+							</span>
+						))
+				}
+			</div>
+
+			<p class="mt-6 max-w-3xl text-[1.08rem] leading-8 text-ink/80">{summary}</p>
+		</div>
+
+		{
+			props.kind === 'paper' ? (
+				<>
+					<div class="surface-card px-6 py-5 text-sm leading-7 text-ink/72 sm:px-8">
+						Full manuscript not publicly posted at this stage.
+					</div>
+
+					<article class="copy-prose surface-card px-6 py-7 sm:px-8 sm:py-9">
+						<Content />
+					</article>
+				</>
+			) : (
+				<>
+					<article class="copy-prose surface-card px-6 py-7 sm:px-8 sm:py-9">
+						<Content />
+					</article>
+
+					{visualManifest && <VisualSequence items={visualItems} />}
+				</>
+			)
+		}
+	</section>
+</BaseLayout>

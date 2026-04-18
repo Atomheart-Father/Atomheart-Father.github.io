@@ -1,0 +1,30 @@
+---
+import { siteMeta } from '../lib/site';
+---
+
+<footer class="mt-20 pb-8 pt-10">
+	<div class="surface-card grid gap-6 px-5 py-6 sm:px-8 lg:grid-cols-[1.4fr_1fr]">
+		<div class="space-y-3">
+			<p class="section-label">Chromi Kingdom</p>
+			<p class="max-w-2xl text-sm leading-7 text-ink/78">
+				A research-driven AI studio built around scoped diagnosis, workflow audit, and governance
+				briefs. Every output should become a reusable asset.
+			</p>
+		</div>
+
+		<div class="space-y-3">
+			<p class="section-label">Links</p>
+			<ul class="space-y-2 text-sm text-ash">
+				<li>
+					<a href={`mailto:${siteMeta.email}`} class="hover:text-rust">{siteMeta.email}</a>
+				</li>
+				<li>
+					<a href={siteMeta.orcid} target="_blank" rel="noreferrer" class="hover:text-rust">ORCID</a>
+				</li>
+				<li>
+					<a href={siteMeta.github} target="_blank" rel="noreferrer" class="hover:text-rust">GitHub</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</footer>

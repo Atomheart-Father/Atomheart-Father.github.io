@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+type SequenceItem = {
+	asset?: ImageMetadata;
+	alt: string;
+	caption?: string;
+	orientation: 'landscape' | 'portrait' | 'square';
+	crop?: string;
+};
+
+interface Props {
+	items: SequenceItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="space-y-6">
+	{
+		items.map((item, index) => {
+			const wideFrame = item.orientation === 'landscape' || index % 3 === 0;
+			return (
+				<figure class:list={['surface-card overflow-hidden p-3', wideFrame ? 'lg:ml-0 lg:mr-16' : 'lg:ml-24 lg:mr-0']}>
+					{item.asset ? (
+						<Image
+							src={item.asset}
+							alt={item.alt}
+							class:list={[
+								'w-full rounded-[1.35rem] object-cover',
+								item.orientation === 'portrait' ? 'max-h-[78vh]' : 'max-h-[84vh]',
+							]}
+						/>
+					) : (
+						<div class="surface-inset flex min-h-80 items-center justify-center rounded-[1.35rem] text-sm text-ash">
+							Image missing
+						</div>
+					)}
+
+					{(item.caption || item.alt) && (
+						<figcaption class="px-3 pb-1 pt-4 text-sm leading-7 text-ink/74">
+							{item.caption ?? item.alt}
+						</figcaption>
+					)}
+				</figure>
+			);
+		})
+	}
+</div>

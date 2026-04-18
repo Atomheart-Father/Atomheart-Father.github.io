@@ -1,0 +1,33 @@
+---
+interface Props {
+	href?: string;
+	kicker: string;
+	title: string;
+	summary: string;
+	meta?: string;
+	tags?: string[];
+}
+
+const { href, kicker, title, summary, meta, tags = [] } = Astro.props;
+const Tag = href ? 'a' : 'article';
+---
+
+<Tag href={href} class="surface-card group block px-5 py-5 text-ink no-underline sm:px-6 sm:py-6">
+	<div class="flex flex-wrap items-center gap-3">
+		<p class="section-label">{kicker}</p>
+		{meta && <span class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-ash/80">{meta}</span>}
+	</div>
+	<h3 class="mt-4 text-[2rem] leading-tight transition duration-300 group-hover:text-rust">{title}</h3>
+	<p class="mt-4 text-[1rem] leading-7 text-ink/74">{summary}</p>
+	{
+		tags.length > 0 && (
+			<div class="mt-5 flex flex-wrap gap-2">
+				{tags.map((tag) => (
+					<span class="rounded-full border border-rust/18 bg-rust/8 px-3 py-1 font-mono text-[0.66rem] uppercase tracking-[0.16em] text-rust">
+						{tag}
+					</span>
+				))}
+			</div>
+		)
+	}
+</Tag>

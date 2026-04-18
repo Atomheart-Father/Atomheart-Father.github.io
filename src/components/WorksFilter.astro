@@ -1,0 +1,42 @@
+<div class="surface-card p-2">
+	<div class="flex flex-wrap gap-2" data-works-filter-root>
+		<button type="button" data-filter="all" class="rounded-full bg-ink px-4 py-2 text-sm tracking-[0.12em] text-paper">
+			All
+		</button>
+		<button type="button" data-filter="paper" class="rounded-full px-4 py-2 text-sm tracking-[0.12em] text-ash transition hover:bg-white/70 hover:text-ink">
+			Papers
+		</button>
+		<button type="button" data-filter="visual" class="rounded-full px-4 py-2 text-sm tracking-[0.12em] text-ash transition hover:bg-white/70 hover:text-ink">
+			Visual
+		</button>
+		<button type="button" data-filter="projects" class="rounded-full px-4 py-2 text-sm tracking-[0.12em] text-ash transition hover:bg-white/70 hover:text-ink">
+			Projects
+		</button>
+	</div>
+</div>
+
+<script>
+	const filterRoot = document.querySelector('[data-works-filter-root]');
+	if (filterRoot) {
+		const buttons = Array.from(filterRoot.querySelectorAll<HTMLButtonElement>('button[data-filter]'));
+		const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-filter-key]'));
+
+		const update = (filter: string) => {
+			for (const button of buttons) {
+				const active = button.dataset.filter === filter;
+				button.classList.toggle('bg-ink', active);
+				button.classList.toggle('text-paper', active);
+				button.classList.toggle('text-ash', !active);
+			}
+
+			for (const card of cards) {
+				const matches = filter === 'all' || card.dataset.filterKey === filter;
+				card.toggleAttribute('hidden', !matches);
+			}
+		};
+
+		for (const button of buttons) {
+			button.addEventListener('click', () => update(button.dataset.filter ?? 'all'));
+		}
+	}
+</script>

@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	title?: string;
+	note?: string;
+	image?: ImageMetadata;
+	alt?: string;
+}
+
+const { title, note, image, alt = '' } = Astro.props;
+---
+
+{
+	image ? (
+		<div class="surface-card relative overflow-hidden p-3 sm:p-4">
+			<div class="surface-inset overflow-hidden rounded-[1.3rem]">
+				<Image src={image} alt={alt} class="h-[420px] w-full object-cover sm:h-[520px]" />
+			</div>
+			<div class="pointer-events-none absolute inset-x-8 bottom-8 rounded-[1.25rem] bg-[linear-gradient(180deg,rgba(24,20,18,0)_0%,rgba(24,20,18,0.88)_84%)] px-6 py-16 text-paper">
+				<p class="section-label !text-paper/70">Selected visual series</p>
+				<h2 class="mt-3 max-w-md text-3xl leading-tight sm:text-4xl">{title}</h2>
+				{note && <p class="mt-3 max-w-md text-sm leading-7 text-paper/75">{note}</p>}
+			</div>
+		</div>
+	) : (
+		<div class="surface-card grid-frame relative overflow-hidden p-4">
+			<div class="grid gap-4 sm:grid-cols-[1.4fr_0.95fr]">
+				<div class="surface-inset relative min-h-[340px] overflow-hidden rounded-[1.8rem] p-5 sm:min-h-[520px]">
+					<div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(143,85,71,0.28),transparent_34%),radial-gradient(circle_at_70%_22%,rgba(126,150,160,0.32),transparent_28%),radial-gradient(circle_at_45%_75%,rgba(32,48,45,0.2),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.8),rgba(243,238,229,0.45))]"></div>
+					<div class="absolute inset-y-8 left-[17%] w-px bg-ink/8"></div>
+					<div class="absolute right-[18%] top-8 h-[56%] w-px bg-ink/8"></div>
+					<div class="absolute inset-x-8 bottom-[18%] h-px bg-ink/8"></div>
+					<div class="absolute left-[12%] top-[16%] h-40 w-40 rounded-full border border-rust/30 bg-rust/8 blur-[1px]"></div>
+					<div class="absolute bottom-[18%] right-[14%] h-52 w-52 rounded-full border border-pond/35 bg-pond/10"></div>
+					<div class="absolute bottom-8 left-8 max-w-[18rem]">
+						<p class="section-label">Visual well</p>
+						<p class="mt-3 text-sm leading-7 text-ink/74">
+							Photography is part of the architecture even before any series is published.
+						</p>
+					</div>
+				</div>
+
+				<div class="grid gap-4">
+					<div class="surface-inset min-h-[160px] overflow-hidden rounded-[1.5rem] bg-[linear-gradient(145deg,rgba(255,255,255,0.75),rgba(143,85,71,0.08)),repeating-linear-gradient(120deg,transparent,transparent_18px,rgba(25,23,21,0.03)_18px,rgba(25,23,21,0.03)_20px)]"></div>
+					<div class="surface-inset relative min-h-[160px] overflow-hidden rounded-[1.5rem]">
+						<div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,48,45,0.12),transparent_65%),radial-gradient(circle_at_50%_45%,rgba(126,150,160,0.3),transparent_30%)]"></div>
+						<div class="absolute inset-x-8 top-1/2 h-px bg-ink/10"></div>
+						<div class="absolute left-1/2 top-8 bottom-8 w-px bg-ink/10"></div>
+					</div>
+					<div class="surface-inset flex min-h-[160px] items-end rounded-[1.5rem] px-6 py-5">
+						<p class="max-w-[16rem] font-display text-2xl leading-tight text-ink/80 sm:text-[2rem]">
+							Light, water, interior edges, and the pressure of space.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	)
+}

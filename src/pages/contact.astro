@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/studio/PageHero.astro';
+import { getActiveServices } from '../lib/content-api';
+import { siteMeta } from '../lib/site';
+
+const services = await getActiveServices();
+---
+
+<BaseLayout title="Contact" description="Start a scoped inquiry with Chromi Kingdom.">
+	<PageHero
+		kicker="Contact"
+		title="Start small. Define the question before the work expands."
+		intro="The first step is not a vague call. Send the problem, the decision you need to make, what material already exists, and which front door seems closest."
+		asideTitle="Preferred contact"
+		aside={siteMeta.email}
+	/>
+
+	<section class="mt-12 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+			<p class="section-label">Inquiry checklist</p>
+			<ul class="mt-5 space-y-4 text-[1.02rem] leading-8 text-ink/76">
+				<li>What are you trying to decide?</li>
+				<li>Who will use the memo, audit, or brief?</li>
+				<li>What have you already tried?</li>
+				<li>What material can you share?</li>
+				<li>What would count as a useful next step?</li>
+			</ul>
+			<a href={`mailto:${siteMeta.email}`} class="mt-6 inline-flex text-rust no-underline hover:text-shadow">
+				Email {siteMeta.email}
+			</a>
+		</div>
+
+		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+			<p class="section-label">Choose a front door</p>
+			<div class="mt-5 space-y-4">
+				{
+					services.map((service) => (
+						<a href={`/services#${service.data.slug}`} class="surface-inset block px-5 py-4 text-ink no-underline hover:border-rust/25">
+							<p class="font-display text-[1.55rem] leading-tight">{service.data.title}</p>
+							<p class="mt-2 text-sm leading-6 text-ink/72">{service.data.summary}</p>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</BaseLayout>

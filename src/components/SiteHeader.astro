@@ -1,0 +1,51 @@
+---
+import { primaryNav } from '../lib/site';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const navItems = primaryNav;
+
+const isActive = (href: string) => {
+	if (href === '/') {
+		return pathname === '/';
+	}
+
+	return pathname === href || pathname.startsWith(`${href}/`);
+};
+---
+
+<header class="sticky top-0 z-40 -mx-5 px-5 py-4 backdrop-blur-xl sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12">
+	<div class="surface-card mx-auto flex max-w-[1380px] flex-col gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:flex-row lg:items-center lg:justify-between">
+		<a href="/" class="group flex items-center gap-3 text-ink no-underline">
+			<span class="flex size-10 items-center justify-center rounded-full border border-ink/12 bg-white/75 font-mono text-xs tracking-[0.28em] text-ash">CK</span>
+			<span class="flex flex-col">
+				<span class="font-display text-xl tracking-[0.03em]">Chromi Kingdom</span>
+				<span class="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-ash">
+					AI Studio
+				</span>
+			</span>
+		</a>
+
+		<nav aria-label="Primary" class="w-full lg:w-auto">
+			<ul class="flex flex-wrap gap-2">
+				{
+					navItems.map((item) => (
+						<li>
+							<a
+								href={item.href}
+								aria-current={isActive(item.href) ? 'page' : undefined}
+								class:list={[
+									'rounded-full px-4 py-2 text-sm tracking-[0.08em] transition duration-200',
+									isActive(item.href)
+										? 'bg-ink text-paper shadow-[0_10px_24px_rgba(25,23,21,0.16)]'
+										: 'text-ash hover:bg-white/70 hover:text-ink',
+								]}
+							>
+								{item.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+	</div>
+</header>

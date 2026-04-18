@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local source material
+private/photo_manifests/*.yaml
+private/photo_manifests/*.yml
+
+# local verification artifacts
+output/playwright/

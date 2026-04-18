@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/studio/PageHero.astro';
+import { aboutSections, currentConcerns, siteMeta, studioPositioning } from '../lib/site';
+---
+
+<BaseLayout title="About" description="About the research-driven AI Studio structure behind Chromi Kingdom.">
+	<PageHero
+		kicker="About"
+		title="A narrow public front door for research-driven AI judgment."
+		intro={aboutSections.extended}
+		asideTitle="Current stage"
+		aside={studioPositioning.stage}
+	/>
+
+	<section class="mt-12 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+			<p class="section-label">Current work</p>
+			<p class="mt-5 text-[1.04rem] leading-8 text-ink/76">{aboutSections.current}</p>
+		</div>
+
+		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+			<p class="section-label">Internal positioning</p>
+			<p class="mt-5 text-[1.04rem] leading-8 text-ink/76">{studioPositioning.internal}</p>
+		</div>
+	</section>
+
+	<section class="mt-12 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+			<p class="section-label">Focus areas</p>
+			<ul class="mt-5 space-y-4 text-[1.02rem] leading-8 text-ink/76">
+				{
+					currentConcerns.map((item) => (
+						<li class="flex gap-3">
+							<span class="mt-[0.9rem] h-1.5 w-1.5 rounded-full bg-rust"></span>
+							<span>{item}</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
+		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+			<p class="section-label">Links</p>
+			<ul class="mt-5 space-y-4 text-[1.02rem] leading-8 text-ink/76">
+				<li>
+					<a href={`mailto:${siteMeta.email}`} class="text-rust no-underline transition hover:text-shadow">
+						{siteMeta.email}
+					</a>
+				</li>
+				<li>
+					<a href={siteMeta.orcid} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-shadow">
+						ORCID
+					</a>
+				</li>
+				<li>
+					<a href={siteMeta.github} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-shadow">
+						GitHub
+					</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+</BaseLayout>

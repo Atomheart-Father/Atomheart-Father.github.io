@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Not Found" description="The page you were looking for does not exist.">
+	<section class="mx-auto max-w-[880px] pt-10">
+		<div class="surface-card px-6 py-10 text-center sm:px-10 sm:py-14">
+			<p class="section-label">404</p>
+			<h1 class="mt-5 text-[2.8rem] leading-[0.98] sm:text-[4rem]">This route does not hold anything yet.</h1>
+			<p class="mx-auto mt-6 max-w-2xl text-[1.04rem] leading-8 text-ink/76">
+				The page may have moved, or it may not have been released. The entrance is still nearby.
+			</p>
+			<div class="mt-8 flex flex-wrap justify-center gap-3">
+				<a href="/" class="rounded-full bg-ink px-5 py-3 text-sm tracking-[0.12em] text-paper no-underline transition hover:bg-shadow">
+					Back home
+				</a>
+				<a href="/services" class="rounded-full border border-black/10 px-5 py-3 text-sm tracking-[0.12em] text-ash no-underline transition hover:bg-white/70 hover:text-ink">
+					View services
+				</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

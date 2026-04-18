@@ -1,0 +1,14 @@
+title: "Example visual series"
+slug: "canal-edges"
+year: 2026
+summary: "A short curatorial note for the series."
+cover: "/absolute/path/to/cover-image.jpg"
+images:
+  - source: "/absolute/path/to/cover-image.jpg"
+    alt: "Short alt text for the cover image."
+    caption: "Optional caption."
+    crop: "wide"
+  - source: "/absolute/path/to/second-image.jpg"
+    alt: "Short alt text for a portrait image."
+    caption: "Optional caption."
+    crop: "portrait"

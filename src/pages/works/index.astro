@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import WorksFilter from '../../components/WorksFilter.astro';
+import { getPublishedVisualSeries, getUnifiedWorks } from '../../lib/works';
+
+const works = await getUnifiedWorks();
+const publishedSeries = await getPublishedVisualSeries();
+---
+
+<BaseLayout title="Works" description="Papers and visual series gathered in one editorial sequence.">
+	<section class="space-y-8 pt-6">
+		<div class="grid gap-6 lg:grid-cols-[1fr_0.62fr]">
+			<div class="surface-card px-6 py-7 sm:px-8 sm:py-10">
+				<p class="section-label">Works</p>
+				<h1 class="mt-5 text-[2.9rem] leading-[0.96] sm:text-[4rem]">Papers and visual series, ordered as one field.</h1>
+				<p class="mt-6 max-w-3xl text-[1.08rem] leading-8 text-ink/78">
+					Nothing here is grouped by professional identity. The list stays mixed on purpose. Research can
+					sit beside visual work without being translated into a hierarchy that explains away the site.
+				</p>
+			</div>
+
+			<div class="surface-card px-6 py-7 sm:px-8 sm:py-10">
+				<p class="section-label">Publishing logic</p>
+				<p class="mt-4 text-[1.02rem] leading-8 text-ink/74">
+					Papers are presented at abstract level only. Visual series are published selectively, after a
+					separate curation pass from the private image archive.
+				</p>
+			</div>
+		</div>
+
+		<WorksFilter />
+
+		<div class="grid gap-5 lg:grid-cols-2">
+			{
+				works.map((work) => (
+					<WorkCard
+						href={work.href}
+						title={work.title}
+						typeLabel={work.typeLabel}
+						year={work.year}
+						summary={work.summary}
+						statusLabel={work.statusLabel}
+						themes={work.themes}
+						cover={work.cover}
+						featured={work.featured}
+						filterKey={work.filterKey}
+					/>
+				))
+			}
+		</div>
+
+		{
+			publishedSeries.length === 0 && (
+				<div class="surface-card px-6 py-6 text-sm leading-7 text-ink/70 sm:px-8">
+					No visual series are publicly released yet, but the import pipeline and page architecture are in
+					place so future series can be added without rebuilding the site.
+				</div>
+			)
+		}
+	</section>
+</BaseLayout>
