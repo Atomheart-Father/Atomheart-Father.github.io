@@ -1,40 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentCard from '../components/studio/ContentCard.astro';
-import EmptyState from '../components/studio/EmptyState.astro';
 import PageHero from '../components/studio/PageHero.astro';
 import { getPublicResearch, researchColumns } from '../lib/content-api';
+import { homePage, researchPrograms } from '../lib/site';
 
 const entries = await getPublicResearch();
-const createResearchDescription =
-	'Add an entry with npm run new:content -- research "Title", then switch visibility to public when it is ready.';
 ---
 
-<BaseLayout title="Research" description="Research surface for under-review work, working papers, memos, essays, and notes.">
+<BaseLayout title="Research" description="Research program on AI systems, organizational judgment, and public consequences.">
 	<PageHero
-		kicker="Research"
-		title="A public research surface, not a full archive."
-		intro="This page is designed to hold only the work that can support the Studio route: under-review or in-progress research, working papers or memos, and public essays or notes."
-		asideTitle="Publishing rule"
-		aside="Full manuscripts do not need to be posted here. Abstract-level entries, public samples, and reusable memos are enough until a piece is ready."
+		kicker={homePage.researchProgram.kicker}
+		title={homePage.researchProgram.title}
+		intro={homePage.researchProgram.intro}
 	/>
 
 	<section class="mt-12 grid gap-5 lg:grid-cols-3">
 		{
-			researchColumns.map((column) => {
-				const columnEntries = entries.filter((entry) =>
-					column.categories.some((category) => category === entry.data.category),
-				);
+			researchPrograms.map((program) => (
+				<ContentCard kicker="Program" title={program.title} summary={program.summary} />
+			))
+		}
+	</section>
 
-				return (
-					<div class="space-y-4">
-						<div class="surface-card px-5 py-5">
-							<p class="section-label">{column.title}</p>
-							<p class="mt-4 text-sm leading-7 text-ink/72">{column.description}</p>
-						</div>
+	{
+		entries.length > 0 && (
+			<section class="mt-16 grid gap-5 lg:grid-cols-3">
+				{researchColumns.map((column) => {
+					const columnEntries = entries.filter((entry) =>
+						column.categories.some((category) => category === entry.data.category),
+					);
 
-						{columnEntries.length > 0 ? (
-							columnEntries.map((entry) => (
+					if (columnEntries.length === 0) {
+						return null;
+					}
+
+					return (
+						<div class="space-y-4">
+							<div class="surface-card px-5 py-5">
+								<p class="section-label">{column.title}</p>
+								<p class="mt-4 text-sm leading-7 text-ink/72">{column.description}</p>
+							</div>
+
+							{columnEntries.map((entry) => (
 								<ContentCard
 									href={`/research/${entry.data.slug}`}
 									kicker={entry.data.status.replaceAll('_', ' ')}
@@ -43,16 +51,11 @@ const createResearchDescription =
 									meta={String(entry.data.year)}
 									tags={entry.data.themes}
 								/>
-							))
-						) : (
-							<EmptyState
-								title="No public entries yet."
-								description={createResearchDescription}
-							/>
-						)}
-					</div>
-				);
-			})
-		}
-	</section>
+							))}
+						</div>
+					);
+				})}
+			</section>
+		)
+	}
 </BaseLayout>

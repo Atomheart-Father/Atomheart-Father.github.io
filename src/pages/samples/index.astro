@@ -1,47 +1,59 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContentCard from '../../components/studio/ContentCard.astro';
-import EmptyState from '../../components/studio/EmptyState.astro';
 import PageHero from '../../components/studio/PageHero.astro';
-import { getPublishedSamples } from '../../lib/content-api';
+import { getActiveServices, getPublishedSamples } from '../../lib/content-api';
+import { samplesPage } from '../../lib/site';
 
 const samples = await getPublishedSamples();
-const createSampleDescription =
-	'The interface is ready. Create one with npm run new:content -- sample "Title", write 600-1200 words, then set status to published.';
+const services = await getActiveServices();
 ---
 
 <BaseLayout title="Samples" description="Public samples and method notes for the Studio front door.">
 	<PageHero
-		kicker="Samples"
-		title="Short public assets that prove the method."
-		intro="Samples should not read like academic papers. Each one should show a common mistake, how the problem gets decomposed, the minimum advice, and the next step."
-		asideTitle="Fixed formats"
-		aside="Diagnosis sample. Workflow audit sample. Governance brief sample. Anonymized case note. Everything here should be reusable for outreach."
+		kicker={samplesPage.hero.kicker}
+		title={samplesPage.hero.title}
+		intro={samplesPage.hero.intro}
 	/>
 
-	<section class="mt-12">
-		{
-			samples.length > 0 ? (
-				<div class="grid gap-5 lg:grid-cols-2">
-					{samples.map((sample) => (
-						<ContentCard
-							href={`/samples/${sample.data.slug}`}
-							kicker={sample.data.template.replaceAll('_', ' ')}
-							title={sample.data.title}
-							summary={sample.data.summary}
-							meta={sample.data.date.toISOString().slice(0, 10)}
-							tags={sample.data.tags}
-						/>
-					))}
+	{
+		samples.length > 0 ? (
+			<section class="mt-12 grid gap-5 lg:grid-cols-2">
+				{samples.map((sample) => (
+					<ContentCard
+						href={`/samples/${sample.data.slug}`}
+						kicker={sample.data.template.replaceAll('_', ' ')}
+						title={sample.data.title}
+						summary={sample.data.summary}
+						meta={sample.data.date.toISOString().slice(0, 10)}
+						tags={sample.data.tags}
+					/>
+				))}
+			</section>
+		) : (
+			<section class="mt-12 grid gap-5 lg:grid-cols-3">
+				{samplesPage.formats.map((format) => (
+					<ContentCard kicker="Format" title={format.title} summary={format.summary} />
+				))}
+			</section>
+		)
+	}
+
+	{
+		samples.length === 0 && (
+			<section class="mt-12">
+				<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+					<p class="section-label">{samplesPage.serviceLinkTitle}</p>
+					<div class="mt-5 grid gap-4 lg:grid-cols-3">
+						{services.map((service) => (
+							<a href={`/services#${service.data.slug}`} class="surface-inset block px-5 py-4 text-ink no-underline hover:border-rust/25">
+								<p class="font-display text-[1.45rem] leading-tight">{service.data.title}</p>
+								<p class="mt-2 text-sm leading-6 text-ink/72">{service.data.summary}</p>
+							</a>
+						))}
+					</div>
 				</div>
-			) : (
-				<EmptyState
-					title="No public samples yet."
-					description={createSampleDescription}
-					actionHref="/services"
-					actionLabel="Review the front doors first"
-				/>
-			)
-		}
-	</section>
+			</section>
+		)
+	}
 </BaseLayout>

@@ -41,9 +41,9 @@ const { service } = Astro.props;
 			</ul>
 		</div>
 		<div class="surface-inset px-5 py-5">
-			<p class="section-label">Asset outputs</p>
+			<p class="section-label">Can lead to</p>
 			<ul class="mt-4 space-y-3 text-sm leading-6 text-ink/74">
-				{service.data.assetOutputs.map((item) => <li>{item}</li>)}
+				{service.data.upgradePaths.map((item) => <li>{item}</li>)}
 			</ul>
 		</div>
 	</div>

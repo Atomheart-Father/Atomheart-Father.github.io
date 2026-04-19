@@ -2,29 +2,25 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/studio/PageHero.astro';
 import { getActiveServices } from '../lib/content-api';
-import { siteMeta } from '../lib/site';
+import { contactPage, siteMeta } from '../lib/site';
 
 const services = await getActiveServices();
 ---
 
 <BaseLayout title="Contact" description="Start a scoped inquiry with Chromi Kingdom.">
 	<PageHero
-		kicker="Contact"
-		title="Start small. Define the question before the work expands."
-		intro="The first step is not a vague call. Send the problem, the decision you need to make, what material already exists, and which front door seems closest."
-		asideTitle="Preferred contact"
+		kicker={contactPage.hero.kicker}
+		title={contactPage.hero.title}
+		intro={contactPage.hero.intro}
+		asideTitle={contactPage.hero.asideTitle}
 		aside={siteMeta.email}
 	/>
 
 	<section class="mt-12 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
 		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
-			<p class="section-label">Inquiry checklist</p>
+			<p class="section-label">{contactPage.checklistTitle}</p>
 			<ul class="mt-5 space-y-4 text-[1.02rem] leading-8 text-ink/76">
-				<li>What are you trying to decide?</li>
-				<li>Who will use the memo, audit, or brief?</li>
-				<li>What have you already tried?</li>
-				<li>What material can you share?</li>
-				<li>What would count as a useful next step?</li>
+				{contactPage.checklist.map((item) => <li>{item}</li>)}
 			</ul>
 			<a href={`mailto:${siteMeta.email}`} class="mt-6 inline-flex text-rust no-underline hover:text-shadow">
 				Email {siteMeta.email}
@@ -32,7 +28,7 @@ const services = await getActiveServices();
 		</div>
 
 		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
-			<p class="section-label">Choose a front door</p>
+			<p class="section-label">{contactPage.frontDoorTitle}</p>
 			<div class="mt-5 space-y-4">
 				{
 					services.map((service) => (

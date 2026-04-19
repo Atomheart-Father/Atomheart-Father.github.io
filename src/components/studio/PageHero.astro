@@ -5,9 +5,17 @@ interface Props {
 	intro: string;
 	asideTitle?: string;
 	aside?: string;
+	primaryCta?: {
+		label: string;
+		href: string;
+	};
+	secondaryCta?: {
+		label: string;
+		href: string;
+	};
 }
 
-const { kicker, title, intro, asideTitle, aside } = Astro.props;
+const { kicker, title, intro, asideTitle, aside, primaryCta, secondaryCta } = Astro.props;
 ---
 
 <section class="grid gap-6 pt-6 lg:grid-cols-[1fr_0.46fr]">
@@ -19,6 +27,22 @@ const { kicker, title, intro, asideTitle, aside } = Astro.props;
 		<p class="mt-6 max-w-3xl text-[1.08rem] leading-8 text-ink/78 sm:text-[1.18rem]">
 			{intro}
 		</p>
+		{
+			(primaryCta || secondaryCta) && (
+				<div class="mt-8 flex flex-wrap gap-3">
+					{primaryCta && (
+						<a href={primaryCta.href} class="rounded-full bg-ink px-5 py-3 text-sm tracking-[0.12em] text-paper no-underline transition hover:bg-shadow">
+							{primaryCta.label}
+						</a>
+					)}
+					{secondaryCta && (
+						<a href={secondaryCta.href} class="rounded-full border border-black/10 px-5 py-3 text-sm tracking-[0.12em] text-ash no-underline transition hover:bg-white/70 hover:text-ink">
+							{secondaryCta.label}
+						</a>
+					)}
+				</div>
+			)
+		}
 	</div>
 
 	{

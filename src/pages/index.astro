@@ -2,67 +2,35 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentCard from '../components/studio/ContentCard.astro';
 import PageHero from '../components/studio/PageHero.astro';
-import { getActiveServices, getPublishedSamples } from '../lib/content-api';
-import { currentConcerns, homeEntry, homeLinks, studioMetrics, studioPositioning } from '../lib/site';
+import { getActiveServices, getPublicResearch, getPublishedSamples } from '../lib/content-api';
+import { homePage, researchPrograms } from '../lib/site';
 
 const services = await getActiveServices();
 const samples = await getPublishedSamples();
+const research = await getPublicResearch();
+const featuredSample = samples[0];
+const featuredResearch = research[0];
+const secondaryCta = samples.length > 0 ? homePage.hero.secondaryCta : undefined;
 ---
 
 <BaseLayout title="Chromi Kingdom">
 	<PageHero
-		kicker={homeEntry.kicker}
-		title={homeEntry.title}
-		intro={homeEntry.intro}
-		asideTitle="Positioning"
-		aside={studioPositioning.public}
+		kicker={homePage.hero.kicker}
+		title={homePage.hero.title}
+		intro={homePage.hero.intro}
+		primaryCta={homePage.hero.primaryCta}
+		secondaryCta={secondaryCta}
 	/>
-
-	<section class="mt-10 grid gap-4 sm:grid-cols-3">
-		{
-			homeLinks.map((link) => (
-				<a href={link.href} class="surface-card group flex flex-col gap-4 px-5 py-5 no-underline">
-					<p class="section-label">{link.title}</p>
-					<p class="font-display text-[1.6rem] leading-tight text-ink transition duration-300 group-hover:text-rust">
-						{link.title}
-					</p>
-					<p class="text-sm leading-7 text-ink/72">{link.description}</p>
-				</a>
-			))
-		}
-	</section>
-
-	<section class="mt-16 grid gap-5 lg:grid-cols-[0.92fr_1.08fr]">
-		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
-			<p class="section-label">Stage system</p>
-			<h2 class="mt-4 text-[2.35rem] leading-tight">Prototype first. Evidence next. Assets always.</h2>
-			<p class="mt-5 text-[1.02rem] leading-8 text-ink/74">
-				The site is built for Stage A: a public front door, the first samples, a reusable service
-				surface, and a dossier structure that can support future research, institutional contact,
-				and client work.
-			</p>
-		</div>
-
-		<div class="grid gap-4 sm:grid-cols-2">
-			{
-				studioMetrics.map((metric) => (
-					<div class="surface-card px-5 py-5">
-						<p class="section-label">Build metric</p>
-						<p class="mt-4 font-display text-[1.75rem] leading-tight">{metric}</p>
-					</div>
-				))
-			}
-		</div>
-	</section>
 
 	<section class="mt-16 space-y-6">
 		<div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
 			<div>
-				<p class="section-label">Front doors</p>
-				<h2 class="mt-3 text-[2.5rem] leading-tight sm:text-[3rem]">Three bounded ways to start.</h2>
+				<p class="section-label">{homePage.services.kicker}</p>
+				<h2 class="mt-3 text-[2.5rem] leading-tight sm:text-[3rem]">{homePage.services.title}</h2>
+				<p class="mt-4 max-w-2xl text-[1.02rem] leading-8 text-ink/74">{homePage.services.intro}</p>
 			</div>
 			<a href="/services" class="text-sm tracking-[0.14em] text-rust no-underline transition hover:text-shadow">
-				View service architecture
+				{homePage.services.linkLabel}
 			</a>
 		</div>
 
@@ -74,38 +42,74 @@ const samples = await getPublishedSamples();
 						kicker="Service"
 						title={service.data.title}
 						summary={service.data.summary}
-						tags={service.data.assetOutputs}
+						tags={service.data.deliverables.slice(0, 2)}
 					/>
 				))
 			}
 		</div>
 	</section>
 
-	<section class="mt-16 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
-			<p class="section-label">Research concerns</p>
-			<ul class="mt-5 space-y-4 text-[1.02rem] leading-8 text-ink/76">
-				{
-					currentConcerns.map((item) => (
-						<li class="flex gap-3">
-							<span class="mt-[0.9rem] h-1.5 w-1.5 rounded-full bg-rust"></span>
-							<span>{item}</span>
-						</li>
-					))
-				}
-			</ul>
+	{
+		(featuredSample || featuredResearch) && (
+			<section class="mt-16 space-y-6">
+				<div>
+					<p class="section-label">{homePage.featured.kicker}</p>
+					<h2 class="mt-3 text-[2.5rem] leading-tight sm:text-[3rem]">{homePage.featured.title}</h2>
+					<p class="mt-4 max-w-2xl text-[1.02rem] leading-8 text-ink/74">{homePage.featured.intro}</p>
+				</div>
+
+				<div class="grid gap-5 lg:grid-cols-2">
+					{featuredSample && (
+						<ContentCard
+							href={`/samples/${featuredSample.data.slug}`}
+							kicker="Sample"
+							title={featuredSample.data.title}
+							summary={featuredSample.data.summary}
+							meta={featuredSample.data.date.toISOString().slice(0, 10)}
+							tags={featuredSample.data.tags}
+						/>
+					)}
+					{featuredResearch && (
+						<ContentCard
+							href={`/research/${featuredResearch.data.slug}`}
+							kicker="Research"
+							title={featuredResearch.data.title}
+							summary={featuredResearch.data.summary}
+							meta={String(featuredResearch.data.year)}
+							tags={featuredResearch.data.themes}
+						/>
+					)}
+				</div>
+			</section>
+		)
+	}
+
+	<section class="mt-16 space-y-6">
+		<div>
+			<p class="section-label">{homePage.researchProgram.kicker}</p>
+			<h2 class="mt-3 text-[2.5rem] leading-tight sm:text-[3rem]">{homePage.researchProgram.title}</h2>
+			<p class="mt-4 max-w-3xl text-[1.02rem] leading-8 text-ink/74">{homePage.researchProgram.intro}</p>
 		</div>
 
-		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
-			<p class="section-label">Samples</p>
-			<h2 class="mt-4 text-[2.25rem] leading-tight">
-				{samples.length > 0 ? 'Public samples are live.' : 'Public samples are the next asset layer.'}
-			</h2>
-			<p class="mt-5 text-[1.02rem] leading-8 text-ink/74">
-				Each sample should show a common mistake, how the problem gets decomposed, what the
-				minimum advice looks like, and what should happen next.
-			</p>
-			<a href="/samples" class="mt-6 inline-flex text-rust no-underline hover:text-shadow">Open samples</a>
+		<div class="grid gap-5 lg:grid-cols-3">
+			{
+				researchPrograms.map((program) => (
+					<ContentCard kicker="Program" title={program.title} summary={program.summary} />
+				))
+			}
+		</div>
+	</section>
+
+	<section class="mt-16">
+		<div class="surface-card grid gap-6 px-6 py-7 sm:px-8 sm:py-9 lg:grid-cols-[1fr_auto] lg:items-center">
+			<div>
+				<p class="section-label">{homePage.contact.kicker}</p>
+				<h2 class="mt-3 text-[2.5rem] leading-tight sm:text-[3rem]">{homePage.contact.title}</h2>
+				<p class="mt-4 max-w-2xl text-[1.02rem] leading-8 text-ink/74">{homePage.contact.intro}</p>
+			</div>
+			<a href={homePage.contact.ctaHref} class="inline-flex rounded-full bg-ink px-5 py-3 text-sm tracking-[0.12em] text-paper no-underline transition hover:bg-shadow">
+				{homePage.contact.ctaLabel}
+			</a>
 		</div>
 	</section>
 </BaseLayout>

@@ -3,17 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/studio/PageHero.astro';
 import ServiceCard from '../components/studio/ServiceCard.astro';
 import { getActiveServices } from '../lib/content-api';
+import { servicesPage } from '../lib/site';
 
 const services = await getActiveServices();
 ---
 
 <BaseLayout title="Services" description="Three bounded front-door services for research-driven AI diagnosis, audit, and briefs.">
 	<PageHero
-		kicker="Services"
-		title="Three front doors, each with a boundary."
-		intro="The Studio is not a broad AI consultancy. It starts with small, scoped, asynchronous-first offers that turn vague AI questions into usable judgment and reusable assets."
-		asideTitle="Operating rule"
-		aside="If a request cannot be scoped, delivered lightly, and converted into a template, sample, or dossier record, it should be narrowed or rejected."
+		kicker={servicesPage.hero.kicker}
+		title={servicesPage.hero.title}
+		intro={servicesPage.hero.intro}
+		asideTitle={servicesPage.hero.asideTitle}
+		aside={servicesPage.hero.aside}
 	/>
 
 	<section class="mt-12 space-y-6">

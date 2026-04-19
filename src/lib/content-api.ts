@@ -58,7 +58,7 @@ export const researchColumns = [
 	{
 		key: 'working',
 		title: 'Working papers / memos',
-		description: 'Draftable assets that can become briefs, samples, or research notes.',
+		description: 'Draftable notes that can become briefs, samples, or research entries.',
 		categories: ['working_paper', 'memo'] as const,
 	},
 	{

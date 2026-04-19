@@ -1,8 +1,25 @@
 ---
 import { primaryNav } from '../lib/site';
+import { getPublicResearch, getPublishedSamples } from '../lib/content-api';
 
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
-const navItems = primaryNav;
+const publicResearch = await getPublicResearch();
+const publishedSamples = await getPublishedSamples();
+const navItems = primaryNav.filter((item) => {
+	if (!('requires' in item)) {
+		return true;
+	}
+
+	if (item.requires === 'research') {
+		return publicResearch.length > 0;
+	}
+
+	if (item.requires === 'samples') {
+		return publishedSamples.length > 0;
+	}
+
+	return true;
+});
 
 const isActive = (href: string) => {
 	if (href === '/') {
