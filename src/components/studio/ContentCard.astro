@@ -12,18 +12,20 @@ const { href, kicker, title, summary, meta, tags = [] } = Astro.props;
 const Tag = href ? 'a' : 'article';
 ---
 
-<Tag href={href} class="surface-card group block px-5 py-5 text-ink no-underline sm:px-6 sm:py-6">
+<Tag href={href} class="group block border-t border-black/10 py-5 text-ink no-underline">
 	<div class="flex flex-wrap items-center gap-3">
 		<p class="section-label">{kicker}</p>
 		{meta && <span class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-ash/80">{meta}</span>}
 	</div>
-	<h3 class="mt-4 text-[2rem] leading-tight transition duration-300 group-hover:text-rust">{title}</h3>
-	<p class="mt-4 text-[1rem] leading-7 text-ink/74">{summary}</p>
+	<h3 class="mt-4 max-w-4xl text-[2rem] leading-tight transition duration-300 group-hover:translate-x-1 group-hover:text-rust">
+		{title}
+	</h3>
+	<p class="mt-4 max-w-3xl text-[1rem] leading-7 text-ink/74">{summary}</p>
 	{
 		tags.length > 0 && (
-			<div class="mt-5 flex flex-wrap gap-2">
+			<div class="mt-5 flex flex-wrap gap-x-3 gap-y-1">
 				{tags.map((tag) => (
-					<span class="rounded-full border border-rust/18 bg-rust/8 px-3 py-1 font-mono text-[0.66rem] uppercase tracking-[0.16em] text-rust">
+					<span class="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-rust">
 						{tag}
 					</span>
 				))}

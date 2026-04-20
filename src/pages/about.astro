@@ -11,13 +11,13 @@ import { aboutPage, researchPrograms, siteMeta } from '../lib/site';
 		intro={aboutPage.hero.intro}
 	/>
 
-	<section class="mt-12 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+	<section class="mt-12 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+		<div class="editorial-rule">
 			<p class="section-label">Current work</p>
 			<p class="mt-5 text-[1.04rem] leading-8 text-ink/76">{aboutPage.current}</p>
 		</div>
 
-		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+		<div class="editorial-rule">
 			<p class="section-label">{aboutPage.focusTitle}</p>
 			<ul class="mt-5 space-y-4 text-[1.02rem] leading-8 text-ink/76">
 				{
@@ -32,8 +32,13 @@ import { aboutPage, researchPrograms, siteMeta } from '../lib/site';
 		</div>
 	</section>
 
-	<section class="mt-12">
-		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+	<section class="mt-12 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+		<div class="editorial-rule">
+			<p class="section-label">{aboutPage.journalTitle}</p>
+			<p class="mt-5 text-[1.04rem] leading-8 text-ink/76">{aboutPage.journalIntro}</p>
+		</div>
+
+		<div class="editorial-rule">
 			<p class="section-label">{aboutPage.linksTitle}</p>
 			<ul class="mt-5 flex flex-wrap gap-4 text-[1.02rem] leading-8 text-ink/76">
 				<li>

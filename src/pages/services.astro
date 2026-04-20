@@ -1,23 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/studio/PageHero.astro';
-import ServiceCard from '../components/studio/ServiceCard.astro';
-import { getActiveServices } from '../lib/content-api';
-import { servicesPage } from '../lib/site';
-
-const services = await getActiveServices();
 ---
 
-<BaseLayout title="Services" description="Three bounded front-door services for research-driven AI diagnosis, audit, and briefs.">
-	<PageHero
-		kicker={servicesPage.hero.kicker}
-		title={servicesPage.hero.title}
-		intro={servicesPage.hero.intro}
-		asideTitle={servicesPage.hero.asideTitle}
-		aside={servicesPage.hero.aside}
-	/>
-
-	<section class="mt-12 space-y-6">
-		{services.map((service) => <ServiceCard service={service} />)}
+<BaseLayout title="Services" description="This legacy route now points to the main Work page.">
+	<section class="mx-auto max-w-[920px] pt-10">
+		<div class="editorial-rule">
+			<p class="section-label">Legacy route</p>
+			<h1 class="mt-5 text-[2.9rem] leading-[0.94] sm:text-[4rem]">Work is now the primary public front door.</h1>
+			<p class="mt-6 max-w-3xl text-[1.08rem] leading-8 text-ink/78">
+				This route remains available for older links, but the current structure has been consolidated under Work.
+			</p>
+			<a
+				href="/work"
+				class="mt-8 inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-rust no-underline transition hover:text-shadow"
+			>
+				<span aria-hidden="true">→</span>
+				Open Work
+			</a>
+		</div>
 	</section>
 </BaseLayout>

@@ -18,14 +18,18 @@ const entries = await getPublicResearch();
 	<section class="mt-12 grid gap-5 lg:grid-cols-3">
 		{
 			researchPrograms.map((program) => (
-				<ContentCard kicker="Program" title={program.title} summary={program.summary} />
+				<div class="border-t border-black/10 pt-4">
+					<p class="section-label">Program</p>
+					<h2 class="mt-4 font-display text-[1.9rem] leading-tight">{program.title}</h2>
+					<p class="mt-4 text-[1rem] leading-7 text-ink/74">{program.summary}</p>
+				</div>
 			))
 		}
 	</section>
 
 	{
 		entries.length > 0 && (
-			<section class="mt-16 grid gap-5 lg:grid-cols-3">
+			<section class="mt-16 grid gap-8 lg:grid-cols-3">
 				{researchColumns.map((column) => {
 					const columnEntries = entries.filter((entry) =>
 						column.categories.some((category) => category === entry.data.category),
@@ -37,7 +41,7 @@ const entries = await getPublicResearch();
 
 					return (
 						<div class="space-y-4">
-							<div class="surface-card px-5 py-5">
+							<div class="editorial-rule">
 								<p class="section-label">{column.title}</p>
 								<p class="mt-4 text-sm leading-7 text-ink/72">{column.description}</p>
 							</div>

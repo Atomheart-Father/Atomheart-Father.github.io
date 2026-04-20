@@ -3,6 +3,7 @@ export {
 	contactPage,
 	footerCopy,
 	homePage,
+	journalPage,
 	legacyCopy,
 	primaryNav,
 	researchPrograms,

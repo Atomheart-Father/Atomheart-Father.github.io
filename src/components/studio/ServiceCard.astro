@@ -3,48 +3,56 @@ import type { ServiceEntry } from '../../lib/content-api';
 
 interface Props {
 	service: ServiceEntry;
+	index?: number;
 }
 
-const { service } = Astro.props;
+const { service, index } = Astro.props;
+const numberLabel = String(index ?? 0).padStart(2, '0');
 ---
 
-<article id={service.data.slug} class="surface-card px-6 py-7 sm:px-8 sm:py-8">
-	<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-		<div>
-			<p class="section-label">Front door</p>
-			<h2 class="mt-4 text-[2.35rem] leading-tight">{service.data.title}</h2>
-		</div>
-		<a href={service.data.ctaHref} class="rounded-full border border-rust/25 px-4 py-2 text-sm text-rust no-underline hover:bg-rust hover:text-paper">
-			{service.data.ctaLabel}
-		</a>
-	</div>
+<article id={service.data.slug} class="border-t border-black/10 py-8">
+	<div class="grid gap-6 lg:grid-cols-[4.5rem_minmax(0,1fr)]">
+		<div class="font-mono text-[0.82rem] uppercase tracking-[0.22em] text-ash">{numberLabel}</div>
+		<div class="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]">
+			<div>
+				<p class="section-label">Front door</p>
+				<h2 class="mt-4 max-w-3xl text-[2.2rem] leading-tight sm:text-[2.55rem]">{service.data.title}</h2>
+				<p class="mt-5 max-w-3xl text-[1.04rem] leading-8 text-ink/76">{service.data.summary}</p>
+				<a
+					href={service.data.ctaHref}
+					class="mt-6 inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-rust no-underline transition hover:text-shadow"
+				>
+					<span aria-hidden="true">→</span>
+					{service.data.ctaLabel}
+				</a>
+			</div>
 
-	<p class="mt-5 max-w-3xl text-[1.04rem] leading-8 text-ink/76">{service.data.summary}</p>
-
-	<div class="mt-7 grid gap-4 lg:grid-cols-2">
-		<div class="surface-inset px-5 py-5">
-			<p class="section-label">Good fit</p>
-			<ul class="mt-4 space-y-3 text-sm leading-6 text-ink/74">
-				{service.data.idealFor.map((item) => <li>{item}</li>)}
-			</ul>
-		</div>
-		<div class="surface-inset px-5 py-5">
-			<p class="section-label">Deliverables</p>
-			<ul class="mt-4 space-y-3 text-sm leading-6 text-ink/74">
-				{service.data.deliverables.map((item) => <li>{item}</li>)}
-			</ul>
-		</div>
-		<div class="surface-inset px-5 py-5">
-			<p class="section-label">Boundaries</p>
-			<ul class="mt-4 space-y-3 text-sm leading-6 text-ink/74">
-				{service.data.boundaries.map((item) => <li>{item}</li>)}
-			</ul>
-		</div>
-		<div class="surface-inset px-5 py-5">
-			<p class="section-label">Can lead to</p>
-			<ul class="mt-4 space-y-3 text-sm leading-6 text-ink/74">
-				{service.data.upgradePaths.map((item) => <li>{item}</li>)}
-			</ul>
+			<div class="grid gap-5 sm:grid-cols-2">
+				<div class="surface-inset pt-4">
+					<p class="section-label">Good fit</p>
+					<ul class="mt-4 space-y-3 text-sm leading-6 text-ink/74">
+						{service.data.idealFor.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+				<div class="surface-inset pt-4">
+					<p class="section-label">Deliverables</p>
+					<ul class="mt-4 space-y-3 text-sm leading-6 text-ink/74">
+						{service.data.deliverables.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+				<div class="surface-inset pt-4">
+					<p class="section-label">Boundaries</p>
+					<ul class="mt-4 space-y-3 text-sm leading-6 text-ink/74">
+						{service.data.boundaries.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+				<div class="surface-inset pt-4">
+					<p class="section-label">Can lead to</p>
+					<ul class="mt-4 space-y-3 text-sm leading-6 text-ink/74">
+						{service.data.upgradePaths.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </article>

@@ -99,6 +99,32 @@ const samples = defineCollection({
 	}),
 });
 
+const journal = defineCollection({
+	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/journal' }),
+	schema: z.object({
+		title: z.string(),
+		slug: z.string(),
+		date: z.coerce.date(),
+		summary: z.string(),
+		status: z.enum(['draft', 'published']).default('draft'),
+		type: z.enum(['long_note', 'short_note', 'case_note', 'image_note']),
+		featured: z.boolean().default(false),
+		sortOrder: z.number().int().default(100),
+		tags: z.array(z.string()).default([]),
+		relatedService: z.string().optional(),
+		cover: z.string().optional(),
+		images: z
+			.array(
+				z.object({
+					src: z.string(),
+					alt: z.string(),
+					caption: z.string().optional(),
+				}),
+			)
+			.default([]),
+	}),
+});
+
 const evidence = defineCollection({
 	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/evidence' }),
 	schema: z.object({
@@ -130,5 +156,6 @@ export const collections = {
 	services,
 	research,
 	samples,
+	journal,
 	evidence,
 };

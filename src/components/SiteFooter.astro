@@ -1,14 +1,29 @@
 ---
-import { footerCopy, siteMeta } from '../lib/site';
+import { footerCopy, primaryNav, siteMeta } from '../lib/site';
 ---
 
 <footer class="mt-20 pb-8 pt-10">
-	<div class="surface-card grid gap-6 px-5 py-6 sm:px-8 lg:grid-cols-[1.4fr_1fr]">
+	<div class="grid gap-8 border-t border-black/10 pt-8 lg:grid-cols-[1.25fr_0.7fr_0.8fr]">
 		<div class="space-y-3">
 			<p class="section-label">Chromi Kingdom</p>
 			<p class="max-w-2xl text-sm leading-7 text-ink/78">
 				{footerCopy}
 			</p>
+		</div>
+
+		<div class="space-y-3">
+			<p class="section-label">Navigate</p>
+			<ul class="space-y-2 text-sm text-ash">
+				{
+					primaryNav.map((item) => (
+						<li>
+							<a href={item.href} class="hover:text-rust">
+								{item.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
 		</div>
 
 		<div class="space-y-3">

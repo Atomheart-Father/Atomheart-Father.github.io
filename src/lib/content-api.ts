@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 export type ServiceEntry = CollectionEntry<'services'>;
 export type ResearchEntry = CollectionEntry<'research'>;
 export type SampleEntry = CollectionEntry<'samples'>;
+export type JournalEntry = CollectionEntry<'journal'>;
 export type EvidenceEntry = CollectionEntry<'evidence'>;
 
 function bySortOrder<T extends { data: { sortOrder: number } }>(a: T, b: T) {
@@ -11,6 +12,18 @@ function bySortOrder<T extends { data: { sortOrder: number } }>(a: T, b: T) {
 
 function byDateDesc<T extends { data: { date: Date } }>(a: T, b: T) {
 	return b.data.date.getTime() - a.data.date.getTime();
+}
+
+function byFeaturedOrderAndDate<T extends { data: { featured?: boolean; sortOrder: number; date: Date } }>(a: T, b: T) {
+	if (Boolean(a.data.featured) !== Boolean(b.data.featured)) {
+		return a.data.featured ? -1 : 1;
+	}
+
+	if (a.data.sortOrder !== b.data.sortOrder) {
+		return a.data.sortOrder - b.data.sortOrder;
+	}
+
+	return byDateDesc(a, b);
 }
 
 export async function getActiveServices() {
@@ -39,6 +52,21 @@ export async function getPublishedSamples() {
 
 		return byDateDesc(a, b);
 	});
+}
+
+export async function getPublishedJournal() {
+	const entries = await getCollection('journal');
+	return entries.filter((entry) => entry.data.status === 'published').sort(byFeaturedOrderAndDate);
+}
+
+export async function getPublishedWriting() {
+	const entries = await getPublishedJournal();
+	return entries.filter((entry) => entry.data.type !== 'image_note');
+}
+
+export async function getPublishedImageNotes() {
+	const entries = await getPublishedJournal();
+	return entries.filter((entry) => entry.data.type === 'image_note');
 }
 
 export async function getPublicEvidence() {

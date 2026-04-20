@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/studio/PageHero.astro';
+import ServiceCard from '../components/studio/ServiceCard.astro';
+import { getActiveServices } from '../lib/content-api';
+import { servicesPage } from '../lib/site';
+
+const services = await getActiveServices();
+---
+
+<BaseLayout title="Work" description="Three bounded entry points for diagnosis, workflow audit, and governance-facing AI judgment.">
+	<PageHero
+		kicker={servicesPage.hero.kicker}
+		title={servicesPage.hero.title}
+		intro={servicesPage.hero.intro}
+		asideTitle={servicesPage.hero.asideTitle}
+		aside={servicesPage.hero.aside}
+	/>
+
+	<section class="mt-14">
+		{services.map((service, index) => <ServiceCard service={service} index={index + 1} />)}
+	</section>
+
+	<section class="mt-16 grid gap-8 border-t border-black/10 pt-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+		<div>
+			<p class="section-label">{servicesPage.bridge.title}</p>
+			<p class="mt-4 max-w-3xl text-[1.02rem] leading-8 text-ink/74">{servicesPage.bridge.intro}</p>
+		</div>
+		<div class="flex flex-wrap gap-5">
+			{
+				servicesPage.bridge.links.map((link) => (
+					<a
+						href={link.href}
+						class="inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-rust no-underline transition hover:text-shadow"
+					>
+						<span aria-hidden="true">→</span>
+						{link.label}
+					</a>
+				))
+			}
+		</div>
+	</section>
+</BaseLayout>

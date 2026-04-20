@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentCard from '../components/studio/ContentCard.astro';
+import PageHero from '../components/studio/PageHero.astro';
+import { getPublishedImageNotes, getPublishedWriting } from '../lib/content-api';
+import { journalPage } from '../lib/site';
+
+const writing = await getPublishedWriting();
+const imageNotes = await getPublishedImageNotes();
+---
+
+<BaseLayout title="Journal" description="Public writing, case notes, and image notes from Chromi Kingdom.">
+	<PageHero
+		kicker={journalPage.hero.kicker}
+		title={journalPage.hero.title}
+		intro={journalPage.hero.intro}
+	/>
+
+	<section class="mt-14 grid gap-5 lg:grid-cols-4">
+		{
+			journalPage.tracks.map((track) => (
+				<div class="border-t border-black/10 pt-4">
+					<p class="section-label">Track</p>
+					<h2 class="mt-4 font-display text-[1.7rem] leading-tight">{track.title}</h2>
+					<p class="mt-4 text-[0.98rem] leading-7 text-ink/74">{track.summary}</p>
+				</div>
+			))
+		}
+	</section>
+
+	<section class="mt-16 grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
+		<div class="editorial-rule">
+			<p class="section-label">Writing</p>
+			<h2 class="mt-4 text-[2.35rem] leading-tight sm:text-[2.8rem]">{journalPage.writingTitle}</h2>
+			<p class="mt-4 max-w-xl text-[1.02rem] leading-8 text-ink/74">{journalPage.writingIntro}</p>
+		</div>
+
+		<div class="border-t border-black/10">
+			{
+				writing.length > 0 ? writing.map((entry) => (
+					<ContentCard
+						href={`/journal/${entry.data.slug}`}
+						kicker={entry.data.type.replaceAll('_', ' ')}
+						title={entry.data.title}
+						summary={entry.data.summary}
+						meta={entry.data.date.toISOString().slice(0, 10)}
+						tags={entry.data.tags}
+					/>
+				)) : (
+					<div class="py-6 text-[1rem] leading-7 text-ink/72">
+						Public writing is added when it can stand alone as an argument, a method note, or a useful case note.
+					</div>
+				)
+			}
+		</div>
+	</section>
+
+	<section class="mt-16 grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
+		<div class="editorial-rule">
+			<p class="section-label">Image notes</p>
+			<h2 class="mt-4 text-[2.35rem] leading-tight sm:text-[2.8rem]">{journalPage.visualTitle}</h2>
+			<p class="mt-4 max-w-xl text-[1.02rem] leading-8 text-ink/74">{journalPage.visualIntro}</p>
+		</div>
+
+		<div class="border-t border-black/10">
+			{
+				imageNotes.length > 0 ? imageNotes.map((entry) => (
+					<ContentCard
+						href={`/journal/${entry.data.slug}`}
+						kicker="Image note"
+						title={entry.data.title}
+						summary={entry.data.summary}
+						meta={entry.data.date.toISOString().slice(0, 10)}
+						tags={entry.data.tags}
+					/>
+				)) : (
+					<div class="py-6 text-[1rem] leading-7 text-ink/72">
+						Image notes stay sparse by design. They appear only when a visual fragment carries real observational weight.
+					</div>
+				)
+			}
+		</div>
+	</section>
+</BaseLayout>

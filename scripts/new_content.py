@@ -12,6 +12,41 @@ CONTENT_ROOT = ROOT / "src" / "content"
 
 
 TEMPLATES = {
+    "journal": {
+        "directory": "journal",
+        "body": """---
+title: "{title}"
+slug: "{slug}"
+date: {today}
+summary: "Replace with a 1-2 sentence public summary."
+status: "draft"
+type: "short_note"
+featured: false
+sortOrder: 100
+tags: []
+relatedService: ""
+cover: ""
+images: []
+# Example image note payload:
+# images:
+#   - src: "/journal/example-image.webp"
+#     alt: "Describe the image plainly."
+#     caption: "Optional caption."
+---
+
+## Core observation
+
+State the problem, observation, or fragment clearly.
+
+## Why it matters
+
+Explain the judgment, failure mode, or implication.
+
+## Next move
+
+Name the next useful question, note, or intervention.
+""",
+    },
     "sample": {
         "directory": "samples",
         "body": """---
@@ -104,6 +139,11 @@ Use this only if a new front-door service becomes justified by evidence.
 
 
 ALIASES = {
+    "note": "journal",
+    "notes": "journal",
+    "journal-note": "journal",
+    "image-note": "journal",
+    "image-notes": "journal",
     "samples": "sample",
     "article": "sample",
     "articles": "sample",
@@ -137,7 +177,7 @@ def resolve_kind(kind: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Create a typed content file for the Studio site.")
-    parser.add_argument("kind", help="sample, research, evidence, or service")
+    parser.add_argument("kind", help="journal, sample, research, evidence, or service")
     parser.add_argument("title", help="Public title for the new content item")
     parser.add_argument("--slug", help="Override generated slug")
     args = parser.parse_args()

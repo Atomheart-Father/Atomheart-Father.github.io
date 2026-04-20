@@ -1,7 +1,7 @@
 export const siteMeta = {
 	title: 'Chromi Kingdom',
 	description:
-		'Research-driven AI judgment for teams and institutions facing unclear AI decisions.',
+		'Independent research, journal writing, and selective intervention on AI systems, judgment, and public consequences.',
 	email: 'bozhongxiao@gmail.com',
 	orcid: 'https://orcid.org/0009-0004-1734-4894',
 	github: 'https://github.com/Atomheart-Father',
@@ -9,46 +9,56 @@ export const siteMeta = {
 
 export const primaryNav = [
 	{ href: '/', label: 'Home' },
+	{ href: '/work', label: 'Work' },
+	{ href: '/journal', label: 'Journal' },
 	{ href: '/about', label: 'About' },
-	{ href: '/services', label: 'Services' },
-	{ href: '/research', label: 'Research', requires: 'research' },
-	{ href: '/samples', label: 'Samples', requires: 'samples' },
 	{ href: '/contact', label: 'Contact' },
 ] as const;
 
 export const homePage = {
 	hero: {
-		kicker: 'Research-driven AI judgment',
-		title: 'Clarifying AI decisions before systems sprawl.',
+		kicker: 'Independent research and selective intervention',
+		title: 'AI systems change how institutions see, decide, and fail.',
 		intro:
-			'I study how AI systems reshape organizational judgment and public life. I help teams decide what to build, what to stop, and what to examine more carefully before a vague AI idea becomes an expensive system.',
-		primaryCta: { label: 'View services', href: '/services' },
-		secondaryCta: { label: 'Read a sample', href: '/samples', requires: 'samples' },
+			'I study that shift and help teams act before the system sprawls. Research, diagnosis, and selective intervention for AI decisions.',
+		primaryCta: { label: 'View work', href: '/work' },
+		secondaryCta: { label: 'Open journal', href: '/journal' },
 	},
-	services: {
-		kicker: 'Services',
-		title: 'Three bounded ways to start.',
-		intro:
-			'Each front door is small enough to begin without turning into open-ended consulting, and concrete enough to produce a useful decision.',
-		linkLabel: 'View all services',
+	heroRail: {
+		label: 'Current surfaces',
+		items: [
+			'01  Work',
+			'02  Journal',
+			'03  Research program',
+			'04  Contact',
+		],
+		note:
+			'Image notes live inside Journal as a parallel observational layer, not as a separate portfolio.',
 	},
-	featured: {
-		kicker: 'Featured',
-		title: 'Method and research, only when ready.',
+	work: {
+		kicker: 'Work',
+		title: 'Three bounded entry points.',
 		intro:
-			'Public samples and research entries appear here after they are publishable. Empty sections stay hidden.',
+			'The public front door stays narrow: one diagnostic surface, one workflow audit surface, and one governance or research brief surface.',
+		linkLabel: 'Open work',
+	},
+	selected: {
+		kicker: 'Selected',
+		title: 'Writing, research, and visual fragments.',
+		intro:
+			'Only public-ready material appears here: journal pieces, research entries, and occasional image notes.',
 	},
 	researchProgram: {
 		kicker: 'Research program',
-		title: 'One research problem, three applied surfaces.',
+		title: 'A continuing program, not a paper shelf.',
 		intro:
-			'The public work is not a list of paper titles. It is a continuing program on how AI systems change decisions, workflows, and public consequences.',
+			'The site is organized around a durable question: how AI systems reorganize judgment, workflows, and public consequence.',
 	},
 	contact: {
 		kicker: 'Start here',
-		title: 'Send the decision you need to make.',
+		title: 'Start with the decision, not the pitch.',
 		intro:
-			'The useful first step is a bounded question: what you are trying to decide, what material exists, who will use the output, and which front door seems closest.',
+			'Send the question, the decision you need to make, the material that already exists, and which entry point seems closest.',
 		ctaLabel: 'Start a scoped inquiry',
 		ctaHref: '/contact',
 	},
@@ -74,13 +84,22 @@ export const researchPrograms = [
 
 export const servicesPage = {
 	hero: {
-		kicker: 'Services',
+		kicker: 'Work',
 		title: 'Three front doors, each with a boundary.',
 		intro:
-			'This is not broad AI consulting. It starts with small, scoped, asynchronous-first offers that turn vague AI questions into usable judgment.',
+			'This is not broad AI consulting. It is a small public front door for diagnosis, audit, and governance-facing judgment.',
 		asideTitle: 'Boundary rule',
 		aside:
 			'If a request cannot be scoped, delivered lightly, and connected to a reusable method, it should be narrowed before work begins.',
+	},
+	bridge: {
+		title: 'What sits behind the front door',
+		intro:
+			'The work is fed by a larger system: public journal notes, ongoing research, and image-based observation that sharpen the method without turning the site into a gallery.',
+		links: [
+			{ label: 'Open Journal', href: '/journal' },
+			{ label: 'Read Research', href: '/research' },
+		],
 	},
 } as const;
 
@@ -114,13 +133,16 @@ export const samplesPage = {
 export const aboutPage = {
 	hero: {
 		kicker: 'About',
-		title: 'Independent research and scoped advisory on AI systems.',
+		title: 'Research, writing, and selective intervention around AI systems.',
 		intro:
-			'Chromi Kingdom is the public front door for work on AI systems, organizational judgment, evaluation, audit, and governance. The aim is not broad AI consulting. It is focused judgment for moments when teams or institutions need to decide what should be built, stopped, examined, or reframed.',
+			'Chromi Kingdom is a public front door for research and applied judgment on AI systems. The work sits between research, public writing, and bounded advisory: enough structure to be usable, enough distance to stay critical.',
 	},
 	current:
-		'The work connects a research program on AI and public life with bounded service formats: diagnosis memo, workflow audit, and governance brief. Research gives the work depth; service formats make the judgment usable.',
+		'The current structure connects a research program on AI and institutional judgment with three bounded work formats, a journal layer for longer and shorter notes, and an occasional image-note track used as an observational method.',
 	focusTitle: 'Current focus',
+	journalTitle: 'Journal surfaces',
+	journalIntro:
+		'Journal carries the lighter public layer: long notes, short notes, case notes, and sparse image notes. It is a writing surface, not a content funnel.',
 	linksTitle: 'Links',
 } as const;
 
@@ -143,11 +165,44 @@ export const contactPage = {
 	frontDoorTitle: 'Choose a front door',
 } as const;
 
+export const journalPage = {
+	hero: {
+		kicker: 'Journal',
+		title: 'Writing surface, working surface, image surface.',
+		intro:
+			'Journal carries the public writing layer: long notes, short notes, case notes, and a light image-note track. It is where formal research loosens into readable public material without becoming content marketing.',
+	},
+	tracks: [
+		{
+			title: 'Long notes',
+			summary: 'Longer essays, rewritten papers, and public-facing arguments that need room.',
+		},
+		{
+			title: 'Short notes',
+			summary: 'Compressed judgments, observations, and smaller textual fragments.',
+		},
+		{
+			title: 'Case notes',
+			summary: 'Applied notes that connect method, diagnosis, and bounded client-facing work.',
+		},
+		{
+			title: 'Image notes',
+			summary: 'A parallel visual track: sparse images treated as observation, not as a separate portfolio identity.',
+		},
+	],
+	writingTitle: 'Writing',
+	writingIntro:
+		'Writing entries stay close to judgment: they should clarify a problem, trace a failure, or sharpen a question.',
+	visualTitle: 'Image notes',
+	visualIntro:
+		'Image notes are intentionally light. They appear as visual fragments inside the journal rather than as a standalone photography section.',
+} as const;
+
 export const footerCopy =
-	'Research-driven AI judgment for teams and institutions. Diagnosis, workflow audit, and governance briefs without open-ended consulting sprawl.';
+	'Independent research, journal writing, and selective intervention on AI systems, organizational judgment, and public consequence.';
 
 export const legacyCopy = {
 	tableLead: 'Table is reserved for a future practice and is not part of the current Studio front door.',
 	tableBody:
-		'This route remains available as a placeholder, but the current public site is focused on research, services, samples, and contact.',
+		'This route remains available as a placeholder, but the current public site is focused on work, journal, research, and contact.',
 } as const;

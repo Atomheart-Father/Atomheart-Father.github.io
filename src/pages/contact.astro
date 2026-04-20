@@ -16,23 +16,27 @@ const services = await getActiveServices();
 		aside={siteMeta.email}
 	/>
 
-	<section class="mt-12 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+	<section class="mt-12 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+		<div class="editorial-rule">
 			<p class="section-label">{contactPage.checklistTitle}</p>
 			<ul class="mt-5 space-y-4 text-[1.02rem] leading-8 text-ink/76">
 				{contactPage.checklist.map((item) => <li>{item}</li>)}
 			</ul>
-			<a href={`mailto:${siteMeta.email}`} class="mt-6 inline-flex text-rust no-underline hover:text-shadow">
+			<a
+				href={`mailto:${siteMeta.email}`}
+				class="mt-6 inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-rust no-underline hover:text-shadow"
+			>
+				<span aria-hidden="true">→</span>
 				Email {siteMeta.email}
 			</a>
 		</div>
 
-		<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+		<div class="editorial-rule">
 			<p class="section-label">{contactPage.frontDoorTitle}</p>
 			<div class="mt-5 space-y-4">
 				{
 					services.map((service) => (
-						<a href={`/services#${service.data.slug}`} class="surface-inset block px-5 py-4 text-ink no-underline hover:border-rust/25">
+						<a href={`/work#${service.data.slug}`} class="surface-inset block pt-4 text-ink no-underline hover:text-rust">
 							<p class="font-display text-[1.55rem] leading-tight">{service.data.title}</p>
 							<p class="mt-2 text-sm leading-6 text-ink/72">{service.data.summary}</p>
 						</a>
