@@ -105,25 +105,25 @@ if (visualEntry) {
 			Back to works
 		</a>
 
-		<div class="surface-card px-6 py-7 sm:px-8 sm:py-10">
+		<div class="border-t border-black/80 pt-6">
 			<p class="section-label">{paperEntry ? paperTypeLabel[paperEntry.data.kind] : 'Visual series'}</p>
-			<h1 class="mt-5 max-w-4xl text-[2.8rem] leading-[0.98] sm:text-[4rem]">{title}</h1>
+			<h1 class="protocol-title mt-5 max-w-4xl text-[3rem] leading-[0.92] sm:text-[5rem]">{title}</h1>
 
-			<div class="mt-6 flex flex-wrap gap-2 text-xs uppercase tracking-[0.18em] text-ash">
-				<span class="rounded-full border border-black/8 px-3 py-1">{entry.data.year}</span>
+			<div class="mt-6 flex flex-wrap gap-2 font-mono text-[0.68rem] uppercase text-ash">
+				<span class="border border-black/20 px-3 py-1">{entry.data.year}</span>
 				{
 					paperEntry ? (
-						<span class="rounded-full border border-black/8 px-3 py-1">
+						<span class="border border-black/20 px-3 py-1">
 							{paperStatusLabel[paperEntry.data.status]}
 						</span>
 					) : (
-						<span class="rounded-full border border-black/8 px-3 py-1">Published selectively</span>
+						<span class="border border-black/20 px-3 py-1">Published selectively</span>
 					)
 				}
 				{
 					paperEntry &&
 						paperEntry.data.themes.map((theme: string) => (
-							<span class="rounded-full border border-rust/18 bg-rust/8 px-3 py-1 text-rust">
+							<span class="border border-rust/40 px-3 py-1 text-rust">
 								{theme}
 							</span>
 						))

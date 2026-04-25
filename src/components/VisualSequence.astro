@@ -22,18 +22,18 @@ const { items } = Astro.props;
 		items.map((item, index) => {
 			const wideFrame = item.orientation === 'landscape' || index % 3 === 0;
 			return (
-				<figure class:list={['surface-card overflow-hidden p-3', wideFrame ? 'lg:ml-0 lg:mr-16' : 'lg:ml-24 lg:mr-0']}>
+				<figure class:list={['border-t border-black/35 pt-3', wideFrame ? 'lg:ml-0 lg:mr-16' : 'lg:ml-24 lg:mr-0']}>
 					{item.asset ? (
 						<Image
 							src={item.asset}
 							alt={item.alt}
 							class:list={[
-								'w-full rounded-[1.35rem] object-cover',
+								'w-full border border-black/20 object-cover grayscale',
 								item.orientation === 'portrait' ? 'max-h-[78vh]' : 'max-h-[84vh]',
 							]}
 						/>
 					) : (
-						<div class="surface-inset flex min-h-80 items-center justify-center rounded-[1.35rem] text-sm text-ash">
+						<div class="visual-well flex min-h-80 items-center justify-center border border-black/20 font-mono text-[0.72rem] uppercase text-ash">
 							Image missing
 						</div>
 					)}

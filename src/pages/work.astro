@@ -21,7 +21,7 @@ const services = await getActiveServices();
 		{services.map((service, index) => <ServiceCard service={service} index={index + 1} />)}
 	</section>
 
-	<section class="mt-16 grid gap-8 border-t border-black/10 pt-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+	<section class="mt-20 grid gap-8 border-t border-black/80 pt-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
 		<div>
 			<p class="section-label">{servicesPage.bridge.title}</p>
 			<p class="mt-4 max-w-3xl text-[1.02rem] leading-8 text-ink/74">{servicesPage.bridge.intro}</p>
@@ -31,7 +31,7 @@ const services = await getActiveServices();
 				servicesPage.bridge.links.map((link) => (
 					<a
 						href={link.href}
-						class="inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-rust no-underline transition hover:text-shadow"
+						class="protocol-link"
 					>
 						<span aria-hidden="true">→</span>
 						{link.label}

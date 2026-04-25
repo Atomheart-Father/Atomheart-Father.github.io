@@ -23,9 +23,9 @@ const { Content } = await render(entry);
 			Back to samples
 		</a>
 
-		<header class="surface-card px-6 py-7 sm:px-8 sm:py-10">
+		<header class="border-t border-black/80 pt-6">
 			<p class="section-label">{entry.data.template.replaceAll('_', ' ')}</p>
-			<h1 class="mt-5 text-[2.8rem] leading-[0.98] sm:text-[4rem]">{entry.data.title}</h1>
+			<h1 class="protocol-title mt-5 text-[3rem] leading-[0.92] sm:text-[5rem]">{entry.data.title}</h1>
 			<p class="mt-6 max-w-3xl text-[1.08rem] leading-8 text-ink/80">{entry.data.summary}</p>
 		</header>
 

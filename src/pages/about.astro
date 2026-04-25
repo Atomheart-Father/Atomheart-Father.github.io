@@ -11,7 +11,7 @@ import { aboutPage, researchPrograms, siteMeta } from '../lib/site';
 		intro={aboutPage.hero.intro}
 	/>
 
-	<section class="mt-12 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+	<section class="mt-16 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
 		<div class="editorial-rule">
 			<p class="section-label">Current work</p>
 			<p class="mt-5 text-[1.04rem] leading-8 text-ink/76">{aboutPage.current}</p>
@@ -19,11 +19,11 @@ import { aboutPage, researchPrograms, siteMeta } from '../lib/site';
 
 		<div class="editorial-rule">
 			<p class="section-label">{aboutPage.focusTitle}</p>
-			<ul class="mt-5 space-y-4 text-[1.02rem] leading-8 text-ink/76">
+			<ul class="mt-5 space-y-4 font-mono text-[0.82rem] uppercase leading-7 text-ink/76">
 				{
-					researchPrograms.map((program) => (
-						<li class="flex gap-3">
-							<span class="mt-[0.9rem] h-1.5 w-1.5 rounded-full bg-rust"></span>
+					researchPrograms.map((program, index) => (
+						<li class="grid grid-cols-[2.4rem_1fr] gap-4 border-b border-black/20 pb-3">
+							<span class="text-ash">{String(index + 1).padStart(2, '0')}</span>
 							<span>{program.title}</span>
 						</li>
 					))
@@ -32,7 +32,7 @@ import { aboutPage, researchPrograms, siteMeta } from '../lib/site';
 		</div>
 	</section>
 
-	<section class="mt-12 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+	<section class="mt-16 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
 		<div class="editorial-rule">
 			<p class="section-label">{aboutPage.journalTitle}</p>
 			<p class="mt-5 text-[1.04rem] leading-8 text-ink/76">{aboutPage.journalIntro}</p>
@@ -40,19 +40,19 @@ import { aboutPage, researchPrograms, siteMeta } from '../lib/site';
 
 		<div class="editorial-rule">
 			<p class="section-label">{aboutPage.linksTitle}</p>
-			<ul class="mt-5 flex flex-wrap gap-4 text-[1.02rem] leading-8 text-ink/76">
+			<ul class="mt-5 flex flex-wrap gap-4 font-mono text-[0.82rem] uppercase leading-7 text-ink/76">
 				<li>
-					<a href={`mailto:${siteMeta.email}`} class="text-rust no-underline transition hover:text-shadow">
+					<a href={`mailto:${siteMeta.email}`} class="text-rust no-underline transition hover:text-ink">
 						{siteMeta.email}
 					</a>
 				</li>
 				<li>
-					<a href={siteMeta.orcid} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-shadow">
+					<a href={siteMeta.orcid} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-ink">
 						ORCID
 					</a>
 				</li>
 				<li>
-					<a href={siteMeta.github} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-shadow">
+					<a href={siteMeta.github} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-ink">
 						GitHub
 					</a>
 				</li>

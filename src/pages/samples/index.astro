@@ -42,12 +42,12 @@ const services = await getActiveServices();
 	{
 		samples.length === 0 && (
 			<section class="mt-12">
-				<div class="surface-card px-6 py-7 sm:px-8 sm:py-9">
+				<div class="border-t border-black/35 pt-6">
 					<p class="section-label">{samplesPage.serviceLinkTitle}</p>
 					<div class="mt-5 grid gap-4 lg:grid-cols-3">
 						{services.map((service) => (
-							<a href={`/services#${service.data.slug}`} class="surface-inset block px-5 py-4 text-ink no-underline hover:border-rust/25">
-								<p class="font-display text-[1.45rem] leading-tight">{service.data.title}</p>
+							<a href={`/services#${service.data.slug}`} class="surface-inset block py-4 text-ink no-underline hover:text-rust">
+								<p class="protocol-title text-[1.45rem] leading-tight">{service.data.title}</p>
 								<p class="mt-2 text-sm leading-6 text-ink/72">{service.data.summary}</p>
 							</a>
 						))}

@@ -2,18 +2,18 @@
 import { footerCopy, primaryNav, siteMeta } from '../lib/site';
 ---
 
-<footer class="mt-20 pb-8 pt-10">
-	<div class="grid gap-8 border-t border-black/10 pt-8 lg:grid-cols-[1.25fr_0.7fr_0.8fr]">
+<footer class="mt-24 pb-8 pt-10">
+	<div class="grid gap-8 border-t border-black/80 pt-8 lg:grid-cols-[1.25fr_0.7fr_0.8fr]">
 		<div class="space-y-3">
 			<p class="section-label">Chromi Kingdom</p>
-			<p class="max-w-2xl text-sm leading-7 text-ink/78">
+			<p class="max-w-2xl font-mono text-[0.72rem] uppercase leading-6 text-ink/78">
 				{footerCopy}
 			</p>
 		</div>
 
 		<div class="space-y-3">
 			<p class="section-label">Navigate</p>
-			<ul class="space-y-2 text-sm text-ash">
+			<ul class="space-y-2 font-mono text-[0.72rem] uppercase text-ash">
 				{
 					primaryNav.map((item) => (
 						<li>
@@ -28,7 +28,7 @@ import { footerCopy, primaryNav, siteMeta } from '../lib/site';
 
 		<div class="space-y-3">
 			<p class="section-label">Links</p>
-			<ul class="space-y-2 text-sm text-ash">
+			<ul class="space-y-2 font-mono text-[0.72rem] uppercase text-ash">
 				<li>
 					<a href={`mailto:${siteMeta.email}`} class="hover:text-rust">{siteMeta.email}</a>
 				</li>

@@ -16,26 +16,26 @@ const imageNotes = await getPublishedImageNotes();
 		intro={journalPage.hero.intro}
 	/>
 
-	<section class="mt-14 grid gap-5 lg:grid-cols-4">
+	<section class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 		{
-			journalPage.tracks.map((track) => (
-				<div class="border-t border-black/10 pt-4">
-					<p class="section-label">Track</p>
-					<h2 class="mt-4 font-display text-[1.7rem] leading-tight">{track.title}</h2>
+			journalPage.tracks.map((track, index) => (
+				<div class="border-t border-black/80 pt-5">
+					<p class="section-label">Track / {String(index + 1).padStart(2, '0')}</p>
+					<h2 class="protocol-title mt-20 text-[2rem] leading-[0.9]">{track.title}</h2>
 					<p class="mt-4 text-[0.98rem] leading-7 text-ink/74">{track.summary}</p>
 				</div>
 			))
 		}
 	</section>
 
-	<section class="mt-16 grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
+	<section class="mt-24 grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
 		<div class="editorial-rule">
 			<p class="section-label">Writing</p>
-			<h2 class="mt-4 text-[2.35rem] leading-tight sm:text-[2.8rem]">{journalPage.writingTitle}</h2>
+			<h2 class="protocol-title mt-4 text-[2.8rem] leading-[0.9] sm:text-[4rem]">{journalPage.writingTitle}</h2>
 			<p class="mt-4 max-w-xl text-[1.02rem] leading-8 text-ink/74">{journalPage.writingIntro}</p>
 		</div>
 
-		<div class="border-t border-black/10">
+		<div class="border-t border-black/35">
 			{
 				writing.length > 0 ? writing.map((entry) => (
 					<ContentCard
@@ -47,7 +47,7 @@ const imageNotes = await getPublishedImageNotes();
 						tags={entry.data.tags}
 					/>
 				)) : (
-					<div class="py-6 text-[1rem] leading-7 text-ink/72">
+					<div class="py-6 font-mono text-[0.82rem] uppercase leading-7 text-ink/72">
 						Public writing is added when it can stand alone as an argument, a method note, or a useful case note.
 					</div>
 				)
@@ -55,14 +55,14 @@ const imageNotes = await getPublishedImageNotes();
 		</div>
 	</section>
 
-	<section class="mt-16 grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
+	<section class="mt-24 grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
 		<div class="editorial-rule">
 			<p class="section-label">Image notes</p>
-			<h2 class="mt-4 text-[2.35rem] leading-tight sm:text-[2.8rem]">{journalPage.visualTitle}</h2>
+			<h2 class="protocol-title mt-4 text-[2.8rem] leading-[0.9] sm:text-[4rem]">{journalPage.visualTitle}</h2>
 			<p class="mt-4 max-w-xl text-[1.02rem] leading-8 text-ink/74">{journalPage.visualIntro}</p>
 		</div>
 
-		<div class="border-t border-black/10">
+		<div class="border-t border-black/35">
 			{
 				imageNotes.length > 0 ? imageNotes.map((entry) => (
 					<ContentCard
@@ -74,7 +74,7 @@ const imageNotes = await getPublishedImageNotes();
 						tags={entry.data.tags}
 					/>
 				)) : (
-					<div class="py-6 text-[1rem] leading-7 text-ink/72">
+					<div class="py-6 font-mono text-[0.82rem] uppercase leading-7 text-ink/72">
 						Image notes stay sparse by design. They appear only when a visual fragment carries real observational weight.
 					</div>
 				)

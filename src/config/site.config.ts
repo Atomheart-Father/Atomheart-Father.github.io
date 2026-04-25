@@ -17,29 +17,30 @@ export const primaryNav = [
 
 export const homePage = {
 	hero: {
-		kicker: 'Independent research and selective intervention',
-		title: 'AI systems change how institutions see, decide, and fail.',
+		kicker: 'Protocol field',
+		title: 'Clarify what should not be built before deciding what can be automated.',
 		intro:
-			'I study that shift and help teams act before the system sprawls. Research, diagnosis, and selective intervention for AI decisions.',
+			'AI adoption is a governance event before it is a product event. I help teams identify the decision, risk, and failure surface before a system expands.',
 		primaryCta: { label: 'View work', href: '/work' },
 		secondaryCta: { label: 'Open journal', href: '/journal' },
 	},
 	heroRail: {
-		label: 'Current surfaces',
+		label: 'Failure sequence',
 		items: [
-			'01  Work',
-			'02  Journal',
-			'03  Research program',
-			'04  Contact',
+			'00  Demand appears',
+			'01  Scope expands',
+			'02  Evaluation missing',
+			'03  Accountability fades',
+			'04  Intervention point',
 		],
 		note:
-			'Image notes live inside Journal as a parallel observational layer, not as a separate portfolio.',
+			'The useful first move is not a prototype. It is a decision frame.',
 	},
 	work: {
 		kicker: 'Work',
-		title: 'Three bounded entry points.',
+		title: 'Decision frame before prototype.',
 		intro:
-			'The public front door stays narrow: one diagnostic surface, one workflow audit surface, and one governance or research brief surface.',
+			'Three bounded entry points for situations where AI demand, workflow failure, or institutional consequence needs to be made legible.',
 		linkLabel: 'Open work',
 	},
 	selected: {
@@ -50,15 +51,15 @@ export const homePage = {
 	},
 	researchProgram: {
 		kicker: 'Research program',
-		title: 'A continuing program, not a paper shelf.',
+		title: 'Adoption, audit, governance, public consequence.',
 		intro:
-			'The site is organized around a durable question: how AI systems reorganize judgment, workflows, and public consequence.',
+			'The research question stays blunt: how AI systems reorganize judgment before institutions notice what has moved.',
 	},
 	contact: {
 		kicker: 'Start here',
-		title: 'Start with the decision, not the pitch.',
+		title: 'Send the decision first.',
 		intro:
-			'Send the question, the decision you need to make, the material that already exists, and which entry point seems closest.',
+			'The first useful message names the decision, the material already available, who will use the output, and what would count as a useful next move.',
 		ctaLabel: 'Start a scoped inquiry',
 		ctaHref: '/contact',
 	},

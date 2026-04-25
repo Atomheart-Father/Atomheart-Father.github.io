@@ -1,27 +1,26 @@
-@import "@fontsource/instrument-serif/400.css";
-@import "@fontsource/instrument-serif/400-italic.css";
 @import "@fontsource/source-sans-3/300.css";
 @import "@fontsource/source-sans-3/400.css";
 @import "@fontsource/source-sans-3/600.css";
+@import "@fontsource/source-sans-3/700.css";
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "@fontsource/ibm-plex-mono/500.css";
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
-	--font-display: "Instrument Serif", "Times New Roman", serif;
+	--font-display: "Arial Narrow", "Helvetica Neue Condensed", "Source Sans 3", sans-serif;
 	--font-body: "Source Sans 3", "Helvetica Neue", sans-serif;
 	--font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
 
-	--color-paper: #efe8dc;
-	--color-paper-deep: #dfd6c8;
-	--color-ink: #151310;
-	--color-ash: #68615b;
-	--color-rust: #7b4a3d;
-	--color-rust-soft: #a97868;
-	--color-pond: #73828a;
-	--color-shadow: #1e282c;
-	--color-border: rgba(21, 19, 16, 0.14);
+	--color-paper: #e7ebe4;
+	--color-paper-deep: #d4dbd0;
+	--color-ink: #070807;
+	--color-ash: #667064;
+	--color-rust: #e83b24;
+	--color-rust-soft: #f0644c;
+	--color-pond: #9ab3b8;
+	--color-shadow: #111510;
+	--color-border: rgba(7, 8, 7, 0.18);
 
 	--spacing-page: minmax(1.25rem, 4vw, 3rem);
 }
@@ -33,28 +32,22 @@
 @layer base {
 	html {
 		scroll-behavior: smooth;
-		background:
-			radial-gradient(circle at top left, rgba(123, 74, 61, 0.1), transparent 26rem),
-			radial-gradient(circle at 85% 15%, rgba(115, 130, 138, 0.1), transparent 22rem),
-			linear-gradient(180deg, #f4eee4 0%, #efe8dc 100%);
+		background: #e7ebe4;
 	}
 
 	body {
 		@apply min-h-screen font-body text-ink antialiased;
 		background:
-			repeating-linear-gradient(
-				180deg,
-				rgba(21, 19, 16, 0.012) 0,
-				rgba(21, 19, 16, 0.012) 1px,
-				transparent 1px,
-				transparent 30px
-			),
-			linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+			radial-gradient(circle at 63% 38%, rgba(232, 59, 36, 0.055), transparent 18rem),
+			linear-gradient(90deg, rgba(7, 8, 7, 0.032) 1px, transparent 1px),
+			linear-gradient(180deg, rgba(7, 8, 7, 0.024) 1px, transparent 1px),
+			#e7ebe4;
+		background-size: auto, 28px 28px, 28px 28px, auto;
 	}
 
 	::selection {
-		background: rgba(143, 85, 71, 0.22);
-		color: #191715;
+		background: rgba(7, 8, 7, 0.92);
+		color: #e7ebe4;
 	}
 
 	a {
@@ -66,14 +59,16 @@
 	input,
 	textarea,
 	select {
-		@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rust/50 focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+		@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rust focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
 	}
 
 	h1,
 	h2,
 	h3,
 	h4 {
-		@apply font-display text-balance;
+		@apply font-display font-bold text-balance uppercase;
+		font-stretch: condensed;
+		letter-spacing: 0;
 	}
 
 	p {
@@ -83,40 +78,101 @@
 
 @layer components {
 	.site-shell {
-		@apply mx-auto flex min-h-screen w-full max-w-[1480px] flex-col px-5 sm:px-8 lg:px-12;
+		@apply mx-auto flex min-h-screen w-full max-w-[1520px] flex-col px-5 sm:px-8 lg:px-10;
 	}
 
 	.section-label {
-		@apply font-mono text-[0.68rem] uppercase tracking-[0.3em] text-ash;
+		@apply font-mono text-[0.68rem] uppercase text-ash;
+		letter-spacing: 0;
 	}
 
 	.surface-card {
-		@apply rounded-[0.9rem] border border-[color:var(--color-border)] bg-white/26 shadow-none;
+		@apply border border-[color:var(--color-border)] bg-transparent shadow-none;
+		border-radius: 0;
 	}
 
 	.surface-inset {
-		@apply border-t border-black/10 bg-transparent shadow-none;
+		@apply border-t border-black/18 bg-transparent shadow-none;
 	}
 
 	.copy-prose {
-		@apply prose prose-neutral max-w-none text-[1.08rem] leading-8 text-ink prose-headings:font-display prose-headings:text-ink prose-p:text-ink/88 prose-strong:text-ink prose-a:text-rust prose-a:no-underline hover:prose-a:text-shadow prose-blockquote:border-rust/45 prose-blockquote:text-ink/80 prose-li:marker:text-rust;
+		@apply prose prose-neutral max-w-none text-[1.08rem] leading-8 text-ink prose-headings:font-display prose-headings:font-bold prose-headings:uppercase prose-headings:text-ink prose-p:text-ink/86 prose-strong:text-ink prose-a:text-rust prose-a:no-underline hover:prose-a:text-shadow prose-blockquote:border-rust prose-blockquote:text-ink/80 prose-li:marker:text-rust;
 	}
 
 	.editorial-rule {
-		@apply border-t border-black/10 pt-5;
+		@apply border-t border-black/20 pt-5;
+	}
+
+	.protocol-link {
+		@apply inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase text-rust no-underline transition hover:text-ink;
+		letter-spacing: 0;
+	}
+
+	.protocol-shell {
+		@apply border border-black/18 bg-transparent;
+	}
+
+	.protocol-field {
+		@apply relative overflow-hidden border border-black/18;
+		background:
+			linear-gradient(90deg, transparent 49.9%, rgba(7, 8, 7, 0.14) 50%, transparent 50.1%),
+			linear-gradient(180deg, transparent 49.9%, rgba(7, 8, 7, 0.14) 50%, transparent 50.1%),
+			radial-gradient(circle at 63% 44%, rgba(232, 59, 36, 0.09), transparent 18rem);
+	}
+
+	.protocol-title {
+		@apply font-display font-bold uppercase;
+		font-stretch: condensed;
+		letter-spacing: 0;
+	}
+
+	.protocol-highlight {
+		@apply bg-ink px-2 pb-2 text-paper;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+	}
+
+	.protocol-ledger {
+		@apply border-t border-black/80;
+	}
+
+	.protocol-ledger-row {
+		@apply grid gap-5 border-b border-black/35 py-6 sm:grid-cols-[3.5rem_minmax(0,1fr)] lg:grid-cols-[3.5rem_minmax(0,1fr)_16rem];
+	}
+
+	.protocol-warning {
+		@apply relative overflow-hidden border border-black/80;
+	}
+
+	.protocol-warning::before,
+	.protocol-warning::after {
+		content: "";
+		position: absolute;
+		left: -8%;
+		right: -8%;
+		top: 50%;
+		height: 2.8rem;
+		background: #e83b24;
+		transform: rotate(-17deg);
+		transform-origin: center;
+	}
+
+	.protocol-warning::after {
+		background: #070807;
+		transform: rotate(17deg);
 	}
 
 	.visual-well {
 		background:
-			linear-gradient(135deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0.08)),
-			radial-gradient(circle at top, rgba(115, 130, 138, 0.24), transparent 48%),
-			radial-gradient(circle at bottom left, rgba(123, 74, 61, 0.16), transparent 52%);
+			linear-gradient(90deg, transparent 49.8%, rgba(7, 8, 7, 0.16) 50%, transparent 50.2%),
+			linear-gradient(180deg, transparent 49.8%, rgba(7, 8, 7, 0.16) 50%, transparent 50.2%),
+			radial-gradient(circle at 55% 48%, rgba(232, 59, 36, 0.085), transparent 42%);
 	}
 
 	.grid-frame {
 		background-image:
-			linear-gradient(rgba(25, 23, 21, 0.04) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(25, 23, 21, 0.04) 1px, transparent 1px);
-		background-size: 100% 100%, calc(100% / 12) 100%;
+			linear-gradient(rgba(7, 8, 7, 0.04) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(7, 8, 7, 0.04) 1px, transparent 1px);
+		background-size: 28px 28px, 28px 28px;
 	}
 }

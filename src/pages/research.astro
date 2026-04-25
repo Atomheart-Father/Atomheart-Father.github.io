@@ -15,12 +15,12 @@ const entries = await getPublicResearch();
 		intro={homePage.researchProgram.intro}
 	/>
 
-	<section class="mt-12 grid gap-5 lg:grid-cols-3">
+	<section class="mt-16 grid gap-5 lg:grid-cols-3">
 		{
-			researchPrograms.map((program) => (
-				<div class="border-t border-black/10 pt-4">
-					<p class="section-label">Program</p>
-					<h2 class="mt-4 font-display text-[1.9rem] leading-tight">{program.title}</h2>
+			researchPrograms.map((program, index) => (
+				<div class="border-t border-black/80 pt-5">
+					<p class="section-label">Program / {String(index + 1).padStart(2, '0')}</p>
+					<h2 class="protocol-title mt-20 text-[2rem] leading-[0.9]">{program.title}</h2>
 					<p class="mt-4 text-[1rem] leading-7 text-ink/74">{program.summary}</p>
 				</div>
 			))
@@ -29,7 +29,7 @@ const entries = await getPublicResearch();
 
 	{
 		entries.length > 0 && (
-			<section class="mt-16 grid gap-8 lg:grid-cols-3">
+			<section class="mt-24 grid gap-8 lg:grid-cols-3">
 				{researchColumns.map((column) => {
 					const columnEntries = entries.filter((entry) =>
 						column.categories.some((category) => category === entry.data.category),

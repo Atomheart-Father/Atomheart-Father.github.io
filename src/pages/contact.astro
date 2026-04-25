@@ -16,15 +16,20 @@ const services = await getActiveServices();
 		aside={siteMeta.email}
 	/>
 
-	<section class="mt-12 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+	<section class="mt-16 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
 		<div class="editorial-rule">
 			<p class="section-label">{contactPage.checklistTitle}</p>
-			<ul class="mt-5 space-y-4 text-[1.02rem] leading-8 text-ink/76">
-				{contactPage.checklist.map((item) => <li>{item}</li>)}
+			<ul class="mt-5 space-y-4 font-mono text-[0.82rem] uppercase leading-7 text-ink/76">
+				{contactPage.checklist.map((item, index) => (
+					<li class="grid grid-cols-[2.4rem_1fr] gap-4 border-b border-black/20 pb-3">
+						<span class="text-ash">{String(index).padStart(2, '0')}</span>
+						<span>{item}</span>
+					</li>
+				))}
 			</ul>
 			<a
 				href={`mailto:${siteMeta.email}`}
-				class="mt-6 inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-rust no-underline hover:text-shadow"
+				class="protocol-link mt-6"
 			>
 				<span aria-hidden="true">→</span>
 				Email {siteMeta.email}
@@ -37,7 +42,7 @@ const services = await getActiveServices();
 				{
 					services.map((service) => (
 						<a href={`/work#${service.data.slug}`} class="surface-inset block pt-4 text-ink no-underline hover:text-rust">
-							<p class="font-display text-[1.55rem] leading-tight">{service.data.title}</p>
+							<p class="protocol-title text-[1.8rem] leading-[0.92]">{service.data.title}</p>
 							<p class="mt-2 text-sm leading-6 text-ink/72">{service.data.summary}</p>
 						</a>
 					))

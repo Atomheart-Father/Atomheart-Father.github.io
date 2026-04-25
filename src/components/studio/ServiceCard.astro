@@ -10,17 +10,17 @@ const { service, index } = Astro.props;
 const numberLabel = String(index ?? 0).padStart(2, '0');
 ---
 
-<article id={service.data.slug} class="border-t border-black/10 py-8">
+<article id={service.data.slug} class="border-t border-black/80 py-9">
 	<div class="grid gap-6 lg:grid-cols-[4.5rem_minmax(0,1fr)]">
-		<div class="font-mono text-[0.82rem] uppercase tracking-[0.22em] text-ash">{numberLabel}</div>
-		<div class="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]">
+		<div class="font-mono text-[0.82rem] uppercase text-ash">{numberLabel}</div>
+		<div class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)]">
 			<div>
 				<p class="section-label">Front door</p>
-				<h2 class="mt-4 max-w-3xl text-[2.2rem] leading-tight sm:text-[2.55rem]">{service.data.title}</h2>
+				<h2 class="protocol-title mt-14 max-w-3xl text-[2.35rem] leading-[0.92] sm:text-[3.35rem]">{service.data.title}</h2>
 				<p class="mt-5 max-w-3xl text-[1.04rem] leading-8 text-ink/76">{service.data.summary}</p>
 				<a
 					href={service.data.ctaHref}
-					class="mt-6 inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-rust no-underline transition hover:text-shadow"
+					class="protocol-link mt-6"
 				>
 					<span aria-hidden="true">→</span>
 					{service.data.ctaLabel}
