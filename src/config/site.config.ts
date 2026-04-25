@@ -73,13 +73,13 @@ export const homePage = {
 		kicker: 'Protocol field',
 
 		// topStatement 是首页最上方那句硬判断。它的作用是先给世界观，不急着解释你是谁。
-		topStatement: 'AI adoption is a governance event before it is a product event.',
+		topStatement: 'AI systems do not only automate tasks. They rearrange how institutions and people notice the world.',
 
 		// 首页大标题被拆成三段，是为了保留 09 风格里的黑底高亮。
 		// 改的时候保持一句完整判断：动词 + 风险判断 + 下一步。
-		titleStart: 'Clarify',
-		titleHighlight: 'what should not be built',
-		titleEnd: 'before deciding what can be automated.',
+		titleStart: 'Where',
+		titleHighlight: 'convenience becomes order',
+		titleEnd: 'and answers begin to govern judgment.',
 	},
 
 	heroRail: {
@@ -87,14 +87,14 @@ export const homePage = {
 		// 如果你改这里，建议仍然保持 00-04 的系统编号感。
 		label: 'Failure sequence',
 		items: [
-			'00  Demand appears',
-			'01  Scope expands',
-			'02  Evaluation missing',
-			'03  Accountability fades',
-			'04  Intervention point',
+			'00  Search becomes answer',
+			'01  Friction becomes interface',
+			'02  Convenience becomes order',
+			'03  Ambiguity gets compressed',
+			'04  Judgment must be reclaimed',
 		],
 		note:
-			'The useful first move is not a prototype. It is a decision frame.',
+			'This site keeps a public trace of that shift: research, notes, and active work.',
 	},
 
 	selected: {
