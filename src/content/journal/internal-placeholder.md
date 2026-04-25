@@ -8,6 +8,7 @@ type: "short_note"
 featured: false
 sortOrder: 999
 tags: []
+highlights: []
 images: []
 ---
 

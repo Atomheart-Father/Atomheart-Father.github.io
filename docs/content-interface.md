@@ -37,6 +37,7 @@ npm run build
 
 - A `journal` item appears at `/journal` only when `status: "published"`.
 - A `journal` item with `type: "image_note"` is treated as a light visual fragment inside Journal, not as a separate portfolio page family.
+- Journal entries are sorted by date, newest first. Use `highlights` for the black-background argument markers on article pages.
 - A `work` item appears at `/work` and `/work/<slug>` only when `visibility: "public"` and `status` is not `draft`.
 - Work is for the user's own research projects and questionnaire systems. Consulting-style offers should stay in `services` and remain draft unless explicitly reopened.
 - Questionnaire links should use `questionnaire.status: "external_link"` plus `questionnaire.href`. Without a backend, GitHub Pages cannot securely collect survey responses by itself.

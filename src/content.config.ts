@@ -151,6 +151,7 @@ const journal = defineCollection({
 		featured: z.boolean().default(false),
 		sortOrder: z.number().int().default(100),
 		tags: z.array(z.string()).default([]),
+		highlights: z.array(z.string()).default([]),
 		relatedService: z.string().optional(),
 		cover: z.string().optional(),
 		images: z

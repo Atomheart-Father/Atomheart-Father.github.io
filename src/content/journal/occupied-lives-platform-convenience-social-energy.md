@@ -7,12 +7,18 @@ status: "published"
 type: "long_note"
 featured: true
 sortOrder: 20
-tags: ["platformization", "digital society", "attention economy", "algorithmic governance", "China", "everyday life"]
+tags: ["platformization", "digital society", "attention economy", "algorithmic governance", "everyday life"]
+highlights:
+  - "occupation"
+  - "dissipation"
+  - "filled lives"
+  - "interface power"
+  - "private satisfaction / collective weakness"
 relatedService: ""
 cover: ""
 images: []
 ---
-The most powerful form of platform control may not be persuasion. It may be occupation.
+The most powerful form of platform control may not be persuasion. It may be **occupation**.
 
 Not occupation in the military sense, but occupation in the ordinary sense: the filling of life with things to do. Order food. Deliver food. Scroll the feed. Watch the next clip. Check the courier map. Reply to a comment. Chase a discount. Refresh a dashboard. Adjust a thumbnail. Take another order. Join another argument. Buy a small comfort. Wait for the algorithm to notice.
 
@@ -20,11 +26,11 @@ None of this looks like domination at first. It looks like life becoming more ma
 
 That is why platform convenience is often described as the reduction of friction. The description is accurate, but too small. It explains why platforms are useful. It does not explain why they become socially consequential. The deeper question is what happens when daily life is increasingly organized as a chain of immediate needs, quick responses, small rewards, and recurring exhaustion.
 
-Occupation names the process by which platforms fill everyday time with actionable loops. Dissipation names the effect by which this activity fails to accumulate into autonomous capacity or durable collective power.
+**Occupation** names the process by which platforms fill everyday time with actionable loops. **Dissipation** names the effect by which this activity fails to accumulate into autonomous capacity or durable collective power.
 
 A society does not need to eliminate human energy in order to stabilize itself. It can absorb that energy. It can route time into delivery work, short videos, games, livestreams, comment wars, platform entrepreneurship, discount hunting, fandom, ranking systems, side hustles, and personalized entertainment. People remain active, stimulated, expressive, and busy. Yet much of that activity is broken into forms that are easy to measure, monetize, and repeat, but hard to build upon.
 
-This essay argues that platformized convenience is not only a smoother service layer. It is a system for organizing everyday occupation. It fills life with solvable micro-needs and measurable micro-actions. In doing so, it can dissipate social energy: not by suppressing activity, but by formatting activity into loops that rarely become self-development, durable association, or collective power.
+This essay argues that platformized convenience is not only a smoother service layer. It is a system for organizing everyday occupation. It fills life with solvable micro-needs and measurable micro-actions. In doing so, it can dissipate social energy: **not by suppressing activity, but by formatting activity into loops that rarely become self-development, durable association, or collective power.**
 
 The word “dissipation” is used here as a social metaphor. It does not mean that human life obeys a physical law. It points to a pattern: energy that might otherwise become study, craft, friendship, political association, public presence, artistic risk, mutual aid, or institutional invention is broken into smaller circuits of consumption, labor, affect, and engagement. Nothing simply disappears. It circulates. But circulation is not the same as development.
 
@@ -176,7 +182,7 @@ This is softer than direct repression, but it is not weak. It can be more durabl
 
 The most powerful interface is one that does not feel political. It feels like the way life works.
 
-## 9. China as an intensified case
+## 9. An intensified case
 
 China is not the only society shaped by platformized convenience. But it is one of the clearest intensified cases.
 

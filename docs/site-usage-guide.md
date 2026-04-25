@@ -537,6 +537,9 @@ type: "short_note"
 featured: false
 sortOrder: 100
 tags: ["ai adoption", "evaluation"]
+highlights:
+  - "answer before source"
+  - "contestable synthesis"
 relatedService: "ai-demand-diagnosis-memo"
 cover: ""
 images: []
@@ -548,9 +551,10 @@ images: []
 - `status: "draft"`：不显示
 - `status: "published"`：显示在 `/journal` 并生成 `/journal/<slug>`
 - `type`：`long_note`、`short_note`、`case_note`、`image_note`
-- `featured: true`：在排序中靠前，也可能出现在首页 Selected surface
-- `sortOrder`：越小越靠前
+- `featured`：保留字段；Journal 当前主要按日期排序
+- `sortOrder`：同一天文章的辅助排序
 - `tags`：页面上显示的小标签
+- `highlights`：文章页顶部黑底白字的重点短语，建议 3-6 个
 - `relatedService`：可选，用来记录和哪个服务有关
 - `cover`：暂时保留字段，当前页面没有强依赖
 - `images`：只给 image note 使用
@@ -926,9 +930,8 @@ sortOrder 小的靠前
 Journal：
 
 ```text
-featured: true 优先
-sortOrder 小的靠前
 date 新的靠前
+同一天时 sortOrder 小的靠前
 ```
 
 Research：

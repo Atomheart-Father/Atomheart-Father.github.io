@@ -10,9 +10,9 @@ import { homePage } from '../lib/site';
 const writing = await getPublishedWriting();
 const imageNotes = await getPublishedImageNotes();
 
-const featuredWriting = writing[0];
+const featuredWriting = writing.slice(0, 2);
 const featuredImageNote = imageNotes[0];
-const hasSelectedSurface = Boolean(featuredWriting || featuredImageNote);
+const hasSelectedSurface = Boolean(featuredWriting.length > 0 || featuredImageNote);
 ---
 
 <BaseLayout title="Chromi Kingdom">
@@ -81,16 +81,16 @@ const hasSelectedSurface = Boolean(featuredWriting || featuredImageNote);
 				</div>
 
 				<div class="border-t border-black/35">
-					{featuredWriting && (
+					{featuredWriting.map((entry) => (
 						<ContentCard
-							href={`/journal/${featuredWriting.data.slug}`}
-							kicker={featuredWriting.data.type.replaceAll('_', ' ')}
-							title={featuredWriting.data.title}
-							summary={featuredWriting.data.summary}
-							meta={featuredWriting.data.date.toISOString().slice(0, 10)}
-							tags={featuredWriting.data.tags}
+							href={`/journal/${entry.data.slug}`}
+							kicker={entry.data.type.replaceAll('_', ' ')}
+							title={entry.data.title}
+							summary={entry.data.summary}
+							meta={entry.data.date.toISOString().slice(0, 10)}
+							tags={entry.data.tags}
 						/>
-					)}
+					))}
 					{featuredImageNote && (
 						<ContentCard
 							href={`/journal/${featuredImageNote.data.slug}`}

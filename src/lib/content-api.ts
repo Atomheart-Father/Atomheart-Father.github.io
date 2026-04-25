@@ -15,18 +15,6 @@ function byDateDesc<T extends { data: { date: Date } }>(a: T, b: T) {
 	return b.data.date.getTime() - a.data.date.getTime();
 }
 
-function byFeaturedOrderAndDate<T extends { data: { featured?: boolean; sortOrder: number; date: Date } }>(a: T, b: T) {
-	if (Boolean(a.data.featured) !== Boolean(b.data.featured)) {
-		return a.data.featured ? -1 : 1;
-	}
-
-	if (a.data.sortOrder !== b.data.sortOrder) {
-		return a.data.sortOrder - b.data.sortOrder;
-	}
-
-	return byDateDesc(a, b);
-}
-
 export async function getActiveServices() {
 	const services = await getCollection('services');
 	return services.filter((entry) => entry.data.status === 'active').sort(bySortOrder);
@@ -70,7 +58,14 @@ export async function getPublishedSamples() {
 
 export async function getPublishedJournal() {
 	const entries = await getCollection('journal');
-	return entries.filter((entry) => entry.data.status === 'published').sort(byFeaturedOrderAndDate);
+	return entries.filter((entry) => entry.data.status === 'published').sort((a, b) => {
+		const dateOrder = byDateDesc(a, b);
+		if (dateOrder !== 0) {
+			return dateOrder;
+		}
+
+		return bySortOrder(a, b);
+	});
 }
 
 export async function getPublishedWriting() {

@@ -96,7 +96,11 @@
 	}
 
 	.copy-prose {
-		@apply prose prose-neutral max-w-none text-[1.08rem] leading-8 text-ink prose-headings:font-display prose-headings:font-bold prose-headings:uppercase prose-headings:text-ink prose-p:text-ink/86 prose-strong:text-ink prose-a:text-rust prose-a:no-underline hover:prose-a:text-shadow prose-blockquote:border-rust prose-blockquote:text-ink/80 prose-li:marker:text-rust;
+		@apply prose prose-neutral max-w-none text-[1.08rem] leading-8 text-ink prose-headings:font-display prose-headings:font-bold prose-headings:uppercase prose-headings:text-ink prose-h2:mt-14 prose-h2:border-t prose-h2:border-black/35 prose-h2:pt-7 prose-p:text-ink/86 prose-strong:bg-ink prose-strong:px-1.5 prose-strong:pb-0.5 prose-strong:font-normal prose-strong:text-paper prose-a:text-rust prose-a:no-underline hover:prose-a:text-shadow prose-blockquote:border-rust prose-blockquote:text-ink/80 prose-li:marker:text-rust;
+	}
+
+	.copy-prose mark {
+		@apply bg-ink px-1.5 pb-0.5 text-paper;
 	}
 
 	.editorial-rule {

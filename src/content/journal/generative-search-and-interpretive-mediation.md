@@ -8,6 +8,12 @@ type: "long_note"
 featured: true
 sortOrder: 10
 tags: ["AI", "generative search", "platforms", "algorithmic gatekeeping", "cognitive authority", "digital culture"]
+highlights:
+  - "answer before source"
+  - "mediated sensemaking"
+  - "apparent grounding"
+  - "contestable synthesis"
+  - "first account"
 relatedService: ""
 cover: ""
 images: []
@@ -16,7 +22,7 @@ images: []
 
 Search engines have never been neutral maps of the web. Long before generative AI entered search interfaces, search engines ranked, filtered, and ordered information in ways that shaped what users could plausibly know. The literature on algorithmic gatekeeping, platform governance, and search engine ethics has already established that visibility is a form of power: to rank is to allocate attention, to make some sources appear authoritative, and to make others practically disappear even when they remain technically accessible.
 
-Generative search does not replace that older problem. It adds a new stage to it. When a search interface returns a synthesized answer before the user has inspected the underlying materials, the system is no longer only arranging access to sources. It is participating in the user's first act of sensemaking.
+Generative search does not replace that older problem. It adds a new stage to it. When a search interface returns a **synthesized answer before the user has inspected the underlying materials**, the system is no longer only arranging access to sources. It is participating in the user's first act of sensemaking.
 
 That distinction is small at the level of interface design and large at the level of knowledge. A ranked list asks the user to move among sources and assemble an initial account. An answer-oriented interface performs part of that assembly in advance. The user may still click through, compare sources, and reject the system's synthesis, but the sequence has changed. The first coherent account is no longer constructed primarily through source navigation; it is increasingly delivered as an answer.
 
@@ -30,7 +36,7 @@ Patrick Wilson's account of cognitive authority remains useful because most know
 
 Generative search intervenes precisely at that gap. It does not only present candidate sources that might help the user make sense of an issue. It offers a provisional bridge across the gap. The answer becomes a cognitive shortcut: not simply a pointer to knowledge, but an initial organization of it.
 
-This is why the existing language of algorithmic gatekeeping needs to be extended rather than abandoned. Classic gatekeeping decides what enters circulation; algorithmic gatekeeping decides what becomes visible and in what order. Generative search preserves both functions while adding a further operation: it compresses selected materials into a coherent explanatory surface. The gate is no longer only located before access. It is also located inside interpretation.
+This is why the existing language of algorithmic gatekeeping needs to be extended rather than abandoned. Classic gatekeeping decides what enters circulation; algorithmic gatekeeping decides what becomes visible and in what order. Generative search preserves both functions while adding a further operation: it compresses selected materials into a coherent explanatory surface. **The gate is no longer only located before access. It is also located inside interpretation.**
 
 The point is not that platforms now control meaning in any total sense. Users remain active. Sources remain available. Competing interpretations still circulate. The point is more precise: answer-oriented systems increasingly occupy the default position from which ordinary users begin interpreting a topic under conditions of limited time, limited attention, and uneven expertise.
 
