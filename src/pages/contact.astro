@@ -9,8 +9,6 @@ import { contactPage, siteMeta } from '../lib/site';
 		kicker={contactPage.hero.kicker}
 		title={contactPage.hero.title}
 		intro={contactPage.hero.intro}
-		asideTitle={contactPage.hero.asideTitle}
-		aside={siteMeta.email}
 	/>
 
 	<section class="mt-16 grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)]">
@@ -26,7 +24,6 @@ import { contactPage, siteMeta } from '../lib/site';
 
 		<div class="editorial-rule">
 			<p class="section-label">{contactPage.noteTitle}</p>
-			<p class="mt-5 max-w-2xl text-[1.04rem] leading-8 text-ink/76">{contactPage.note}</p>
 			<ul class="mt-8 flex flex-wrap gap-4 font-mono text-[0.78rem] uppercase text-ash">
 				<li>
 					<a href={siteMeta.orcid} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-ink">

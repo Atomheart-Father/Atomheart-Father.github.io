@@ -43,7 +43,11 @@ const hasSelectedSurface = Boolean(featuredWriting.length > 0 || featuredImageNo
 						})
 					}
 				</div>
-				<p class="mt-8 max-w-[19rem] text-[1rem] leading-7 text-ink/70">{homePage.heroRail.note}</p>
+				{
+					homePage.heroRail.note && (
+						<p class="mt-8 max-w-[19rem] text-[1rem] leading-7 text-ink/70">{homePage.heroRail.note}</p>
+					)
+				}
 			</aside>
 		</div>
 	</section>
@@ -57,12 +61,12 @@ const hasSelectedSurface = Boolean(featuredWriting.length > 0 || featuredImageNo
 		<a href="/journal" class="group border-t border-black/80 pt-5 text-ink no-underline">
 			<p class="section-label">Journal / 02</p>
 			<h2 class="protocol-title mt-20 text-[2.25rem] leading-[0.9] group-hover:text-rust">Writing</h2>
-			<p class="mt-4 font-mono text-[0.72rem] uppercase leading-6">Public notes and arguments.</p>
+			<p class="mt-4 font-mono text-[0.72rem] uppercase leading-6">Notes / fragments.</p>
 		</a>
 		<a href="/about" class="group border-t border-black/80 pt-5 text-ink no-underline">
 			<p class="section-label">About / 03</p>
 			<h2 class="protocol-title mt-20 text-[2.25rem] leading-[0.9] group-hover:text-rust">Position</h2>
-			<p class="mt-4 font-mono text-[0.72rem] uppercase leading-6">What this surface is for.</p>
+			<p class="mt-4 font-mono text-[0.72rem] uppercase leading-6">Position / method.</p>
 		</a>
 		<a href="/contact" class="group border-t border-black/80 pt-5 text-ink no-underline">
 			<p class="section-label">Contact / 04</p>
@@ -77,7 +81,11 @@ const hasSelectedSurface = Boolean(featuredWriting.length > 0 || featuredImageNo
 				<div class="editorial-rule">
 					<p class="section-label">{homePage.selected.kicker}</p>
 					<h2 class="protocol-title mt-4 text-[2.8rem] leading-[0.9] sm:text-[4rem]">{homePage.selected.title}</h2>
-					<p class="mt-5 max-w-xl text-[1.08rem] leading-8 text-ink/74">{homePage.selected.intro}</p>
+					{
+						homePage.selected.intro && (
+							<p class="mt-5 max-w-xl text-[1.08rem] leading-8 text-ink/74">{homePage.selected.intro}</p>
+						)
+					}
 				</div>
 
 				<div class="border-t border-black/35">
@@ -86,9 +94,7 @@ const hasSelectedSurface = Boolean(featuredWriting.length > 0 || featuredImageNo
 							href={`/journal/${entry.data.slug}`}
 							kicker={entry.data.type.replaceAll('_', ' ')}
 							title={entry.data.title}
-							summary={entry.data.summary}
 							meta={entry.data.date.toISOString().slice(0, 10)}
-							tags={entry.data.tags}
 						/>
 					))}
 					{featuredImageNote && (
@@ -96,9 +102,7 @@ const hasSelectedSurface = Boolean(featuredWriting.length > 0 || featuredImageNo
 							href={`/journal/${featuredImageNote.data.slug}`}
 							kicker="Image note"
 							title={featuredImageNote.data.title}
-							summary={featuredImageNote.data.summary}
 							meta={featuredImageNote.data.date.toISOString().slice(0, 10)}
-							tags={featuredImageNote.data.tags}
 						/>
 					)}
 				</div>
@@ -110,7 +114,11 @@ const hasSelectedSurface = Boolean(featuredWriting.length > 0 || featuredImageNo
 		<div>
 			<p class="section-label">{homePage.contact.kicker}</p>
 			<h2 class="protocol-title mt-4 max-w-4xl text-[2.8rem] leading-[0.9] sm:text-[4.1rem]">{homePage.contact.title}</h2>
-			<p class="mt-5 max-w-2xl text-[1.08rem] leading-8 text-ink/74">{homePage.contact.intro}</p>
+			{
+				homePage.contact.intro && (
+					<p class="mt-5 max-w-2xl text-[1.08rem] leading-8 text-ink/74">{homePage.contact.intro}</p>
+				)
+			}
 		</div>
 		<a href={homePage.contact.ctaHref} class="protocol-link">
 			<span aria-hidden="true">→</span>

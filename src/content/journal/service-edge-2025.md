@@ -2,7 +2,7 @@
 title: "Service Edge"
 slug: "service-edge"
 date: 2025-03-11
-summary: "A sparse image note on the peripheral systems that keep an institutional campus orderly: markers, blank walls, chargers, utility rooms, mirrors, cameras, carts, and night storage."
+summary: "Markers, blank walls, utility rooms, carts, night storage."
 status: "published"
 type: "image_note"
 featured: true
@@ -50,8 +50,6 @@ images:
     caption: "A mobile back room."
 ---
 
-This is not a campus portrait. It is an image note on the edge systems that let a campus appear calm from the front.
+Order has a perimeter.
 
-The main buildings stay mostly outside the frame. What remains are service walls, utility doors, chargers, mirrors, cameras, carts, rubbish rooms, parking sheds, and night storage. They are not decorative details. They are the operational perimeter: the parts that absorb movement, waste, maintenance, surveillance, electricity, commuting, and minor disorder.
-
-The photographs keep the place at the level of fragments. The point is not to name the institution. The point is to notice how order is maintained by things that are meant to stay peripheral.
+Markers fall. Walls stay blank. Utility rooms glow at the edge. Carts return after use. The front remains calm because the back keeps absorbing movement, waste, electricity, surveillance, and small disorder.

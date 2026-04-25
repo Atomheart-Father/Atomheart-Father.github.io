@@ -3,7 +3,7 @@ interface Props {
 	href?: string;
 	kicker: string;
 	title: string;
-	summary: string;
+	summary?: string;
 	meta?: string;
 	tags?: string[];
 }
@@ -20,7 +20,11 @@ const Tag = href ? 'a' : 'article';
 	<h3 class="protocol-title mt-12 max-w-4xl text-[2rem] leading-[0.92] transition duration-300 group-hover:text-rust sm:text-[2.65rem]">
 		{title}
 	</h3>
-	<p class="mt-4 max-w-3xl text-[1rem] leading-7 text-ink/74">{summary}</p>
+	{
+		summary && (
+			<p class="mt-4 max-w-3xl text-[1rem] leading-7 text-ink/74">{summary}</p>
+		)
+	}
 	{
 		tags.length > 0 && (
 			<div class="mt-5 flex flex-wrap gap-x-3 gap-y-1">

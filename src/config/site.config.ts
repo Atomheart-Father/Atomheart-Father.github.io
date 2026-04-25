@@ -93,25 +93,22 @@ export const homePage = {
 			'03  Ambiguity gets compressed',
 			'04  Judgment must be reclaimed',
 		],
-		note:
-			'This site keeps a public trace of that shift: research, notes, and active work.',
+		note: '',
 	},
 
 	selected: {
 		// Selected surface 不是固定出现。只有 published journal / image note 存在时才渲染。
 		// 它的作用是展示真实公开内容，不把草稿或未来模块包装成成果。
 		kicker: 'Selected',
-		title: 'Selected writing.',
-		intro:
-			'Only public-ready notes appear here. Drafts, placeholders, and future formats stay hidden.',
+		title: 'Selected.',
+		intro: '',
 	},
 
 	work: {
 		// 首页 Work 入口。这里的 Work 是 ongoing research work，不是咨询服务。
 		kicker: 'Work',
 		title: 'Active work.',
-		intro:
-			'Ongoing research projects, field validation, and questionnaire infrastructure that are public enough to describe.',
+		intro: 'Manuscripts. Fieldwork. Instruments.',
 	},
 
 	researchProgram: {
@@ -126,9 +123,8 @@ export const homePage = {
 	contact: {
 		// 首页结尾 CTA。只给直接联系入口，不做额外流程。
 		kicker: 'Contact',
-		title: 'Write if there is a real reason.',
-		intro:
-			'For research conversation, manuscript exchange, collaboration, or a concrete note that should not be forced into a public comment thread.',
+		title: 'Email.',
+		intro: '',
 		ctaLabel: 'Email',
 		ctaHref: '/contact',
 	},
@@ -179,18 +175,15 @@ export const researchPrograms = [
 export const workPage = {
 	hero: {
 		kicker: 'Work',
-		title: 'Research work in progress.',
-		intro:
-			'Work collects active research projects, technical manuscripts, field validation materials, and questionnaire infrastructure.',
-		asideTitle: 'Boundary',
-		aside:
-			'Public pages describe the project and workflow. Participant lists, internal assignment manifests, raw responses, and unfinished manuscripts stay private.',
+		title: 'Work in progress.',
+		intro: '',
+		asideTitle: '',
+		aside: '',
 	},
 	bridge: {
 		// Work 页底部桥接到 Journal / Contact。
-		title: 'What can be public',
-		intro:
-			'The public layer can show a project summary, current stage, safe material types, and a questionnaire route. It should not expose participant identities or internal experimental assignment tables.',
+		title: 'Elsewhere',
+		intro: '',
 		links: [
 			{ label: 'Open Journal', href: '/journal' },
 			{ label: 'Contact', href: '/contact' },
@@ -240,16 +233,14 @@ export const samplesPage = {
 export const aboutPage = {
 	hero: {
 		kicker: 'About',
-		title: 'The public edge of my work.',
-		intro:
-			'Chromi Kingdom is a small public system for research, writing, and visual fragments around AI systems, platforms, interpretation, convenience, audit, and institutional judgment.',
+		title: 'Not a category.',
+		intro: '',
 	},
 	current:
-		'I work from a position between independent research, software practice, and visual observation. The recurring question is simple: when technical systems become ordinary infrastructure, what changes in judgment, evidence, power, and everyday life?',
+		'Independent research, software practice, and visual observation around AI systems, platforms, convenience, audit, and institutional judgment.',
 	focusTitle: 'Current focus',
-	journalTitle: 'How to read this site',
-	journalIntro:
-		'Work holds active research projects and manuscript-level material. Journal holds public notes, long arguments, fragments, and eventually image notes. Private drafts, respondent materials, and unfinished manuscripts stay offline.',
+	journalTitle: 'Index',
+	journalIntro: '',
 	linksTitle: 'Links',
 } as const;
 
@@ -261,14 +252,12 @@ export const aboutPage = {
 export const contactPage = {
 	hero: {
 		kicker: 'Contact',
-		title: 'A direct email address.',
-		intro:
-			'Use email for research conversation, manuscript exchange, collaboration, or any message that needs a private channel.',
+		title: 'Email.',
+		intro: '',
 		asideTitle: 'Email',
 	},
-	noteTitle: 'Boundary',
-	note:
-		'There is no form to complete. Send a normal email. If it refers to a page on this site, include the link or title so I know the context.',
+	noteTitle: 'Links',
+	note: '',
 } as const;
 
 /**
@@ -280,16 +269,13 @@ export const contactPage = {
 export const journalPage = {
 	hero: {
 		kicker: 'Journal',
-		title: 'Public notes and fragments.',
-		intro:
-			'Journal is where public-ready notes live. Some are long arguments, some may later become fragments or image notes, but nothing is displayed here until it exists.',
+		title: 'Notes and fragments.',
+		intro: '',
 	},
 	writingTitle: 'Writing',
-	writingIntro:
-		'Published notes appear here when they can stand on their own.',
+	writingIntro: '',
 	visualTitle: 'Image notes',
-	visualIntro:
-		'Image notes will appear only when there is an actual visual fragment to publish.',
+	visualIntro: '',
 } as const;
 
 /**
@@ -299,7 +285,7 @@ export const journalPage = {
  * 不建议写得很抒情，因为 footer 会在每页重复出现。
  */
 export const footerCopy =
-	'Independent writing and research notes on AI systems, organizational judgment, and public consequence.';
+	'AI systems / judgment / fragments.';
 
 /**
  * legacyCopy 是旧占位页文案的保留字段。
@@ -308,7 +294,6 @@ export const footerCopy =
  * 如果以后重新开放 Table，再决定是否恢复使用。
  */
 export const legacyCopy = {
-	tableLead: 'Table is reserved for a future practice and is not public yet.',
-	tableBody:
-		'This route remains available as a placeholder, but the current public site is focused on work, journal, research, and contact.',
+	tableLead: 'Not yet.',
+	tableBody: '',
 } as const;

@@ -32,31 +32,24 @@ import { aboutPage, researchPrograms, siteMeta } from '../lib/site';
 		</div>
 	</section>
 
-	<section class="mt-16 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-		<div class="editorial-rule">
-			<p class="section-label">{aboutPage.journalTitle}</p>
-			<p class="mt-5 text-[1.04rem] leading-8 text-ink/76">{aboutPage.journalIntro}</p>
-		</div>
-
-		<div class="editorial-rule">
-			<p class="section-label">{aboutPage.linksTitle}</p>
-			<ul class="mt-5 flex flex-wrap gap-4 font-mono text-[0.82rem] uppercase leading-7 text-ink/76">
-				<li>
-					<a href={`mailto:${siteMeta.email}`} class="text-rust no-underline transition hover:text-ink">
-						{siteMeta.email}
-					</a>
-				</li>
-				<li>
-					<a href={siteMeta.orcid} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-ink">
-						ORCID
-					</a>
-				</li>
-				<li>
-					<a href={siteMeta.github} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-ink">
-						GitHub
-					</a>
-				</li>
-			</ul>
-		</div>
+	<section class="mt-16 border-t border-black/80 pt-6">
+		<p class="section-label">{aboutPage.linksTitle}</p>
+		<ul class="mt-5 flex flex-wrap gap-4 font-mono text-[0.82rem] uppercase leading-7 text-ink/76">
+			<li>
+				<a href={`mailto:${siteMeta.email}`} class="text-rust no-underline transition hover:text-ink">
+					{siteMeta.email}
+				</a>
+			</li>
+			<li>
+				<a href={siteMeta.orcid} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-ink">
+					ORCID
+				</a>
+			</li>
+			<li>
+				<a href={siteMeta.github} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-ink">
+					GitHub
+				</a>
+			</li>
+		</ul>
 	</section>
 </BaseLayout>

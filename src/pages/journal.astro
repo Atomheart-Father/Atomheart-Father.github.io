@@ -18,9 +18,13 @@ const imageNotes = await getPublishedImageNotes();
 
 	<section class="mt-20 grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
 		<div class="editorial-rule">
-			<p class="section-label">Writing</p>
+			<p class="section-label">Index / 01</p>
 			<h2 class="protocol-title mt-4 text-[2.8rem] leading-[0.9] sm:text-[4rem]">{journalPage.writingTitle}</h2>
-			<p class="mt-4 max-w-xl text-[1.02rem] leading-8 text-ink/74">{journalPage.writingIntro}</p>
+			{
+				journalPage.writingIntro && (
+					<p class="mt-4 max-w-xl text-[1.02rem] leading-8 text-ink/74">{journalPage.writingIntro}</p>
+				)
+			}
 		</div>
 
 		<div class="border-t border-black/35">
@@ -34,11 +38,7 @@ const imageNotes = await getPublishedImageNotes();
 						meta={entry.data.date.toISOString().slice(0, 10)}
 						tags={entry.data.tags}
 					/>
-				)) : (
-					<div class="py-6 font-mono text-[0.82rem] uppercase leading-7 text-ink/72">
-						Public writing is added when it can stand alone as an argument, a method note, or a useful case note.
-					</div>
-				)
+				)) : null
 			}
 		</div>
 	</section>
@@ -47,9 +47,13 @@ const imageNotes = await getPublishedImageNotes();
 		imageNotes.length > 0 && (
 			<section class="mt-24 grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
 					<div class="editorial-rule">
-						<p class="section-label">Image notes</p>
+						<p class="section-label">Index / 02</p>
 						<h2 class="protocol-title mt-4 text-[2.8rem] leading-[0.9] sm:text-[4rem]">{journalPage.visualTitle}</h2>
-						<p class="mt-4 max-w-xl text-[1.02rem] leading-8 text-ink/74">{journalPage.visualIntro}</p>
+						{
+							journalPage.visualIntro && (
+								<p class="mt-4 max-w-xl text-[1.02rem] leading-8 text-ink/74">{journalPage.visualIntro}</p>
+							)
+						}
 					</div>
 
 					<div class="border-t border-black/35">
