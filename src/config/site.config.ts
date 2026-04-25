@@ -30,7 +30,7 @@
 export const siteMeta = {
 	title: 'Chromi Kingdom',
 	description:
-		'Independent research, journal writing, and selective intervention on AI systems, judgment, and public consequences.',
+		'Independent writing and research notes on AI systems, judgment, and public consequences.',
 	email: 'bozhongxiao@gmail.com',
 	orcid: 'https://orcid.org/0009-0004-1734-4894',
 	github: 'https://github.com/Atomheart-Father',
@@ -39,18 +39,18 @@ export const siteMeta = {
 /**
  * primaryNav 控制顶部一级导航。
  *
- * 当前只保留 Home / Work / Journal / About / Contact，是为了让站点像一个冷静的前门，
- * 而不是把 Research、Samples、Photography、Table 全塞进导航。
+ * 当前只保留 Home / Journal / About / Contact。
+ * Work、Research、Samples、Photography、Table 都先不放一级导航，避免把还没正式公开的东西编造成身份。
  *
  * 怎么改：
  * - label 是显示文字
  * - href 是链接路径
- * - 不建议超过 5 个一级导航
- * - Photography 不建议放一级导航；图像内容走 Journal -> Image Notes 或 /works 的 visual series
+ * - 不建议超过 4-5 个一级导航
+ * - Work 以后如果真的要公开服务或项目，再加回来
+ * - Photography 不建议放一级导航；图像内容先走 Journal -> Image Notes，未来再考虑 visual series
  */
 export const primaryNav = [
 	{ href: '/', label: 'Home' },
-	{ href: '/work', label: 'Work' },
 	{ href: '/journal', label: 'Journal' },
 	{ href: '/about', label: 'About' },
 	{ href: '/contact', label: 'Contact' },
@@ -61,11 +61,9 @@ export const primaryNav = [
  *
  * 首页当前结构：
  * 1. 第一屏 protocol field
- * 2. 四个入口：Diagnosis / Audit / Writing / Inquiry
- * 3. Work ledger
- * 4. Selected surface，只有有 published 内容时才出现
- * 5. Research program
- * 6. Contact CTA
+ * 2. 三个入口：Journal / About / Contact
+ * 3. Selected surface，只有有 published 内容时才出现
+ * 4. Contact CTA
  */
 export const homePage = {
 	hero: {
@@ -97,31 +95,22 @@ export const homePage = {
 			'The useful first move is not a prototype. It is a decision frame.',
 	},
 
-	work: {
-		// 首页 Work 区块导向 /work。这里不要写成“我提供很多服务”，而是强调边界和第一步判断。
-		kicker: 'Work',
-		title: 'Decision frame before prototype.',
-		intro:
-			'Three bounded entry points for situations where AI demand, workflow failure, or institutional consequence needs to be made legible.',
-		linkLabel: 'Open work',
-	},
-
 	selected: {
-		// Selected surface 不是固定出现。只有 published journal/research/image note 存在时才渲染。
-		// 它的作用是把写作、研究和图像碎片作为同一个观察系统展示，而不是堆一堆 cards。
+		// Selected surface 不是固定出现。只有 published journal / image note 存在时才渲染。
+		// 它的作用是展示真实公开内容，不把草稿或未来模块包装成成果。
 		kicker: 'Selected',
-		title: 'Writing, research, and visual fragments.',
+		title: 'Selected writing.',
 		intro:
-			'Only public-ready material appears here: journal pieces, research entries, and occasional image notes.',
+			'Only public-ready notes appear here. Drafts, placeholders, and future formats stay hidden.',
 	},
 
 	researchProgram: {
-		// 首页研究模块写“研究计划”，不写具体 paper vocabulary。
-		// 这样不会让站点看起来围绕某一篇论文转，而是像一个长期系统。
-		kicker: 'Research program',
-		title: 'Adoption, audit, governance, public consequence.',
+		// 首页这里先写成 current concerns，而不是正式 research program。
+		// 这样不会把还没完成的项目包装成已经成型的研究产品。
+		kicker: 'Current concerns',
+		title: 'Adoption, evaluation, governance, public consequence.',
 		intro:
-			'The research question stays blunt: how AI systems reorganize judgment before institutions notice what has moved.',
+			'The question stays blunt: how AI systems reorganize judgment before institutions notice what has moved.',
 	},
 
 	contact: {
@@ -130,7 +119,7 @@ export const homePage = {
 		title: 'Send the decision first.',
 		intro:
 			'The first useful message names the decision, the material already available, who will use the output, and what would count as a useful next move.',
-		ctaLabel: 'Start a scoped inquiry',
+		ctaLabel: 'Send an email',
 		ctaHref: '/contact',
 	},
 } as const;
@@ -138,10 +127,10 @@ export const homePage = {
 /**
  * researchPrograms 是全站共用的三条研究主轴。
  *
- * 会影响：
- * - Home 的 Research program
- * - Research 页面顶部 program cards
+ * 当前会影响：
  * - About 的 Current focus
+ *
+ * 以前它也用于 Home / Research 页面。现在这两个公开展示已关闭，避免把未完成研究包装成成果。
  *
  * 当前为什么这样写：
  * - 不写成单篇论文标题
@@ -180,29 +169,29 @@ export const researchPrograms = [
 export const servicesPage = {
 	hero: {
 		kicker: 'Work',
-		title: 'Three front doors, each with a boundary.',
+		title: 'Work is not public yet.',
 		intro:
-			'This is not broad AI consulting. It is a small public front door for diagnosis, audit, and governance-facing judgment.',
-		asideTitle: 'Boundary rule',
+			'This route is reserved for future public work or services. Nothing is being offered here until the format is real enough to stand on its own.',
+		asideTitle: 'Status',
 		aside:
-			'If a request cannot be scoped, delivered lightly, and connected to a reusable method, it should be narrowed before work begins.',
+			'Hidden from primary navigation for now.',
 	},
 	bridge: {
-		// Work 页底部桥接到 Journal / Research，说明服务不是凭空卖，而是由研究和写作反哺。
-		title: 'What sits behind the front door',
+		// Work 还没公开时，只给回 Journal / Contact 的路径，不展示虚构服务。
+		title: 'Current public surfaces',
 		intro:
-			'The work is fed by a larger system: public journal notes, ongoing research, and image-based observation that sharpen the method without turning the site into a gallery.',
+			'For now, the public site is centered on journal writing, research concerns, and a minimal contact route.',
 		links: [
 			{ label: 'Open Journal', href: '/journal' },
-			{ label: 'Read Research', href: '/research' },
+			{ label: 'Contact', href: '/contact' },
 		],
 	},
 } as const;
 
 /**
- * samplesPage 控制 /samples 页面。
+ * samplesPage 是未来 /samples 页面配置。
  *
- * Samples 现在不是一级导航，因为公开样本还少。
+ * Samples 现在不是一级导航，公开路由也只显示未开放提示，因为真实样本还没有准备好。
  * 它适合未来放方法展示：diagnosis、workflow audit、governance brief、case note。
  */
 export const samplesPage = {
@@ -241,12 +230,12 @@ export const samplesPage = {
 export const aboutPage = {
 	hero: {
 		kicker: 'About',
-		title: 'Research, writing, and selective intervention around AI systems.',
+		title: 'Writing and research around AI systems.',
 		intro:
-			'Chromi Kingdom is a public front door for research and applied judgment on AI systems. The work sits between research, public writing, and bounded advisory: enough structure to be usable, enough distance to stay critical.',
+			'Chromi Kingdom is a public surface for writing, research notes, and developing judgment on AI systems. It is intentionally small while the work takes shape.',
 	},
 	current:
-		'The current structure connects a research program on AI and institutional judgment with three bounded work formats, a journal layer for longer and shorter notes, and an occasional image-note track used as an observational method.',
+		'The current structure is simple: a journal layer for public notes, a small set of research concerns, and a contact route. Work and services are not presented publicly until they become real formats rather than placeholders.',
 	focusTitle: 'Current focus',
 	journalTitle: 'Journal surfaces',
 	journalIntro:
@@ -265,18 +254,18 @@ export const contactPage = {
 		kicker: 'Contact',
 		title: 'Start small. Define the question before the work expands.',
 		intro:
-			'The first step is not a vague call. Send the problem, the decision you need to make, what material already exists, and which front door seems closest.',
+			'The first step is not a vague call. Send the problem, the decision you need to make, what material already exists, and what kind of response would be useful.',
 		asideTitle: 'Preferred contact',
 	},
 	checklistTitle: 'Inquiry checklist',
 	checklist: [
 		'What are you trying to decide?',
-		'Who will use the memo, audit, or brief?',
+		'Who will use the answer or note?',
 		'What have you already tried?',
 		'What material can you share?',
 		'What would count as a useful next step?',
 	],
-	frontDoorTitle: 'Choose a front door',
+	frontDoorTitle: 'Public work is not listed yet',
 } as const;
 
 /**
@@ -288,34 +277,16 @@ export const contactPage = {
 export const journalPage = {
 	hero: {
 		kicker: 'Journal',
-		title: 'Writing surface, working surface, image surface.',
+		title: 'Public notes and fragments.',
 		intro:
-			'Journal carries the public writing layer: long notes, short notes, case notes, and a light image-note track. It is where formal research loosens into readable public material without becoming content marketing.',
+			'Journal is where public-ready notes live. Some are long arguments, some may later become fragments or image notes, but nothing is displayed here until it exists.',
 	},
-	tracks: [
-		{
-			title: 'Long notes',
-			summary: 'Longer essays, rewritten papers, and public-facing arguments that need room.',
-		},
-		{
-			title: 'Short notes',
-			summary: 'Compressed judgments, observations, and smaller textual fragments.',
-		},
-		{
-			title: 'Case notes',
-			summary: 'Applied notes that connect method, diagnosis, and bounded client-facing work.',
-		},
-		{
-			title: 'Image notes',
-			summary: 'A parallel visual track: sparse images treated as observation, not as a separate portfolio identity.',
-		},
-	],
 	writingTitle: 'Writing',
 	writingIntro:
-		'Writing entries stay close to judgment: they should clarify a problem, trace a failure, or sharpen a question.',
+		'Published notes appear here when they can stand on their own.',
 	visualTitle: 'Image notes',
 	visualIntro:
-		'Image notes are intentionally light. They appear as visual fragments inside the journal rather than as a standalone photography section.',
+		'Image notes will appear only when there is an actual visual fragment to publish.',
 } as const;
 
 /**
@@ -325,13 +296,13 @@ export const journalPage = {
  * 不建议写得很抒情，因为 footer 会在每页重复出现。
  */
 export const footerCopy =
-	'Independent research, journal writing, and selective intervention on AI systems, organizational judgment, and public consequence.';
+	'Independent writing and research notes on AI systems, organizational judgment, and public consequence.';
 
 /**
- * legacyCopy 控制旧占位页文案，例如 /table。
+ * legacyCopy 是旧占位页文案的保留字段。
  *
- * Table 不是当前前门，只保留为未来媒介。
- * 这里不需要经常改。
+ * 当前 /table 页面已经不再读取这些长文案，只显示 not public yet。
+ * 如果以后重新开放 Table，再决定是否恢复使用。
  */
 export const legacyCopy = {
 	tableLead: 'Table is reserved for a future practice and is not part of the current Studio front door.',

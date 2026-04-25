@@ -151,12 +151,12 @@ npm run import:photos -- private/photo_manifests/<slug>.yaml
 
 ```text
 src/config/site.config.ts          全站文字、导航、首页、About、Contact 等配置
-src/content/services/              Work 页面上的服务入口
+src/content/services/              未来 Work / Services 的草稿模板，当前不公开
 src/content/journal/               Journal 文章、短札、case note、image note
-src/content/research/              Research 页面条目
-src/content/samples/               Samples 页面条目，暂时不是一级导航
-src/content/works/                 论文、项目、长文作品，显示在 /works
-src/content/visual-series/         摄影系列的公开内容文件
+src/content/research/              未来 Research 条目，当前不公开成页面
+src/content/samples/               未来 Samples 条目，当前不公开成页面
+src/content/works/                 旧 Works 架构内容，当前不公开成页面
+src/content/visual-series/         未来摄影系列的公开内容文件，当前不进一级导航
 src/data/visual-series/            摄影导入后生成的公开 JSON 元数据
 src/assets/visual-series/          摄影导入后生成的网页尺寸图片
 private/photo_manifests/           私有摄影选择清单，不提交 yaml
@@ -183,40 +183,37 @@ src/content.config.ts              内容 schema
 首页是对外前门。现在结构是：
 
 - 第一屏：一句强定位 + protocol field
-- 四个入口：Diagnosis / Audit / Writing / Inquiry
-- Work ledger：三个服务入口
-- Selected surface：只有当 Journal、Research、Image Note 有 published 内容时才出现
-- Research program：三个长期研究方向
+- 三个入口：Journal / About / Contact
+- Selected surface：只有当 Journal 或 Image Note 有 published 内容时才出现
 - Contact CTA：引导到联系页
 
 主要编辑位置：
 
 ```text
 src/config/site.config.ts
-src/content/services/*.md
 src/content/journal/*.md
-src/content/research/*.md
 ```
 
 注意：首页大标题目前在 `src/pages/index.astro` 里有一处硬排版，因为它包含黑底 highlight。普通文案优先改 `site.config.ts`，如果要改第一屏大标题的具体断句和 highlight，再改页面代码。
 
 ### Work `/work`
 
-这是主要商业/合作入口，不是作品集。它读取：
+这个页面现在不在一级导航里。它只是为未来可能公开的 work / services 保留路由。
+
+当前状态：
+
+- 不在顶部导航显示
+- 首页不展示 Work
+- 三个旧服务文件全部是 `draft`
+- 直接访问 `/work` 只会看到“Work is not public yet”
+
+如果未来真的要开放服务，它读取：
 
 ```text
 src/content/services/*.md
 ```
 
-只有 `status: "active"` 的服务会显示。
-
-当前三个服务：
-
-- AI Demand Diagnosis Memo
-- LLM / Agent Workflow Audit
-- Research / Governance Brief
-
-如果你只想修改文案，直接改对应 markdown 文件。不要新建服务，除非真的有新的可售入口。
+只有 `status: "active"` 的服务才会显示。现在不要把 draft 服务改成 active，除非你确定要公开。
 
 ### Journal `/journal`
 
@@ -270,40 +267,23 @@ src/content/services/*.md
 siteMeta.email
 ```
 
-Contact 右侧的 front door 列表来自 active services。
+当前 Contact 只保留邮箱和 inquiry checklist。如果未来有 `active` services，页面可以再显示对应入口。
 
 ### Research `/research`
 
-这是研究项目页，目前不是一级导航，但页面存在。读取：
+这个路由当前不公开正式内容。直接访问只会提示 Research 还没开放，并指向 Journal。
 
-```text
-src/content/research/*.md
-```
-
-显示规则：
-
-- `visibility: "public"`
-- `status` 不能是 `"draft"`
-
-Research 分三栏：
-
-- `under_review` / `in_progress`
-- `working_paper` / `memo`
-- `essay` / `note`
+`src/content/research/*.md` 仍然保留为未来接口，但现在不要把研究草稿包装成公开成果。
 
 ### Samples `/samples`
 
-这是方法样本页，目前不是一级导航。读取：
+这个路由当前不公开正式内容。直接访问只会提示 Samples 还没开放。
 
-```text
-src/content/samples/*.md
-```
-
-只有 `status: "published"` 显示。没有 published samples 时，会显示几种 sample format 的说明。
+`src/content/samples/*.md` 仍然保留为未来接口，但没有真实样本前不显示 format 占位说明。
 
 ### Works `/works`
 
-这是旧的混合作品架构，保留给论文和视觉系列。它不是现在主导航里的 `Work`。
+这是旧的混合作品架构，保留给未来论文、项目和视觉系列。它不是现在主导航里的 `Work`，当前也不公开内容。
 
 读取：
 
@@ -314,12 +294,18 @@ src/data/visual-series/*.json
 src/assets/visual-series/
 ```
 
-适合放：
+未来适合放：
 
 - abstract-level paper
 - project
 - longform
 - curated visual series
+
+当前规则：
+
+- `/works` 只显示“Public works are not listed yet”
+- `/works/<slug>` 不会静态生成
+- 旧论文内容文件不会被公开展示
 
 不要把论文 PDF、履历 PDF、证件、电话等放进去。
 
@@ -329,12 +315,7 @@ src/assets/visual-series/
 
 ### Table `/table`
 
-这是 future medium 占位页，不是当前服务入口。主要文案来自：
-
-```text
-src/config/site.config.ts
-legacyCopy
-```
+这是 legacy future route。当前只显示“Table is not public yet”，不展示未成形设想。
 
 ## 5. 全站配置怎么改
 
@@ -363,7 +344,6 @@ export const siteMeta = {
 ```ts
 export const primaryNav = [
   { href: '/', label: 'Home' },
-  { href: '/work', label: 'Work' },
   { href: '/journal', label: 'Journal' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
@@ -383,11 +363,11 @@ export const researchPrograms = [
 ] as const;
 ```
 
-这些会同时影响 Home、Research、About。
+这些会影响 Research 和 About。首页现在不展示未完成的 research program 模块。
 
-## 6. 如何编辑 Work 服务
+## 6. 如何编辑未来 Work / Services 草稿
 
-服务文件在：
+服务草稿文件在：
 
 ```text
 src/content/services/
@@ -400,7 +380,7 @@ src/content/services/
 title: "AI Demand Diagnosis Memo"
 slug: "ai-demand-diagnosis-memo"
 summary: "A short diagnostic engagement..."
-status: "active"
+status: "draft"
 sortOrder: 10
 idealFor:
   - "Small teams preparing to adopt AI"
@@ -426,7 +406,7 @@ Optional body copy can go here.
 - `title`：服务标题
 - `slug`：URL anchor，用小写英文和连字符
 - `summary`：首页和列表摘要
-- `status`：`active` 显示，`draft` 隐藏
+- `status`：`active` 显示，`draft` 隐藏。当前默认保持 `draft`
 - `sortOrder`：越小越靠前
 - `idealFor`：适合谁
 - `clientQuestions`：客户常见问题
@@ -677,9 +657,9 @@ governance_brief
 case_note
 ```
 
-## 11. 如何编辑 Works 里的论文和项目
+## 11. 如何准备未来 Works 里的论文和项目
 
-`/works` 是混合作品库，和主导航里的 `/work` 不同。
+`/works` 是混合作品库，和主导航里的 `/work` 不同。当前它不公开具体作品，只保留未来接口。
 
 论文/项目文件在：
 
@@ -718,6 +698,13 @@ themes: ["surveillance governance", "audit", "agentic AI"]
 - 不放审稿中的全文
 - 不放私人路径
 - 不放电话、证件、履历 PDF、学校证明
+
+当前公开规则：
+
+- 内容文件可以保留在 `src/content/works/`
+- `/works` 不展示列表
+- `/works/<slug>` 不会生成公开详情页
+- 以后真要开放 Works，再改页面路由和导航
 
 ## 12. 如何新增正式摄影系列
 
@@ -807,10 +794,11 @@ manifest: "canal-edges.json"
 A short series statement goes here.
 ```
 
-公开规则：
+当前公开规则：
 
 - `status: "draft"`：不显示
-- `status: "published"`：进入 `/works` 和 `/works/<slug>`
+- `status: "published"`：内容准备就绪，但当前 `/works` 公开路由仍关闭
+- 以后真要开放 visual series，再恢复 `/works` 列表和详情页
 
 ## 13. Evidence 是什么
 
@@ -898,7 +886,7 @@ sortOrder: 30
 
 ```text
 services:
-  active  -> 显示在 /work 和首页
+  active  -> 显示在 /work；是否放回导航和首页需要再改页面结构
   draft   -> 隐藏
 
 journal:
@@ -906,19 +894,21 @@ journal:
   draft     -> 隐藏
 
 research:
-  visibility public + status 非 draft -> 显示在 /research
+  当前不在主页或一级导航显示
+  visibility public + status 非 draft -> 仅在重新开放 /research 后才显示
   visibility private                  -> 隐藏
   status draft                         -> 隐藏
 
 samples:
-  published -> 显示在 /samples，并生成详情页
+  当前不在主页或一级导航显示
+  published -> 仅在重新开放 /samples 后才显示
   draft     -> 隐藏
 
 works:
-  当前所有 works 文件都会进入 /works
+  当前不公开列表，也不生成详情页
 
 visual-series:
-  published -> 显示在 /works
+  当前不公开列表，也不生成详情页
   draft     -> 隐藏
 
 evidence:
@@ -954,25 +944,26 @@ npm run dev
 
 ```text
 http://localhost:4321/
-http://localhost:4321/work
 http://localhost:4321/journal
 http://localhost:4321/about
 http://localhost:4321/contact
 ```
 
-如果你加了 research：
+`/work`、`/works`、`/research`、`/samples`、`/notes`、`/table` 现在都不是公开导航入口，只需要在你准备重新开放对应模块时检查。
+
+如果你准备重新开放 research：
 
 ```text
 http://localhost:4321/research
 ```
 
-如果你加了 sample：
+如果你准备重新开放 sample：
 
 ```text
 http://localhost:4321/samples
 ```
 
-如果你加了 works 或 visual series：
+如果你准备重新开放 works 或 visual series：
 
 ```text
 http://localhost:4321/works

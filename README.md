@@ -1,7 +1,8 @@
 # Chromi Kingdom
 
-Chromi Kingdom is a content-first Astro site being rebuilt as a research-driven AI Studio front door.
-The architecture is typed, modular, and file-based so services, samples, research notes, and dossier records can be added without editing page code.
+Chromi Kingdom is a content-first Astro site for public writing and research notes.
+The current public surface is deliberately small: Home, Journal, About, and Contact.
+The architecture is typed, modular, and file-based so future services, samples, research notes, works, visual series, and dossier records can be prepared without presenting unfinished material.
 
 ## Stack
 
@@ -30,9 +31,10 @@ The detailed Chinese operation guide is documented in `docs/site-usage-guide.md`
 
 Content collections:
 
-- `src/content/services`: three bounded front-door services
-- `src/content/research`: under-review work, working papers, memos, essays, notes
-- `src/content/samples`: public samples and articles
+- `src/content/services`: draft templates for future services; not public by default
+- `src/content/research`: future research entries; current public page is closed
+- `src/content/samples`: future samples and articles; current public page is closed
+- `src/content/works`: future works entries; current public detail pages are closed
 - `src/content/evidence`: dossier records and external proof
 
 Create a new public sample:

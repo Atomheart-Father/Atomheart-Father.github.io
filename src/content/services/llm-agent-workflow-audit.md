@@ -2,7 +2,7 @@
 title: "LLM / Agent Workflow Audit"
 slug: "llm-agent-workflow-audit"
 summary: "A structured review of an existing LLM or agent workflow, focused on failure points, evaluation gaps, and improvement order."
-status: "active"
+status: "draft"
 sortOrder: 20
 idealFor:
   - "Teams with unstable LLM prototypes"

@@ -7,7 +7,7 @@ import { contactPage, siteMeta } from '../lib/site';
 const services = await getActiveServices();
 ---
 
-<BaseLayout title="Contact" description="Start a scoped inquiry with Chromi Kingdom.">
+<BaseLayout title="Contact" description="Contact Chromi Kingdom by email.">
 	<PageHero
 		kicker={contactPage.hero.kicker}
 		title={contactPage.hero.title}
@@ -16,7 +16,7 @@ const services = await getActiveServices();
 		aside={siteMeta.email}
 	/>
 
-	<section class="mt-16 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+	<section class:list={['mt-16 grid gap-8', services.length > 0 && 'lg:grid-cols-[0.95fr_1.05fr]']}>
 		<div class="editorial-rule">
 			<p class="section-label">{contactPage.checklistTitle}</p>
 			<ul class="mt-5 space-y-4 font-mono text-[0.82rem] uppercase leading-7 text-ink/76">
@@ -36,18 +36,20 @@ const services = await getActiveServices();
 			</a>
 		</div>
 
-		<div class="editorial-rule">
-			<p class="section-label">{contactPage.frontDoorTitle}</p>
-			<div class="mt-5 space-y-4">
-				{
-					services.map((service) => (
-						<a href={`/work#${service.data.slug}`} class="surface-inset block pt-4 text-ink no-underline hover:text-rust">
-							<p class="protocol-title text-[1.8rem] leading-[0.92]">{service.data.title}</p>
-							<p class="mt-2 text-sm leading-6 text-ink/72">{service.data.summary}</p>
-						</a>
-					))
-				}
-			</div>
-		</div>
+		{
+			services.length > 0 && (
+				<div class="editorial-rule">
+					<p class="section-label">{contactPage.frontDoorTitle}</p>
+					<div class="mt-5 space-y-4">
+						{services.map((service) => (
+							<a href={`/work#${service.data.slug}`} class="surface-inset block pt-4 text-ink no-underline hover:text-rust">
+								<p class="protocol-title text-[1.8rem] leading-[0.92]">{service.data.title}</p>
+								<p class="mt-2 text-sm leading-6 text-ink/72">{service.data.summary}</p>
+							</a>
+						))}
+					</div>
+				</div>
+			)
+		}
 	</section>
 </BaseLayout>

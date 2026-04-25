@@ -8,7 +8,7 @@ import { servicesPage } from '../lib/site';
 const services = await getActiveServices();
 ---
 
-<BaseLayout title="Work" description="Three bounded entry points for diagnosis, workflow audit, and governance-facing AI judgment.">
+<BaseLayout title="Work" description="Public work is not listed yet.">
 	<PageHero
 		kicker={servicesPage.hero.kicker}
 		title={servicesPage.hero.title}
@@ -17,9 +17,13 @@ const services = await getActiveServices();
 		aside={servicesPage.hero.aside}
 	/>
 
-	<section class="mt-14">
-		{services.map((service, index) => <ServiceCard service={service} index={index + 1} />)}
-	</section>
+	{
+		services.length > 0 && (
+			<section class="mt-14">
+				{services.map((service, index) => <ServiceCard service={service} index={index + 1} />)}
+			</section>
+		)
+	}
 
 	<section class="mt-20 grid gap-8 border-t border-black/80 pt-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
 		<div>

@@ -2,7 +2,7 @@
 title: "AI Demand Diagnosis Memo"
 slug: "ai-demand-diagnosis-memo"
 summary: "A short diagnostic engagement for teams that need to decide whether an AI idea is worth pursuing and what should happen first."
-status: "active"
+status: "draft"
 sortOrder: 10
 idealFor:
   - "Small teams preparing to adopt AI"

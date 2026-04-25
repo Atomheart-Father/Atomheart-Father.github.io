@@ -1,65 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContentCard from '../components/studio/ContentCard.astro';
-import PageHero from '../components/studio/PageHero.astro';
-import { getPublicResearch, researchColumns } from '../lib/content-api';
-import { homePage, researchPrograms } from '../lib/site';
-
-const entries = await getPublicResearch();
 ---
 
-<BaseLayout title="Research" description="Research program on AI systems, organizational judgment, and public consequences.">
-	<PageHero
-		kicker={homePage.researchProgram.kicker}
-		title={homePage.researchProgram.title}
-		intro={homePage.researchProgram.intro}
-	/>
+<BaseLayout title="Research" description="Research is not public yet.">
+	<section class="mx-auto max-w-[920px] pt-10">
+		<div class="editorial-rule">
+			<p class="section-label">Research</p>
+			<h1 class="protocol-title mt-5 text-[2.9rem] leading-[0.94] sm:text-[4rem]">Research is not public yet.</h1>
+			<p class="mt-6 max-w-3xl text-[1.08rem] leading-8 text-ink/78">
+				Formal research pages will open only when an entry is ready to be presented as public work. For
+				now, public writing lives in Journal.
+			</p>
+		</div>
 
-	<section class="mt-16 grid gap-5 lg:grid-cols-3">
-		{
-			researchPrograms.map((program, index) => (
-				<div class="border-t border-black/80 pt-5">
-					<p class="section-label">Program / {String(index + 1).padStart(2, '0')}</p>
-					<h2 class="protocol-title mt-20 text-[2rem] leading-[0.9]">{program.title}</h2>
-					<p class="mt-4 text-[1rem] leading-7 text-ink/74">{program.summary}</p>
-				</div>
-			))
-		}
+		<a href="/journal" class="protocol-link mt-10">
+			<span aria-hidden="true">→</span>
+			Open Journal
+		</a>
 	</section>
-
-	{
-		entries.length > 0 && (
-			<section class="mt-24 grid gap-8 lg:grid-cols-3">
-				{researchColumns.map((column) => {
-					const columnEntries = entries.filter((entry) =>
-						column.categories.some((category) => category === entry.data.category),
-					);
-
-					if (columnEntries.length === 0) {
-						return null;
-					}
-
-					return (
-						<div class="space-y-4">
-							<div class="editorial-rule">
-								<p class="section-label">{column.title}</p>
-								<p class="mt-4 text-sm leading-7 text-ink/72">{column.description}</p>
-							</div>
-
-							{columnEntries.map((entry) => (
-								<ContentCard
-									href={`/research/${entry.data.slug}`}
-									kicker={entry.data.status.replaceAll('_', ' ')}
-									title={entry.data.title}
-									summary={entry.data.summary}
-									meta={String(entry.data.year)}
-									tags={entry.data.themes}
-								/>
-							))}
-						</div>
-					);
-				})}
-			</section>
-		)
-	}
 </BaseLayout>

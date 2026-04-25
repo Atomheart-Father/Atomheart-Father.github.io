@@ -1,59 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ContentCard from '../../components/studio/ContentCard.astro';
-import PageHero from '../../components/studio/PageHero.astro';
-import { getActiveServices, getPublishedSamples } from '../../lib/content-api';
-import { samplesPage } from '../../lib/site';
-
-const samples = await getPublishedSamples();
-const services = await getActiveServices();
 ---
 
-<BaseLayout title="Samples" description="Public samples and method notes for the Studio front door.">
-	<PageHero
-		kicker={samplesPage.hero.kicker}
-		title={samplesPage.hero.title}
-		intro={samplesPage.hero.intro}
-	/>
-
-	{
-		samples.length > 0 ? (
-			<section class="mt-12 grid gap-5 lg:grid-cols-2">
-				{samples.map((sample) => (
-					<ContentCard
-						href={`/samples/${sample.data.slug}`}
-						kicker={sample.data.template.replaceAll('_', ' ')}
-						title={sample.data.title}
-						summary={sample.data.summary}
-						meta={sample.data.date.toISOString().slice(0, 10)}
-						tags={sample.data.tags}
-					/>
-				))}
-			</section>
-		) : (
-			<section class="mt-12 grid gap-5 lg:grid-cols-3">
-				{samplesPage.formats.map((format) => (
-					<ContentCard kicker="Format" title={format.title} summary={format.summary} />
-				))}
-			</section>
-		)
-	}
-
-	{
-		samples.length === 0 && (
-			<section class="mt-12">
-				<div class="border-t border-black/35 pt-6">
-					<p class="section-label">{samplesPage.serviceLinkTitle}</p>
-					<div class="mt-5 grid gap-4 lg:grid-cols-3">
-						{services.map((service) => (
-							<a href={`/services#${service.data.slug}`} class="surface-inset block py-4 text-ink no-underline hover:text-rust">
-								<p class="protocol-title text-[1.45rem] leading-tight">{service.data.title}</p>
-								<p class="mt-2 text-sm leading-6 text-ink/72">{service.data.summary}</p>
-							</a>
-						))}
-					</div>
-				</div>
-			</section>
-		)
-	}
+<BaseLayout title="Samples" description="Samples are not public yet.">
+	<section class="mx-auto max-w-[920px] pt-10">
+		<div class="editorial-rule">
+			<p class="section-label">Samples</p>
+			<h1 class="protocol-title mt-5 text-[2.9rem] leading-[0.94] sm:text-[4rem]">Samples are not public yet.</h1>
+			<p class="mt-6 max-w-3xl text-[1.08rem] leading-8 text-ink/78">
+				This route is reserved for future public examples. It will stay quiet until there is a real sample
+				worth publishing.
+			</p>
+		</div>
+	</section>
 </BaseLayout>

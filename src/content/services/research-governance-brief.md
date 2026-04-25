@@ -2,7 +2,7 @@
 title: "Research / Governance Brief"
 slug: "research-governance-brief"
 summary: "A compact research brief for teams that need a complex AI issue translated into a decision-ready structure."
-status: "active"
+status: "draft"
 sortOrder: 30
 idealFor:
   - "Think tanks and research organizations"
