@@ -1,10 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/studio/PageHero.astro';
-import { getActiveServices } from '../lib/content-api';
 import { contactPage, siteMeta } from '../lib/site';
-
-const services = await getActiveServices();
 ---
 
 <BaseLayout title="Contact" description="Contact Chromi Kingdom by email.">
@@ -16,40 +13,32 @@ const services = await getActiveServices();
 		aside={siteMeta.email}
 	/>
 
-	<section class:list={['mt-16 grid gap-8', services.length > 0 && 'lg:grid-cols-[0.95fr_1.05fr]']}>
+	<section class="mt-16 grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)]">
 		<div class="editorial-rule">
-			<p class="section-label">{contactPage.checklistTitle}</p>
-			<ul class="mt-5 space-y-4 font-mono text-[0.82rem] uppercase leading-7 text-ink/76">
-				{contactPage.checklist.map((item, index) => (
-					<li class="grid grid-cols-[2.4rem_1fr] gap-4 border-b border-black/20 pb-3">
-						<span class="text-ash">{String(index).padStart(2, '0')}</span>
-						<span>{item}</span>
-					</li>
-				))}
-			</ul>
+			<p class="section-label">Email</p>
 			<a
 				href={`mailto:${siteMeta.email}`}
-				class="protocol-link mt-6"
+				class="mt-5 block font-mono text-[1.1rem] uppercase leading-7 text-rust no-underline transition hover:text-ink"
 			>
-				<span aria-hidden="true">→</span>
-				Email {siteMeta.email}
+				{siteMeta.email}
 			</a>
 		</div>
 
-		{
-			services.length > 0 && (
-				<div class="editorial-rule">
-					<p class="section-label">{contactPage.frontDoorTitle}</p>
-					<div class="mt-5 space-y-4">
-						{services.map((service) => (
-							<a href={`/work#${service.data.slug}`} class="surface-inset block pt-4 text-ink no-underline hover:text-rust">
-								<p class="protocol-title text-[1.8rem] leading-[0.92]">{service.data.title}</p>
-								<p class="mt-2 text-sm leading-6 text-ink/72">{service.data.summary}</p>
-							</a>
-						))}
-					</div>
-				</div>
-			)
-		}
+		<div class="editorial-rule">
+			<p class="section-label">{contactPage.noteTitle}</p>
+			<p class="mt-5 max-w-2xl text-[1.04rem] leading-8 text-ink/76">{contactPage.note}</p>
+			<ul class="mt-8 flex flex-wrap gap-4 font-mono text-[0.78rem] uppercase text-ash">
+				<li>
+					<a href={siteMeta.orcid} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-ink">
+						ORCID
+					</a>
+				</li>
+				<li>
+					<a href={siteMeta.github} target="_blank" rel="noreferrer" class="text-rust no-underline transition hover:text-ink">
+						GitHub
+					</a>
+				</li>
+			</ul>
+		</div>
 	</section>
 </BaseLayout>

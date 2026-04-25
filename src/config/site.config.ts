@@ -19,7 +19,7 @@
  *
  * 当前写法为什么这样：
  * - 不写成传统 CV 口吻，避免 academic homepage 感
- * - 不把你定义成单一职业标签，而是压成 research / writing / intervention 三个动作
+ * - 不把你定义成单一职业标签，而是压成 research / writing / observation 三个动作
  * - description 要短，因为它会出现在搜索、分享卡片、footer 等位置
  *
  * 怎么改：
@@ -40,14 +40,14 @@ export const siteMeta = {
  * primaryNav 控制顶部一级导航。
  *
  * 当前只保留 Home / Work / Journal / About / Contact。
- * Work 在这里指你自己的研究项目和调研系统，不是接咨询活的 services。
+ * Work 在这里指你自己的研究项目和调研系统。
  * Research、Samples、Photography、Table 都先不放一级导航，避免把还没正式公开的东西编造成身份。
  *
  * 怎么改：
  * - label 是显示文字
  * - href 是链接路径
  * - 不建议超过 5 个一级导航
- * - Work 放研究项目；Services 如果未来需要，另开语义，不要混在一起
+ * - Work 放研究项目
  * - Photography 不建议放一级导航；图像内容先走 Journal -> Image Notes，未来再考虑 visual series
  */
 export const primaryNav = [
@@ -124,12 +124,12 @@ export const homePage = {
 	},
 
 	contact: {
-		// 首页结尾 CTA。这里强调“先发 decision/problem”，不是预约销售电话。
-		kicker: 'Start here',
-		title: 'Send the decision first.',
+		// 首页结尾 CTA。只给直接联系入口，不做额外流程。
+		kicker: 'Contact',
+		title: 'Write if there is a real reason.',
 		intro:
-			'The first useful message names the decision, the material already available, who will use the output, and what would count as a useful next move.',
-		ctaLabel: 'Send an email',
+			'For research conversation, manuscript exchange, collaboration, or a concrete note that should not be forced into a public comment thread.',
+		ctaLabel: 'Email',
 		ctaHref: '/contact',
 	},
 } as const;
@@ -154,19 +154,19 @@ export const homePage = {
  */
 export const researchPrograms = [
 	{
-		title: 'AI adoption, evaluation, and decision quality',
+		title: 'AI systems and institutional judgment',
 		summary:
-			'How teams decide whether an AI system is worth building, how they evaluate it, and where decision quality breaks before engineering begins.',
+			'How automated systems change what people and institutions can see, trust, measure, ignore, and act on.',
 	},
 	{
-		title: 'LLM / agent workflow failure and audit',
+		title: 'Platform convenience and reorganized life',
 		summary:
-			'How multi-step AI workflows fail through missing evaluation, unclear handoffs, weak evidence, brittle prompts, or uncontrolled tool use.',
+			'How convenient interfaces absorb attention, labor, payment, communication, and everyday decision-making into platform order.',
 	},
 	{
-		title: 'Governance and public-interest consequences',
+		title: 'Human review, evaluation, and audit',
 		summary:
-			'How AI systems reshape authority, surveillance, institutional accountability, and the public consequences of automated judgment.',
+			'How claims of oversight, review, and evaluation survive or collapse when systems become operational infrastructure.',
 	},
 ] as const;
 
@@ -174,14 +174,14 @@ export const researchPrograms = [
  * workPage 控制 /work 页面壳层文案。
  *
  * 具体项目来自 src/content/work/*.md，不在这里写。
- * 这里的 Work 指研究项目、调研材料、问卷系统接口，不指咨询服务。
+ * 这里的 Work 指研究项目、调研材料、问卷系统接口。
  */
 export const workPage = {
 	hero: {
 		kicker: 'Work',
 		title: 'Research work in progress.',
 		intro:
-			'Work collects active research projects, technical manuscripts, field validation materials, and questionnaire infrastructure. It is not a consulting menu.',
+			'Work collects active research projects, technical manuscripts, field validation materials, and questionnaire infrastructure.',
 		asideTitle: 'Boundary',
 		aside:
 			'Public pages describe the project and workflow. Participant lists, internal assignment manifests, raw responses, and unfinished manuscripts stay private.',
@@ -240,42 +240,35 @@ export const samplesPage = {
 export const aboutPage = {
 	hero: {
 		kicker: 'About',
-		title: 'Writing and research around AI systems.',
+		title: 'The public edge of my work.',
 		intro:
-			'Chromi Kingdom is a public surface for writing, research notes, and developing judgment on AI systems. It is intentionally small while the work takes shape.',
+			'Chromi Kingdom is a small public system for research, writing, and visual fragments around AI systems, platforms, interpretation, convenience, audit, and institutional judgment.',
 	},
 	current:
-		'The current structure is simple: a Work layer for active research projects and questionnaire infrastructure, a Journal layer for public notes, a small set of research concerns, and a contact route. Consulting-style services are not presented publicly until they become real formats rather than placeholders.',
+		'I work from a position between independent research, software practice, and visual observation. The recurring question is simple: when technical systems become ordinary infrastructure, what changes in judgment, evidence, power, and everyday life?',
 	focusTitle: 'Current focus',
-	journalTitle: 'Journal surfaces',
+	journalTitle: 'How to read this site',
 	journalIntro:
-		'Journal carries the lighter public layer: long notes, short notes, case notes, and sparse image notes. It is a writing surface, not a content funnel.',
+		'Work holds active research projects and manuscript-level material. Journal holds public notes, long arguments, fragments, and eventually image notes. Private drafts, respondent materials, and unfinished manuscripts stay offline.',
 	linksTitle: 'Links',
 } as const;
 
 /**
  * contactPage 控制 /contact 页面。
  *
- * 当前写法故意不做“book a call”销售页。
- * 它要求对方先说明问题、材料、使用者和有用结果，保护你的时间边界。
+ * Contact 只提供低调联系方式和边界说明。
  */
 export const contactPage = {
 	hero: {
 		kicker: 'Contact',
-		title: 'Start small. Define the question before the work expands.',
+		title: 'A direct email address.',
 		intro:
-			'The first step is not a vague call. Send the problem, the decision you need to make, what material already exists, and what kind of response would be useful.',
-		asideTitle: 'Preferred contact',
+			'Use email for research conversation, manuscript exchange, collaboration, or any message that needs a private channel.',
+		asideTitle: 'Email',
 	},
-	checklistTitle: 'Inquiry checklist',
-	checklist: [
-		'What are you trying to decide?',
-		'Who will use the answer or note?',
-		'What have you already tried?',
-		'What material can you share?',
-		'What would count as a useful next step?',
-	],
-	frontDoorTitle: 'Public work is not listed yet',
+	noteTitle: 'Boundary',
+	note:
+		'There is no form to complete. Send a normal email. If it refers to a page on this site, include the link or title so I know the context.',
 } as const;
 
 /**
@@ -315,7 +308,7 @@ export const footerCopy =
  * 如果以后重新开放 Table，再决定是否恢复使用。
  */
 export const legacyCopy = {
-	tableLead: 'Table is reserved for a future practice and is not part of the current Studio front door.',
+	tableLead: 'Table is reserved for a future practice and is not public yet.',
 	tableBody:
 		'This route remains available as a placeholder, but the current public site is focused on work, journal, research, and contact.',
 } as const;

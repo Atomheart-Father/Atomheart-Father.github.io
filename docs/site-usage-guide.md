@@ -276,7 +276,6 @@ src/config/site.config.ts
 
 ```text
 src/config/site.config.ts
-src/content/services/*.md
 ```
 
 联系邮箱来自：
@@ -285,7 +284,7 @@ src/content/services/*.md
 siteMeta.email
 ```
 
-当前 Contact 只保留邮箱和 inquiry checklist。如果未来有 `active` services，页面可以再显示对应入口。
+当前 Contact 只保留邮箱、ORCID、GitHub 和一段很短的联系说明；没有表单、预约入口或问题清单。
 
 ### Research `/research`
 
