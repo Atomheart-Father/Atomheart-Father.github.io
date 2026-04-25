@@ -39,18 +39,20 @@ export const siteMeta = {
 /**
  * primaryNav 控制顶部一级导航。
  *
- * 当前只保留 Home / Journal / About / Contact。
- * Work、Research、Samples、Photography、Table 都先不放一级导航，避免把还没正式公开的东西编造成身份。
+ * 当前只保留 Home / Work / Journal / About / Contact。
+ * Work 在这里指你自己的研究项目和调研系统，不是接咨询活的 services。
+ * Research、Samples、Photography、Table 都先不放一级导航，避免把还没正式公开的东西编造成身份。
  *
  * 怎么改：
  * - label 是显示文字
  * - href 是链接路径
- * - 不建议超过 4-5 个一级导航
- * - Work 以后如果真的要公开服务或项目，再加回来
+ * - 不建议超过 5 个一级导航
+ * - Work 放研究项目；Services 如果未来需要，另开语义，不要混在一起
  * - Photography 不建议放一级导航；图像内容先走 Journal -> Image Notes，未来再考虑 visual series
  */
 export const primaryNav = [
 	{ href: '/', label: 'Home' },
+	{ href: '/work', label: 'Work' },
 	{ href: '/journal', label: 'Journal' },
 	{ href: '/about', label: 'About' },
 	{ href: '/contact', label: 'Contact' },
@@ -61,7 +63,7 @@ export const primaryNav = [
  *
  * 首页当前结构：
  * 1. 第一屏 protocol field
- * 2. 三个入口：Journal / About / Contact
+ * 2. 四个入口：Work / Journal / About / Contact
  * 3. Selected surface，只有有 published 内容时才出现
  * 4. Contact CTA
  */
@@ -102,6 +104,14 @@ export const homePage = {
 		title: 'Selected writing.',
 		intro:
 			'Only public-ready notes appear here. Drafts, placeholders, and future formats stay hidden.',
+	},
+
+	work: {
+		// 首页 Work 入口。这里的 Work 是 ongoing research work，不是咨询服务。
+		kicker: 'Work',
+		title: 'Active work.',
+		intro:
+			'Ongoing research projects, field validation, and questionnaire infrastructure that are public enough to describe.',
 	},
 
 	researchProgram: {
@@ -161,26 +171,26 @@ export const researchPrograms = [
 ] as const;
 
 /**
- * servicesPage 控制 /work 页面壳层文案。
+ * workPage 控制 /work 页面壳层文案。
  *
- * 具体服务内容来自 src/content/services/*.md，不在这里写。
- * 这里主要解释“为什么这不是普通 AI 咨询”，以及 Work 背后的边界规则。
+ * 具体项目来自 src/content/work/*.md，不在这里写。
+ * 这里的 Work 指研究项目、调研材料、问卷系统接口，不指咨询服务。
  */
-export const servicesPage = {
+export const workPage = {
 	hero: {
 		kicker: 'Work',
-		title: 'Work is not public yet.',
+		title: 'Research work in progress.',
 		intro:
-			'This route is reserved for future public work or services. Nothing is being offered here until the format is real enough to stand on its own.',
-		asideTitle: 'Status',
+			'Work collects active research projects, technical manuscripts, field validation materials, and questionnaire infrastructure. It is not a consulting menu.',
+		asideTitle: 'Boundary',
 		aside:
-			'Hidden from primary navigation for now.',
+			'Public pages describe the project and workflow. Participant lists, internal assignment manifests, raw responses, and unfinished manuscripts stay private.',
 	},
 	bridge: {
-		// Work 还没公开时，只给回 Journal / Contact 的路径，不展示虚构服务。
-		title: 'Current public surfaces',
+		// Work 页底部桥接到 Journal / Contact。
+		title: 'What can be public',
 		intro:
-			'For now, the public site is centered on journal writing, research concerns, and a minimal contact route.',
+			'The public layer can show a project summary, current stage, safe material types, and a questionnaire route. It should not expose participant identities or internal experimental assignment tables.',
 		links: [
 			{ label: 'Open Journal', href: '/journal' },
 			{ label: 'Contact', href: '/contact' },
@@ -235,7 +245,7 @@ export const aboutPage = {
 			'Chromi Kingdom is a public surface for writing, research notes, and developing judgment on AI systems. It is intentionally small while the work takes shape.',
 	},
 	current:
-		'The current structure is simple: a journal layer for public notes, a small set of research concerns, and a contact route. Work and services are not presented publicly until they become real formats rather than placeholders.',
+		'The current structure is simple: a Work layer for active research projects and questionnaire infrastructure, a Journal layer for public notes, a small set of research concerns, and a contact route. Consulting-style services are not presented publicly until they become real formats rather than placeholders.',
 	focusTitle: 'Current focus',
 	journalTitle: 'Journal surfaces',
 	journalIntro:

@@ -1,38 +1,58 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentCard from '../components/studio/ContentCard.astro';
 import PageHero from '../components/studio/PageHero.astro';
-import ServiceCard from '../components/studio/ServiceCard.astro';
-import { getActiveServices } from '../lib/content-api';
-import { servicesPage } from '../lib/site';
+import { getPublicWorkItems } from '../lib/content-api';
+import { workPage } from '../lib/site';
 
-const services = await getActiveServices();
+const workItems = await getPublicWorkItems();
 ---
 
-<BaseLayout title="Work" description="Public work is not listed yet.">
+<BaseLayout title="Work" description="Active research work, field validation, and questionnaire infrastructure from Chromi Kingdom.">
 	<PageHero
-		kicker={servicesPage.hero.kicker}
-		title={servicesPage.hero.title}
-		intro={servicesPage.hero.intro}
-		asideTitle={servicesPage.hero.asideTitle}
-		aside={servicesPage.hero.aside}
+		kicker={workPage.hero.kicker}
+		title={workPage.hero.title}
+		intro={workPage.hero.intro}
+		asideTitle={workPage.hero.asideTitle}
+		aside={workPage.hero.aside}
 	/>
 
 	{
-		services.length > 0 && (
-			<section class="mt-14">
-				{services.map((service, index) => <ServiceCard service={service} index={index + 1} />)}
+		workItems.length > 0 && (
+			<section class="mt-20 grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
+				<div class="editorial-rule">
+					<p class="section-label">Active index</p>
+					<h2 class="protocol-title mt-4 text-[2.8rem] leading-[0.9] sm:text-[4rem]">Research work.</h2>
+					<p class="mt-4 max-w-xl text-[1.02rem] leading-8 text-ink/74">
+						Only projects with a public-safe summary appear here. Draft manuscripts, participant lists, and
+						internal assignment materials stay private.
+					</p>
+				</div>
+
+				<div class="border-t border-black/35">
+					{workItems.map((entry) => (
+						<ContentCard
+							href={`/work/${entry.data.slug}`}
+							kicker={entry.data.kind.replaceAll('_', ' ')}
+							title={entry.data.title}
+							summary={entry.data.summary}
+							meta={`${entry.data.year} / ${entry.data.status}`}
+							tags={entry.data.themes}
+						/>
+					))}
+				</div>
 			</section>
 		)
 	}
 
 	<section class="mt-20 grid gap-8 border-t border-black/80 pt-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
 		<div>
-			<p class="section-label">{servicesPage.bridge.title}</p>
-			<p class="mt-4 max-w-3xl text-[1.02rem] leading-8 text-ink/74">{servicesPage.bridge.intro}</p>
+			<p class="section-label">{workPage.bridge.title}</p>
+			<p class="mt-4 max-w-3xl text-[1.02rem] leading-8 text-ink/74">{workPage.bridge.intro}</p>
 		</div>
 		<div class="flex flex-wrap gap-5">
 			{
-				servicesPage.bridge.links.map((link) => (
+				workPage.bridge.links.map((link) => (
 					<a
 						href={link.href}
 						class="protocol-link"

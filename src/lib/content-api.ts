@@ -1,6 +1,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export type ServiceEntry = CollectionEntry<'services'>;
+export type WorkEntry = CollectionEntry<'work'>;
 export type ResearchEntry = CollectionEntry<'research'>;
 export type SampleEntry = CollectionEntry<'samples'>;
 export type JournalEntry = CollectionEntry<'journal'>;
@@ -29,6 +30,19 @@ function byFeaturedOrderAndDate<T extends { data: { featured?: boolean; sortOrde
 export async function getActiveServices() {
 	const services = await getCollection('services');
 	return services.filter((entry) => entry.data.status === 'active').sort(bySortOrder);
+}
+
+export async function getPublicWorkItems() {
+	const entries = await getCollection('work');
+	return entries
+		.filter((entry) => entry.data.visibility === 'public' && entry.data.status !== 'draft')
+		.sort((a, b) => {
+			if (Boolean(a.data.featured) !== Boolean(b.data.featured)) {
+				return a.data.featured ? -1 : 1;
+			}
+
+			return bySortOrder(a, b);
+		});
 }
 
 export async function getPublicResearch() {

@@ -16,6 +16,46 @@ const notes = defineCollection({
 	}),
 });
 
+const work = defineCollection({
+	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/work' }),
+	schema: z.object({
+		title: z.string(),
+		slug: z.string(),
+		year: z.number().int(),
+		kind: z.enum(['research_project', 'field_study', 'manuscript', 'questionnaire_system', 'tool']),
+		summary: z.string(),
+		status: z.enum(['active', 'paused', 'archived', 'draft']).default('draft'),
+		visibility: z.enum(['public', 'private']).default('private'),
+		featured: z.boolean().default(false),
+		sortOrder: z.number().int().default(100),
+		stage: z.string(),
+		access: z.enum(['public_summary', 'public_materials', 'contact_required']).default('public_summary'),
+		themes: z.array(z.string()).default([]),
+		publicMaterials: z.array(z.string()).default([]),
+		questionnaire: z
+			.object({
+				status: z.enum(['not_public', 'manual_distribution', 'external_link', 'closed']).default('not_public'),
+				label: z.string().default('Questionnaire system'),
+				href: z.string().optional(),
+				note: z.string().default('No public questionnaire link is available yet.'),
+			})
+			.default({
+				status: 'not_public',
+				label: 'Questionnaire system',
+				note: 'No public questionnaire link is available yet.',
+			}),
+		links: z
+			.array(
+				z.object({
+					label: z.string(),
+					href: z.string(),
+					type: z.enum(['internal', 'external', 'download', 'contact']).default('internal'),
+				}),
+			)
+			.default([]),
+	}),
+});
+
 const works = defineCollection({
 	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/works' }),
 	schema: z.object({
@@ -151,6 +191,7 @@ const evidence = defineCollection({
 
 export const collections = {
 	notes,
+	work,
 	works,
 	visualSeries,
 	services,

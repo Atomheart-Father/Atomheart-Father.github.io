@@ -6,7 +6,8 @@ This site is a static Astro site. There is no database and no live CMS in v1.
 The content interface is file-based and intentionally typed:
 
 - `journal`: long notes, short notes, case notes, image notes
-- `services`: draft templates for future public work or services
+- `work`: active research projects, field validation, and questionnaire infrastructure
+- `services`: draft templates for future consulting/services; not public by default
 - `research`: future research entries; not publicly routed right now
 - `samples`: future samples and articles; not publicly routed right now
 - `evidence`: dossier records, public or internal
@@ -17,6 +18,7 @@ From the project root:
 
 ```bash
 npm run new:content -- journal "Why adoption failure begins before the prototype"
+npm run new:content -- work "Canonical Order and AI Hiring Review"
 npm run new:content -- sample "Why vague AI demand should not start with a chatbot"
 npm run new:content -- research "Agentic workflow audit memo"
 npm run new:content -- evidence "ODI event follow-up"
@@ -35,9 +37,12 @@ npm run build
 
 - A `journal` item appears at `/journal` only when `status: "published"`.
 - A `journal` item with `type: "image_note"` is treated as a light visual fragment inside Journal, not as a separate portfolio page family.
+- A `work` item appears at `/work` and `/work/<slug>` only when `visibility: "public"` and `status` is not `draft`.
+- Work is for the user's own research projects and questionnaire systems. Consulting-style offers should stay in `services` and remain draft unless explicitly reopened.
+- Questionnaire links should use `questionnaire.status: "external_link"` plus `questionnaire.href`. Without a backend, GitHub Pages cannot securely collect survey responses by itself.
 - `samples` and `research` remain typed content interfaces, but their public list pages are currently closed to avoid presenting unfinished material.
 - An `evidence` item is not displayed publicly unless `visibility: "public"` and `status: "published"`.
-- A `service` appears on `/work` only when `status: "active"`. Current service files are `draft`, so Work is hidden from primary navigation and no offer is public.
+- A `service` is not rendered on `/work`; current service files are `draft` and reserved for possible future consulting/services.
 - `works` and `visual-series` content can be prepared in the repo, but `/works` currently does not generate public detail pages.
 
 ## Recommended Workflow

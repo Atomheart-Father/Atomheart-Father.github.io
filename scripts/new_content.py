@@ -97,6 +97,34 @@ relatedServices: []
 Write only the public-safe version here.
 """,
     },
+    "work": {
+        "directory": "work",
+        "body": """---
+title: "{title}"
+slug: "{slug}"
+year: {year}
+kind: "research_project"
+summary: "Replace with a public-safe project summary."
+status: "draft"
+visibility: "private"
+featured: false
+sortOrder: 100
+stage: "Replace with current stage."
+access: "public_summary"
+themes: []
+publicMaterials: []
+questionnaire:
+  status: "not_public"
+  label: "Questionnaire system"
+  note: "No public questionnaire link is available yet."
+links: []
+---
+
+Write the public-safe project description here.
+
+Do not include participant names, internal assignment tables, raw responses, private file paths, or unfinished manuscript text.
+""",
+    },
     "evidence": {
         "directory": "evidence",
         "body": """---
@@ -151,6 +179,11 @@ ALIASES = {
     "memo": "research",
     "memos": "research",
     "research-note": "research",
+    "project": "work",
+    "projects": "work",
+    "works": "work",
+    "questionnaire": "work",
+    "survey": "work",
     "dossier": "evidence",
     "record": "evidence",
     "services": "service",
@@ -177,7 +210,7 @@ def resolve_kind(kind: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Create a typed content file for the Studio site.")
-    parser.add_argument("kind", help="journal, sample, research, evidence, or service")
+    parser.add_argument("kind", help="journal, work, sample, research, evidence, or service")
     parser.add_argument("title", help="Public title for the new content item")
     parser.add_argument("--slug", help="Override generated slug")
     args = parser.parse_args()

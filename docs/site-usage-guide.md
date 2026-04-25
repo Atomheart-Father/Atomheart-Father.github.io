@@ -151,7 +151,8 @@ npm run import:photos -- private/photo_manifests/<slug>.yaml
 
 ```text
 src/config/site.config.ts          全站文字、导航、首页、About、Contact 等配置
-src/content/services/              未来 Work / Services 的草稿模板，当前不公开
+src/content/work/                  当前 Work 项目：研究、调研、问卷系统接口
+src/content/services/              未来 Services/咨询类草稿模板，当前不公开
 src/content/journal/               Journal 文章、短札、case note、image note
 src/content/research/              未来 Research 条目，当前不公开成页面
 src/content/samples/               未来 Samples 条目，当前不公开成页面
@@ -183,7 +184,7 @@ src/content.config.ts              内容 schema
 首页是对外前门。现在结构是：
 
 - 第一屏：一句强定位 + protocol field
-- 三个入口：Journal / About / Contact
+- 四个入口：Work / Journal / About / Contact
 - Selected surface：只有当 Journal 或 Image Note 有 published 内容时才出现
 - Contact CTA：引导到联系页
 
@@ -191,6 +192,7 @@ src/content.config.ts              内容 schema
 
 ```text
 src/config/site.config.ts
+src/content/work/*.md
 src/content/journal/*.md
 ```
 
@@ -198,22 +200,38 @@ src/content/journal/*.md
 
 ### Work `/work`
 
-这个页面现在不在一级导航里。它只是为未来可能公开的 work / services 保留路由。
+这是当前公开的研究工作入口。这里的 Work 指你自己的研究项目、调研系统、问卷系统，不是接咨询的服务菜单。
 
 当前状态：
 
-- 不在顶部导航显示
-- 首页不展示 Work
-- 三个旧服务文件全部是 `draft`
-- 直接访问 `/work` 只会看到“Work is not public yet”
+- 在顶部导航显示
+- 首页有 Work 入口
+- 读取 `src/content/work/*.md`
+- 当前公开项目是第四篇论文相关的 AI hiring / human validation 项目
 
-如果未来真的要开放服务，它读取：
+公开规则：
 
 ```text
-src/content/services/*.md
+visibility: "public"
+status: "active"
 ```
 
-只有 `status: "active"` 的服务才会显示。现在不要把 draft 服务改成 active，除非你确定要公开。
+`draft` 或 `private` 都不会显示。
+
+问卷规则：
+
+- `questionnaire.status: "manual_distribution"`：显示问卷状态，但不提供公开下载
+- `questionnaire.status: "external_link"` + `questionnaire.href`：显示网页问卷或外部表单链接
+- GitHub Pages 没有后端，不能自己安全收集问卷答案；如果要网页填写，需要接 Tally、Google Forms、Qualtrics、Formspree，或做“填写后下载结果再邮件返回”的静态方案
+
+不要公开：
+
+- 参与者名单
+- 内部分配表
+- response template
+- raw response
+- 未准备公开的手稿全文
+- 本地绝对路径
 
 ### Journal `/journal`
 
@@ -365,7 +383,63 @@ export const researchPrograms = [
 
 这些会影响 Research 和 About。首页现在不展示未完成的 research program 模块。
 
-## 6. 如何编辑未来 Work / Services 草稿
+## 6. 如何编辑 Work 项目
+
+Work 项目文件在：
+
+```text
+src/content/work/
+```
+
+推荐用脚本创建：
+
+```bash
+npm run new:content -- work "New Research Project"
+```
+
+示例结构：
+
+```yaml
+---
+title: "Canonical Order and AI Hiring Review"
+slug: "canonical-order-ai-hiring-review"
+year: 2026
+kind: "research_project"
+summary: "A public-safe project summary."
+status: "active"
+visibility: "public"
+featured: true
+sortOrder: 10
+stage: "Manuscript drafting; human validation package prepared"
+access: "public_summary"
+themes: ["AI interpretation", "hiring systems", "human validation"]
+publicMaterials:
+  - "Public-safe project summary"
+  - "Questionnaire workflow description"
+questionnaire:
+  status: "manual_distribution"
+  label: "Human validation questionnaire"
+  note: "Questionnaires are distributed manually for now."
+links:
+  - label: "Contact about this work"
+    href: "/contact"
+    type: "contact"
+---
+```
+
+字段含义：
+
+- `status`：`active`、`paused`、`archived` 会显示；`draft` 隐藏
+- `visibility`：只有 `public` 会显示
+- `kind`：`research_project`、`field_study`、`manuscript`、`questionnaire_system`、`tool`
+- `stage`：当前阶段，保持一句话
+- `publicMaterials`：说明哪些材料可以公开，但不要直接泄露内部文件
+- `questionnaire.status`：`manual_distribution`、`external_link`、`closed`、`not_public`
+- `questionnaire.href`：只有接外部问卷系统时才填写
+
+问卷要注意：GitHub Pages 是静态站，没有数据库和登录系统。它可以展示问卷入口、外部表单链接、下载材料，但不能自己安全收集答案。
+
+## 7. 如何编辑未来 Services 草稿
 
 服务草稿文件在：
 
@@ -423,7 +497,7 @@ npm run check
 npm run build
 ```
 
-## 7. 如何新增 Journal 内容
+## 8. 如何新增 Journal 内容
 
 最推荐用脚本：
 
@@ -493,7 +567,7 @@ Write the main argument.
 Explain why the failure mode matters.
 ```
 
-## 8. 如何写 Image Note
+## 9. 如何写 Image Note
 
 Image Note 是 Journal 的轻视觉分支，不是摄影作品集。
 
@@ -547,7 +621,7 @@ Short text goes here.
 
 注意：这个方式适合少量 Image Notes。如果是正式摄影系列，用下面的 visual series workflow。
 
-## 9. 如何新增 Research 条目
+## 10. 如何新增 Research 条目
 
 创建：
 
@@ -612,7 +686,7 @@ note
 - 不写敏感私人信息
 - 不把不成熟草稿伪装成 formal publication
 
-## 10. 如何新增 Sample
+## 11. 如何新增 Sample
 
 Sample 是方法展示，不是普通博客。适合写：
 
@@ -657,7 +731,7 @@ governance_brief
 case_note
 ```
 
-## 11. 如何准备未来 Works 里的论文和项目
+## 12. 如何准备未来 Works 里的论文和项目
 
 `/works` 是混合作品库，和主导航里的 `/work` 不同。当前它不公开具体作品，只保留未来接口。
 
@@ -706,7 +780,7 @@ themes: ["surveillance governance", "audit", "agentic AI"]
 - `/works/<slug>` 不会生成公开详情页
 - 以后真要开放 Works，再改页面路由和导航
 
-## 12. 如何新增正式摄影系列
+## 13. 如何新增正式摄影系列
 
 正式摄影系列走“私有原图库 -> 本地 manifest -> 网页尺寸衍生图 -> 公开元数据”的流程。
 
@@ -800,7 +874,7 @@ A short series statement goes here.
 - `status: "published"`：内容准备就绪，但当前 `/works` 公开路由仍关闭
 - 以后真要开放 visual series，再恢复 `/works` 列表和详情页
 
-## 13. Evidence 是什么
+## 14. Evidence 是什么
 
 Evidence 是内部 dossier 记录，不是当前公开页面的主要内容。它用于长期积累：
 
@@ -841,7 +915,7 @@ relatedItems: []
 - 默认 `status: "draft"` 或 `logged`
 - 不要把私人联系人、未公开合作、敏感细节放到 public repo
 
-## 14. 排序规则
+## 15. 排序规则
 
 服务：
 
@@ -882,16 +956,21 @@ sortOrder: 30
 
 这样以后可以在中间插入 `15`、`25`。
 
-## 15. 状态和可见性速查
+## 16. 状态和可见性速查
 
 ```text
 services:
-  active  -> 显示在 /work；是否放回导航和首页需要再改页面结构
+  active  -> 当前仍不显示在 /work；Services 是未来咨询/服务接口
   draft   -> 隐藏
 
 journal:
   published -> 显示在 /journal，并生成详情页
   draft     -> 隐藏
+
+work:
+  visibility public + status active/paused/archived -> 显示在 /work，并生成详情页
+  visibility private                                -> 隐藏
+  status draft                                      -> 隐藏
 
 research:
   当前不在主页或一级导航显示
@@ -915,7 +994,7 @@ evidence:
   当前没有主要公开页面，默认内部记录
 ```
 
-## 16. 本地测试流程
+## 17. 本地测试流程
 
 本地测试的目的，是在 push 到 GitHub 之前先发现问题。它不会影响线上网站。
 
@@ -944,12 +1023,13 @@ npm run dev
 
 ```text
 http://localhost:4321/
+http://localhost:4321/work
 http://localhost:4321/journal
 http://localhost:4321/about
 http://localhost:4321/contact
 ```
 
-`/work`、`/works`、`/research`、`/samples`、`/notes`、`/table` 现在都不是公开导航入口，只需要在你准备重新开放对应模块时检查。
+`/work` 是公开导航入口。`/works`、`/research`、`/samples`、`/notes`、`/table` 现在都不是公开导航入口，只需要在你准备重新开放对应模块时检查。
 
 如果你准备重新开放 research：
 
@@ -981,7 +1061,7 @@ http://localhost:4321/works
 
 本地测试通过后，线上仍然不会自动变化。下一步必须走 GitHub 提交流程。
 
-## 17. 发布到线上
+## 18. 发布到线上
 
 线上发布不是靠本地 `npm`，而是靠 GitHub：
 
@@ -1115,7 +1195,13 @@ src/data/visual-series/<slug>.json
 src/content/visual-series/<slug>.md
 ```
 
-服务入口：
+Work 项目：
+
+```text
+src/content/work/*.md
+```
+
+未来 Services 草稿：
 
 ```text
 src/content/services/*.md
@@ -1167,7 +1253,7 @@ npm run build
 git push origin main
 ```
 
-## 18. 安全和公开边界
+## 19. 安全和公开边界
 
 发布前检查：
 
@@ -1187,7 +1273,7 @@ status: "draft"
 visibility: "private"
 ```
 
-## 19. 建议的内容补充顺序
+## 20. 建议的内容补充顺序
 
 先从最安全、最容易验证的内容开始：
 
@@ -1199,7 +1285,7 @@ visibility: "private"
 6. 新增一个 `research`，先 `visibility: "private"`
 7. 确认逻辑后再考虑 visual series 导入
 
-## 20. 如果只想快速试一次
+## 21. 如果只想快速试一次
 
 下面这个流程只会先在本地验证。看到本地成功后，如果想让线上也更新，还要执行 `git add`、`git commit`、`git push origin main`。
 

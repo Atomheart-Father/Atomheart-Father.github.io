@@ -1,7 +1,7 @@
 # Chromi Kingdom
 
 Chromi Kingdom is a content-first Astro site for public writing and research notes.
-The current public surface is deliberately small: Home, Journal, About, and Contact.
+The current public surface is deliberately small: Home, Work, Journal, About, and Contact.
 The architecture is typed, modular, and file-based so future services, samples, research notes, works, visual series, and dossier records can be prepared without presenting unfinished material.
 
 ## Stack
@@ -20,7 +20,7 @@ The architecture is typed, modular, and file-based so future services, samples, 
 | `npm run build` | Build the production site |
 | `npm run check` | Run Astro's type and content checks |
 | `npm run preview` | Preview the production build locally |
-| `npm run new:content -- sample "Title"` | Create a typed article/sample/research/evidence/service entry |
+| `npm run new:content -- work "Title"` | Create a typed work/journal/sample/research/evidence/service entry |
 | `npm run import:photos -- private/photo_manifests/<slug>.yaml` | Import curated photo manifests into site assets |
 
 ## Studio content workflow
@@ -31,19 +31,20 @@ The detailed Chinese operation guide is documented in `docs/site-usage-guide.md`
 
 Content collections:
 
+- `src/content/work`: active research projects, field validation, and questionnaire infrastructure
 - `src/content/services`: draft templates for future services; not public by default
 - `src/content/research`: future research entries; current public page is closed
 - `src/content/samples`: future samples and articles; current public page is closed
 - `src/content/works`: future works entries; current public detail pages are closed
 - `src/content/evidence`: dossier records and external proof
 
-Create a new public sample:
+Create a new Work project:
 
 ```sh
-npm run new:content -- sample "Why vague AI demand should not start with a chatbot"
+npm run new:content -- work "New Research Project"
 ```
 
-Then edit the generated Markdown file, switch `status` to `published` when ready, and run `npm run check`.
+Then edit the generated Markdown file, switch `visibility` to `public` and `status` to `active` when ready, and run `npm run check`.
 
 ## Photo import workflow
 

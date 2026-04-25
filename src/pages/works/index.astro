@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { servicesPage } from '../../lib/site';
+import { workPage } from '../../lib/site';
 ---
 
 <BaseLayout title="Works" description="Public works are not listed yet.">
@@ -15,7 +15,7 @@ import { servicesPage } from '../../lib/site';
 		</div>
 
 		<div class="mt-10 grid gap-4 sm:grid-cols-2">
-			{servicesPage.bridge.links.map((link) => (
+			{workPage.bridge.links.map((link) => (
 				<a href={link.href} class="protocol-link">
 					<span aria-hidden="true">→</span>
 					{link.label}

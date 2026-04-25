@@ -10,7 +10,6 @@ const sitemapHiddenPrefixes = [
 	'/samples/',
 	'/services/',
 	'/table/',
-	'/work/',
 	'/works/',
 ];
 

@@ -8,6 +8,6 @@ export {
 	primaryNav,
 	researchPrograms,
 	samplesPage,
-	servicesPage,
 	siteMeta,
+	workPage,
 } from '../config/site.config';
