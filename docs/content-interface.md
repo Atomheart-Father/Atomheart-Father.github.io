@@ -1,5 +1,7 @@
 # Studio Content Interface
 
+For the detailed Chinese operation guide, see `docs/site-usage-guide.md`.
+
 This site is a static Astro site. There is no database and no live CMS in v1.
 The content interface is file-based and intentionally typed:
 

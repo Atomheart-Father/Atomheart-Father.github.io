@@ -24,7 +24,9 @@ The architecture is typed, modular, and file-based so services, samples, researc
 
 ## Studio content workflow
 
-The main content interface is documented in `docs/content-interface.md`.
+The short content interface is documented in `docs/content-interface.md`.
+
+The detailed Chinese operation guide is documented in `docs/site-usage-guide.md`.
 
 Content collections:
 
