@@ -4,22 +4,29 @@ import ContentCard from '../components/studio/ContentCard.astro';
 import {
 	getPublishedImageNotes,
 	getPublishedWriting,
+	getPublicWorkItems,
 } from '../lib/content-api';
 import { homePage } from '../lib/site';
 
 const writing = await getPublishedWriting();
 const imageNotes = await getPublishedImageNotes();
+const workItems = await getPublicWorkItems();
 
 const featuredWriting = writing.slice(0, 2);
 const featuredImageNote = imageNotes[0];
 const hasSelectedSurface = Boolean(featuredWriting.length > 0 || featuredImageNote);
+const activeWorkItems = workItems.slice(0, 3);
 ---
 
-<BaseLayout title="Chromi Kingdom">
+<BaseLayout title="CHLOMEE STUDIO">
 	<section class="pt-10">
-		<p class="max-w-xl font-mono text-[0.86rem] font-semibold uppercase leading-tight text-ink">
-			{homePage.hero.topStatement}
-		</p>
+		{
+			homePage.hero.topStatement && (
+				<p class="max-w-xl font-mono text-[0.86rem] font-semibold uppercase leading-tight text-ink">
+					{homePage.hero.topStatement}
+				</p>
+			)
+		}
 
 		<div class="protocol-field mt-10 min-h-[52rem] px-5 py-8 sm:px-10 lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-center lg:px-20">
 			<div>
@@ -30,24 +37,30 @@ const hasSelectedSurface = Boolean(featuredWriting.length > 0 || featuredImageNo
 			</div>
 
 			<aside class="mt-12 lg:mt-0">
+				<p class="section-label mb-4">{homePage.activeWorkRail.label}</p>
 				<div class="border-t border-black/30">
 					{
-						homePage.heroRail.items.map((item) => {
-							const [code, ...rest] = item.split('  ');
+						activeWorkItems.length > 0 ? activeWorkItems.map((entry, index) => {
 							return (
-								<div class="grid grid-cols-[3.5rem_1fr] gap-5 border-b border-black/25 py-4 font-mono text-[0.72rem] uppercase text-ink">
-									<span>{code}</span>
-									<span>{rest.join(' ')}</span>
-								</div>
+								<a
+									href={`/work/${entry.data.slug}`}
+									class="grid grid-cols-[3.5rem_1fr] gap-5 border-b border-black/25 py-4 font-mono text-[0.72rem] uppercase text-ink no-underline transition hover:text-rust"
+								>
+									<span>{String(index + 1).padStart(2, '0')}</span>
+									<span>{entry.data.title}</span>
+								</a>
 							);
-						})
+						}) : (
+							<a
+								href="/work"
+								class="grid grid-cols-[3.5rem_1fr] gap-5 border-b border-black/25 py-4 font-mono text-[0.72rem] uppercase text-ink no-underline transition hover:text-rust"
+							>
+								<span>00</span>
+								<span>{homePage.activeWorkRail.empty}</span>
+							</a>
+						)
 					}
 				</div>
-				{
-					homePage.heroRail.note && (
-						<p class="mt-8 max-w-[19rem] text-[1rem] leading-7 text-ink/70">{homePage.heroRail.note}</p>
-					)
-				}
 			</aside>
 		</div>
 	</section>

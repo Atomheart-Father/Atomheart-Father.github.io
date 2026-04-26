@@ -18,7 +18,7 @@ From the project root:
 
 ```bash
 npm run new:content -- journal "Why adoption failure begins before the prototype"
-npm run new:content -- work "Canonical Order and AI Hiring Review"
+npm run new:content -- work "Canonical Order in AI Interpretive Pipelines"
 npm run new:content -- sample "Why vague AI demand should not start with a chatbot"
 npm run new:content -- research "Agentic workflow audit memo"
 npm run new:content -- evidence "ODI event follow-up"

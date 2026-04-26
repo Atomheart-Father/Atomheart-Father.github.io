@@ -3,7 +3,7 @@ title: "Service Edge"
 slug: "service-edge"
 date: 2025-03-11
 summary: "Markers, blank walls, utility rooms, carts, night storage."
-status: "published"
+status: "draft"
 type: "image_note"
 featured: true
 sortOrder: 40

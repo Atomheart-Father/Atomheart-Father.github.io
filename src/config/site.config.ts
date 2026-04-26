@@ -1,5 +1,5 @@
 /**
- * Chromi Kingdom 的全站文案配置。
+ * CHLOMEE STUDIO 的全站文案配置。
  *
  * 你日常最常改的是这个文件和 src/content 里的 Markdown。
  * 这个文件适合放“页面壳层文案”：导航、首页模块标题、About 介绍、Contact 提示等。
@@ -28,7 +28,7 @@
  * - email / orcid / github 是公开信息，确认可以公开再放
  */
 export const siteMeta = {
-	title: 'Chromi Kingdom',
+	title: 'CHLOMEE STUDIO',
 	description:
 		'Independent writing and research notes on AI systems, judgment, and public consequences.',
 	email: 'bozhongxiao@gmail.com',
@@ -62,7 +62,7 @@ export const primaryNav = [
  * homePage 控制首页各模块文案。
  *
  * 首页当前结构：
- * 1. 第一屏 protocol field
+ * 1. 第一屏 studio field
  * 2. 四个入口：Work / Journal / About / Contact
  * 3. Selected surface，只有有 published 内容时才出现
  * 4. Contact CTA
@@ -70,30 +70,23 @@ export const primaryNav = [
 export const homePage = {
 	hero: {
 		// kicker 是第一屏里的小标签，保持短、冷、像系统字段。
-		kicker: 'Protocol field',
+		kicker: 'Studio field',
 
 		// topStatement 是首页最上方那句硬判断。它的作用是先给世界观，不急着解释你是谁。
-		topStatement: 'AI systems do not only automate tasks. They rearrange how institutions and people notice the world.',
+		topStatement: 'AI / order / public life.',
 
 		// 首页大标题被拆成三段，是为了保留 09 风格里的黑底高亮。
 		// 改的时候保持一句完整判断：动词 + 风险判断 + 下一步。
-		titleStart: 'Where',
-		titleHighlight: 'convenience becomes order',
-		titleEnd: 'and answers begin to govern judgment.',
+		titleStart: 'Order',
+		titleHighlight: 'learns',
+		titleEnd: 'to look natural.',
 	},
 
-	heroRail: {
-		// 右侧序列不是装饰，是把你的判断方式压成一条 failure sequence。
-		// 如果你改这里，建议仍然保持 00-04 的系统编号感。
-		label: 'Failure sequence',
-		items: [
-			'00  Search becomes answer',
-			'01  Friction becomes interface',
-			'02  Convenience becomes order',
-			'03  Ambiguity gets compressed',
-			'04  Judgment must be reclaimed',
-		],
-		note: '',
+	activeWorkRail: {
+		// 首页首屏右侧直接读取 src/content/work 里公开的 active work。
+		// 不在这里硬写项目标题，避免首页变成自我解释或旧 slogan。
+		label: 'Active work',
+		empty: 'No public work yet.',
 	},
 
 	selected: {
