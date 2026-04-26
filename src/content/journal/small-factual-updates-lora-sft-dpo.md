@@ -184,8 +184,9 @@ The reproducibility layer includes deterministic eval identifiers, fixed samplin
 
 ## 10 / Materials
 
-- `paper_out/update_eval_table.md` contains the targeted update success, hallucination-like rate, and Mean BS table.
-- `paper_out/table_general_eval_main.md` contains the MMLU, HellaSwag, and GSM8K general capability table.
-- `paper_out/general_eval_pp.csv` contains percentage-point deltas and selected benchmark averages.
-- `eval/*/llm_eval_outputs_*.jsonl` contains targeted judge outputs by checkpoint.
-- `results/*.json` contains lm-eval-harness outputs for the general capability runs.
+The public material surface is split across two external repositories.
+
+- [GitHub](https://github.com/Atomheart-Father/LoRA-SFT-vs-LoRA-DPO-A-Comparative-Study-of-Small-Factual-Updates-in-LLMs) contains the project code, data-processing scripts, training/evaluation scripts, generated tables, and result summaries.
+- [Hugging Face](https://huggingface.co/Atomheart-Father/small_change_sft_dpo/tree/main) contains the published artifact surface for the small-change SFT/DPO experiment.
+
+The tables above summarize the evaluation outputs; source materials should be accessed through the public GitHub and Hugging Face links.
