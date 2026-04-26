@@ -35,7 +35,7 @@ const imageNotes = await getPublishedImageNotes();
 						kicker={entry.data.type.replaceAll('_', ' ')}
 						title={entry.data.title}
 						summary={entry.data.summary}
-						meta={entry.data.date.toISOString().slice(0, 10)}
+						meta={entry.data.dateLabel ?? entry.data.date.toISOString().slice(0, 10)}
 						tags={entry.data.tags}
 					/>
 				)) : null
@@ -63,7 +63,7 @@ const imageNotes = await getPublishedImageNotes();
 								kicker="Image note"
 								title={entry.data.title}
 								summary={entry.data.summary}
-								meta={entry.data.date.toISOString().slice(0, 10)}
+								meta={entry.data.dateLabel ?? entry.data.date.toISOString().slice(0, 10)}
 								tags={entry.data.tags}
 							/>
 						))}

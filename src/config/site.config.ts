@@ -227,7 +227,7 @@ export const samplesPage = {
 export const aboutPage = {
 	hero: {
 		kicker: 'About',
-		title: 'Not a category.',
+		title: 'Across systems.',
 		intro: '',
 	},
 	current:

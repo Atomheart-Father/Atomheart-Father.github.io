@@ -107,7 +107,7 @@ const activeWorkItems = workItems.slice(0, 3);
 							href={`/journal/${entry.data.slug}`}
 							kicker={entry.data.type.replaceAll('_', ' ')}
 							title={entry.data.title}
-							meta={entry.data.date.toISOString().slice(0, 10)}
+							meta={entry.data.dateLabel ?? entry.data.date.toISOString().slice(0, 10)}
 						/>
 					))}
 					{featuredImageNote && (
@@ -115,7 +115,7 @@ const activeWorkItems = workItems.slice(0, 3);
 							href={`/journal/${featuredImageNote.data.slug}`}
 							kicker="Image note"
 							title={featuredImageNote.data.title}
-							meta={featuredImageNote.data.date.toISOString().slice(0, 10)}
+							meta={featuredImageNote.data.dateLabel ?? featuredImageNote.data.date.toISOString().slice(0, 10)}
 						/>
 					)}
 				</div>

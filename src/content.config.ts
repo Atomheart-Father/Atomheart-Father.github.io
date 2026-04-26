@@ -145,14 +145,24 @@ const journal = defineCollection({
 		title: z.string(),
 		slug: z.string(),
 		date: z.coerce.date(),
+		dateLabel: z.string().optional(),
 		summary: z.string(),
 		status: z.enum(['draft', 'published']).default('draft'),
-		type: z.enum(['long_note', 'short_note', 'case_note', 'image_note']),
+		type: z.enum(['long_note', 'short_note', 'case_note', 'image_note', 'technical_note']),
 		featured: z.boolean().default(false),
 		sortOrder: z.number().int().default(100),
 		tags: z.array(z.string()).default([]),
 		highlights: z.array(z.string()).default([]),
 		relatedService: z.string().optional(),
+		links: z
+			.array(
+				z.object({
+					label: z.string(),
+					href: z.string(),
+					type: z.enum(['internal', 'external', 'download', 'contact']).default('external'),
+				}),
+			)
+			.default([]),
 		cover: z.string().optional(),
 		images: z
 			.array(

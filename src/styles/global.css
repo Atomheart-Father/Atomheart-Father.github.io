@@ -153,6 +153,27 @@
 		-webkit-box-decoration-break: clone;
 	}
 
+	.copy-prose .evidence-grid {
+		@apply my-12 grid gap-3 border-y border-black/80 py-4 sm:grid-cols-3;
+	}
+
+	.copy-prose .evidence-cell {
+		@apply border-t border-black/25 pt-3;
+	}
+
+	.copy-prose .evidence-label {
+		@apply mb-10 block font-mono text-[0.68rem] uppercase leading-none text-ash;
+	}
+
+	.copy-prose .evidence-value {
+		@apply block font-display text-[2.8rem] font-bold uppercase leading-[0.82] text-ink sm:text-[3.7rem];
+		font-stretch: condensed;
+	}
+
+	.copy-prose .evidence-note {
+		@apply mt-3 block font-mono text-[0.68rem] uppercase leading-5 text-rust;
+	}
+
 	.editorial-rule {
 		@apply border-t border-black/20 pt-5;
 	}

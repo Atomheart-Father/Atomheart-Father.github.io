@@ -1,7 +1,7 @@
 ---
 title: "Occupied Lives: Platform Convenience and the Dissipation of Social Energy"
 slug: "occupied-lives-platform-convenience-social-energy"
-date: 2025-03-22
+date: 2026-03-22
 summary: "A long note on platform convenience as a system of everyday occupation: by filling time, attention, labour, affect, and desire with actionable micro-needs, platforms can weaken autonomous development, durable association, and plural forms of life."
 status: "published"
 type: "long_note"
@@ -138,7 +138,7 @@ The central asymmetry can now be stated clearly: platformized convenience lowers
 
 It becomes easier to order food than to cook with others. Easier to scroll than to read slowly. Easier to argue than to organize. Easier to join a fandom battle than to build a civic association. Easier to take gig work than to fight for stable labor institutions. Easier to express anger than to maintain a political organization. Easier to consume identity than to form character. Easier to feel connected than to become accountable to real people over time.
 
-This is not because users are morally weak. It is because the environment makes some actions immediate and others costly.
+The environment, rather than individual moral weakness, makes some actions immediate and others costly.
 
 Self-development requires uninterrupted time, boredom, discipline, slow feedback, failure, and memory. Friendship requires repeated presence and mutual obligation. Art requires waste, risk, and non-instrumental attention. Political organization requires trust, coordination, conflict, and endurance. Public life requires spaces where people are not only users, customers, workers, fans, or content producers.
 
@@ -204,7 +204,7 @@ Food delivery, short video, livestreaming, gaming, e-commerce, and mobile paymen
 
 In this sense, this case shows a high-intensity version of a broader platform tendency: **the conversion of social energy into interface activity.**
 
-The difference is institutional depth. In liberal market settings, this tendency is often driven primarily by advertising, data extraction, competition, and ecosystem lock-in. In China, those commercial logics intersect more directly with state priorities: stability maintenance, public-opinion management, labor absorption, data governance, youth regulation, and the control of mobilization. The result is not a perfectly controlled society. It is a society in which the infrastructure of convenience is unusually compatible with the infrastructure of governance.
+The difference is institutional depth. In liberal market settings, this tendency is often driven primarily by advertising, data extraction, competition, and ecosystem lock-in. In China, those commercial logics intersect more directly with state priorities: stability maintenance, public-opinion management, labor absorption, data governance, youth regulation, and the control of mobilization. The result is a society in which the infrastructure of convenience is unusually compatible with the infrastructure of governance.
 
 ## 10 / Stability through occupation
 
@@ -218,7 +218,7 @@ Anger can appear constantly but dissipate quickly. Critique can circulate withou
 
 Under certain institutional conditions, stabilization may not require most people to believe in the system. It may only require enough people to remain occupied by immediate needs and short cycles of affective discharge.
 
-This is not total domination. It is a lower-grade, continuous stabilization. It works less by producing conviction than by reducing the time, space, and continuity through which discontent might become durable.
+The mechanism is lower-grade, continuous stabilization. It works less by producing conviction than by reducing the time, space, and continuity through which discontent might become durable.
 
 The most effective order is not necessarily one in which everyone is convinced. <u>It may be one in which everyone is always doing something else.</u>
 

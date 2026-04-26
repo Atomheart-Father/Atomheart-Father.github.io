@@ -1,7 +1,7 @@
 ---
 title: "Generative Search and the Platformization of Sensemaking"
 slug: "generative-search-and-interpretive-mediation"
-date: 2025-03-18
+date: 2026-03-18
 summary: "A scholarly essay on how answer-oriented AI systems extend algorithmic gatekeeping from the ranking of sources to the mediation of first-pass sensemaking."
 status: "published"
 type: "long_note"
@@ -62,7 +62,7 @@ The behavioral evidence is still emerging, but the pattern is already clear enou
 
 Pew Research Center's browsing-data study of Google Search in March 2025 examined 68,879 searches from 900 U.S. adults. When an AI summary appeared, users clicked a traditional search result in 8 percent of visits, compared with 15 percent when no AI summary appeared. They clicked a link inside the AI summary in only 1 percent of visits. They were also more likely to end the browsing session after encountering an AI summary: 26 percent of pages with an AI summary, compared with 16 percent of pages with only traditional results. Those figures do not prove that users trust AI summaries uncritically. They show something narrower and more important: answer surfaces can become sufficient for the immediate task often enough to reduce movement into the source field.
 
-This behavioral tendency matters because the reliability of the answer layer remains fragile. The Tow Center for Digital Journalism tested eight generative search tools on 1,600 news queries designed around direct excerpts from real articles. The tools collectively provided incorrect answers to more than 60 percent of queries, often with confident phrasing. The study is not a perfect model of everyday search behavior, and it does not claim to be. Its significance lies elsewhere: it tests whether systems can perform a task that ordinary search could handle relatively straightforwardly, namely identifying the source of a known excerpt. When systems fail at this task while maintaining an authoritative conversational tone, the issue is not simply error. It is the production of apparent grounding without reliable attribution.
+This behavioral tendency matters because the reliability of the answer layer remains fragile. The Tow Center for Digital Journalism tested eight generative search tools on 1,600 news queries designed around direct excerpts from real articles. The tools collectively provided incorrect answers to more than 60 percent of queries, often with confident phrasing. The study's narrow significance lies in testing whether systems can perform a task that ordinary search could handle relatively straightforwardly, namely identifying the source of a known excerpt. When systems fail at this task while maintaining an authoritative conversational tone, the issue is not simply error. It is the production of apparent grounding without reliable attribution.
 
 The BBC and European Broadcasting Union reached a related conclusion at a larger cross-market scale. In their 2025 study, 22 public service media organizations across 18 countries and 14 languages evaluated more than 3,000 responses from leading AI assistants on news and current affairs. Almost half of the evaluated answers contained at least one significant issue, and sourcing was the most common major problem. This matters because news knowledge is not only a matter of isolated facts. It depends on attribution, context, chronology, and the distinction between reporting, opinion, and institutional claims. A system that blurs those distinctions can distort public knowledge even when parts of the response are factually plausible.
 
@@ -96,7 +96,7 @@ Research on LLM summarization and writing assistance supports this concern. Subb
 
 For search and public knowledge, the implication is straightforward. If answer systems repeatedly make some forms of explanation easier to retrieve and others harder to formulate, they influence not only what users know, but what kinds of articulation feel natural. Minority idioms, local categories, ambiguous literary forms, non-Western rhetorical structures, and unresolved experiential knowledge may remain present in the source field while becoming less likely to appear as the first frame.
 
-This is not censorship in the strict sense. It is closer to classification and standardization, the terrain Bowker and Star analyzed in their work on infrastructures of categorization. What matters is not only what is excluded, but what becomes easy, default, and administratively legible. Generative search inherits this infrastructural politics and expresses it through language.
+The pattern is closer to classification and standardization, the terrain Bowker and Star analyzed in their work on infrastructures of categorization. What matters is not only what is excluded, but what becomes easy, default, and administratively legible. Generative search inherits this infrastructural politics and expresses it through language.
 
 ## 07 / Personal orientation
 
@@ -112,7 +112,7 @@ If generative search is understood as AI-mediated sensemaking, then the relevant
 
 The stronger standard is **contestable synthesis**. A contestable answer would not merely cite sources; it would make the relation between claims and sources visible. It would distinguish primary evidence from commentary, reporting from opinion, consensus from dispute, and stable knowledge from provisional interpretation. It would preserve enough of the underlying source structure for the user to understand what has been compressed.
 
-This is not a demand that every answer become long, cautious, and unusable. It is a demand that systems stop treating fluency as a substitute for epistemic accountability. In low-stakes factual queries, a concise answer may be adequate. In contested or consequential domains, the answer should expose rather than conceal the structure of uncertainty.
+The standard is precise: concise answers can remain concise, while systems must stop treating fluency as a substitute for epistemic accountability. In low-stakes factual queries, a direct answer may be adequate. In contested or consequential domains, the answer should expose rather than conceal the structure of uncertainty.
 
 The governance implication is equally direct. Regulators, researchers, and civil society should evaluate answer-oriented systems not only through hallucination rates, but through source attribution, claim-source alignment, disagreement preservation, and framing variance across languages, regions, and user profiles. These are empirically testable properties. They move the critique away from general suspicion and toward observable failures of mediation.
 

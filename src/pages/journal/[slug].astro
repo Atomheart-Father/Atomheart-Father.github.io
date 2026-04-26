@@ -15,6 +15,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props as { entry: CollectionEntry<'journal'> };
 const { Content } = await render(entry);
 const isImageNote = entry.data.type === 'image_note';
+const links = entry.data.links;
+const displayDate = entry.data.dateLabel ?? entry.data.date.toISOString().slice(0, 10);
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.summary}>
@@ -28,7 +30,7 @@ const isImageNote = entry.data.type === 'image_note';
 			<p class="section-label">{entry.data.type.replaceAll('_', ' ')}</p>
 			<h1 class="protocol-title mt-5 max-w-5xl text-[3rem] leading-[0.9] sm:text-[5rem]">{entry.data.title}</h1>
 			<div class="mt-6 flex flex-wrap gap-x-4 gap-y-2 font-mono text-[0.7rem] uppercase text-ash">
-				<span>{entry.data.date.toISOString().slice(0, 10)}</span>
+				<span>{displayDate}</span>
 				{entry.data.tags.map((tag) => <span class="text-rust">{tag}</span>)}
 			</div>
 			<p class="mt-6 max-w-3xl text-[1.08rem] leading-8 text-ink/80">{entry.data.summary}</p>
@@ -43,6 +45,27 @@ const isImageNote = entry.data.type === 'image_note';
 							<span class="bg-ink px-2 pb-1 pt-0.5 font-mono text-[0.72rem] uppercase leading-6 text-paper">
 								{highlight}
 							</span>
+						))}
+					</div>
+				</section>
+			)
+		}
+
+		{
+			links.length > 0 && (
+				<section class="grid gap-5 border-t border-black/35 pt-5 lg:grid-cols-[10rem_1fr]">
+					<p class="section-label">Materials</p>
+					<div class="grid gap-2 sm:grid-cols-2">
+						{links.map((link) => (
+							<a
+								href={link.href}
+								class="grid grid-cols-[1fr_auto] gap-4 border-t border-black/25 py-3 font-mono text-[0.72rem] uppercase text-ink no-underline transition hover:text-rust"
+								target={link.type === 'external' ? '_blank' : undefined}
+								rel={link.type === 'external' ? 'noreferrer' : undefined}
+							>
+								<span>{link.label}</span>
+								<span>{link.type}</span>
+							</a>
 						))}
 					</div>
 				</section>

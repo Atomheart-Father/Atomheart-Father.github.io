@@ -1,14 +1,14 @@
 ---
 title: "Drifting Capability, Collapsing Audit"
 slug: "drifting-capability-collapsing-audit"
-year: 2025
+year: 2026
 kind: "manuscript"
 summary: "An abstract-level project note for a double-blind AI & Society manuscript on agentic AI, capability boundary drift, computational decision supply chains, and the risk that transparency becomes performative rather than contestable."
 status: "active"
 visibility: "public"
 featured: true
 sortOrder: 20
-stage: "Under double-blind review; initial draft completed 2025-02-21"
+stage: "Under double-blind review; initial draft completed 2026-02-21"
 access: "public_summary"
 themes:
   - agentic AI
