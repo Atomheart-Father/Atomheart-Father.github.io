@@ -96,11 +96,61 @@
 	}
 
 	.copy-prose {
-		@apply prose prose-neutral max-w-none text-[1.08rem] leading-8 text-ink prose-headings:font-display prose-headings:font-bold prose-headings:uppercase prose-headings:text-ink prose-h2:mt-14 prose-h2:border-t prose-h2:border-black/35 prose-h2:pt-7 prose-p:text-ink/86 prose-strong:bg-ink prose-strong:px-1.5 prose-strong:pb-0.5 prose-strong:font-normal prose-strong:text-paper prose-a:text-rust prose-a:no-underline hover:prose-a:text-shadow prose-blockquote:border-rust prose-blockquote:text-ink/80 prose-li:marker:text-rust;
+		@apply prose prose-neutral max-w-none text-[1.08rem] leading-8 text-ink prose-headings:font-display prose-headings:font-bold prose-headings:uppercase prose-headings:text-ink prose-h2:mt-14 prose-h2:border-t prose-h2:border-black/35 prose-h2:pt-7 prose-p:text-ink/86 prose-a:text-rust prose-a:no-underline hover:prose-a:text-shadow prose-li:marker:text-rust;
+	}
+
+	.copy-prose strong {
+		@apply bg-ink px-1.5 pb-0.5 pt-0.5 font-normal text-paper;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+	}
+
+	.copy-prose em {
+		@apply text-rust;
+		font-style: italic;
+	}
+
+	.copy-prose u {
+		text-decoration-color: #e83b24;
+		text-decoration-line: underline;
+		text-decoration-skip-ink: none;
+		text-decoration-thickness: 0.16em;
+		text-underline-offset: 0.12em;
 	}
 
 	.copy-prose mark {
-		@apply bg-ink px-1.5 pb-0.5 text-paper;
+		@apply bg-ink px-1.5 pb-0.5 pt-0.5 text-paper;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+	}
+
+	.copy-prose blockquote {
+		@apply my-14 border-y border-l-0 border-black/80 py-6 pl-0 pr-0 font-display text-[2.2rem] font-bold not-italic leading-[0.95] text-ink sm:text-[3.2rem];
+		font-stretch: condensed;
+		text-transform: uppercase;
+	}
+
+	.copy-prose blockquote p {
+		@apply m-0 text-ink;
+	}
+
+	.copy-prose blockquote p::before,
+	.copy-prose blockquote p::after {
+		content: none;
+	}
+
+	.copy-prose code {
+		@apply bg-paper-deep px-1.5 py-0.5 font-mono text-[0.88em] font-normal text-rust;
+	}
+
+	.copy-prose .signal {
+		@apply border border-rust px-1.5 pb-0.5 pt-0.5 font-mono text-[0.72em] uppercase leading-none text-rust;
+	}
+
+	.copy-prose .reverse {
+		@apply bg-ink px-1.5 pb-0.5 pt-0.5 text-paper;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
 	}
 
 	.editorial-rule {

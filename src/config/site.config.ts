@@ -34,6 +34,7 @@ export const siteMeta = {
 	email: 'bozhongxiao@gmail.com',
 	orcid: 'https://orcid.org/0009-0004-1734-4894',
 	github: 'https://github.com/Atomheart-Father',
+	linkedin: 'https://www.linkedin.com/in/bxia9253',
 } as const;
 
 /**

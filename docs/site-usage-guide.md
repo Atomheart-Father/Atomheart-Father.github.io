@@ -570,6 +570,27 @@ Write the main argument.
 Explain why the failure mode matters.
 ```
 
+强调语法可以直接写在 Markdown 里：
+
+```md
+**黑底反白重点**
+*红色斜体重点*
+<u>硬下划线重点</u>
+<mark>黑底反白 marker</mark>
+> 一句主旨句，页面会显示成很大的 pull quote。
+`小型技术词`
+<span class="signal">index term</span>
+<span class="reverse">manual reverse span</span>
+```
+
+建议：
+
+- `>` 每篇文章最多放 1-3 句，用来抓主旨
+- `**...**` 放核心判断，不要整段都加粗
+- `<u>...</u>` 适合强调术语或短句
+- `<mark>...</mark>` 和 `<span class="reverse">...</span>` 适合需要反转色的短语
+- `<span class="signal">...</span>` 适合关键词、机制名、编号感标签
+
 ## 9. 如何写 Image Note
 
 Image Note 是 Journal 的轻视觉分支，不是摄影作品集。

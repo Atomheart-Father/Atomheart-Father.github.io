@@ -24,6 +24,8 @@ Search engines have never been neutral maps of the web. Long before generative A
 
 Generative search does not replace that older problem. It adds a new stage to it. When a search interface returns a **synthesized answer before the user has inspected the underlying materials**, the system is no longer only arranging access to sources. It is participating in the user's first act of sensemaking.
 
+> The gate is no longer only before access. It is also inside interpretation.
+
 That distinction is small at the level of interface design and large at the level of knowledge. A ranked list asks the user to move among sources and assemble an initial account. An answer-oriented interface performs part of that assembly in advance. The user may still click through, compare sources, and reject the system's synthesis, but the sequence has changed. The first coherent account is no longer constructed primarily through source navigation; it is increasingly delivered as an answer.
 
 The issue, then, is not whether AI summaries are useful. They often are. They reduce search costs, support cross-language access, and help users enter unfamiliar topics. The harder question is what happens when the convenience of synthesis becomes the default mode through which people encounter public knowledge. At that point, the politics of search is no longer only a politics of visibility. It becomes a politics of mediated sensemaking.

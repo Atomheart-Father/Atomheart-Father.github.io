@@ -33,6 +33,23 @@ npm run check
 npm run build
 ```
 
+## Markdown Emphasis
+
+Journal and Work bodies are Markdown. Use these patterns directly in `.md` files:
+
+```md
+**black reverse emphasis**
+*rust italic emphasis*
+<u>hard underline emphasis</u>
+<mark>black reverse marker</mark>
+> A large pull quote for the main thesis.
+`small technical term`
+<span class="signal">index term</span>
+<span class="reverse">manual reverse span</span>
+```
+
+Use `>` for one or two thesis sentences per article. Use `**...**` for central claims, not every keyword.
+
 ## Publish Rules
 
 - A `journal` item appears at `/journal` only when `status: "published"`.

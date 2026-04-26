@@ -20,6 +20,8 @@ images: []
 ---
 The most powerful form of platform control may not be persuasion. It may be **occupation**.
 
+> The platform does not need to stop activity. It only needs to keep activity circulating.
+
 Not occupation in the military sense, but occupation in the ordinary sense: the filling of life with things to do. Order food. Deliver food. Scroll the feed. Watch the next clip. Check the courier map. Reply to a comment. Chase a discount. Refresh a dashboard. Adjust a thumbnail. Take another order. Join another argument. Buy a small comfort. Wait for the algorithm to notice.
 
 None of this looks like domination at first. It looks like life becoming more manageable.
