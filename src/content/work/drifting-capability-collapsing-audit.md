@@ -30,13 +30,17 @@ links:
     type: "contact"
 ---
 
-## Project frame
+<span class="signal">manuscript</span> <span class="signal">public summary</span> <span class="signal">double-blind boundary</span>
+
+> Capability moves faster than the audit frame built to describe it.
+
+## 00 / Project frame
 
 This manuscript offers a socio-technical diagnosis of contemporary AI as a governance problem for data-intensive institutional settings. The central claim is that agentic systems and modular skill ecosystems shift the object of governance from a bounded model to a dynamic capability surface.
 
-Capabilities no longer sit only inside a model. They are assembled across interfaces, tools, permissions, runtime policies, and supply-chain control of the stack.
+Capabilities no longer sit only inside a model. They are assembled across <u>interfaces, tools, permissions, runtime policies, and supply-chain control</u> of the stack.
 
-## Core problem
+## 01 / Core problem
 
 The project develops two linked mechanisms.
 
@@ -46,6 +50,6 @@ The project develops two linked mechanisms.
 
 When these mechanisms converge, transparency risks becoming performative: a legitimacy signal rather than a contestable basis for accountability.
 
-## Public boundary
+## 02 / Public boundary
 
 The manuscript is currently in double-blind review, so the site only carries this abstract-level project note. The PDF, submission files, and any reviewer-facing materials are not posted here.

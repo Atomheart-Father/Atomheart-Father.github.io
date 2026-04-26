@@ -30,19 +30,23 @@ links:
     type: "contact"
 ---
 
-## Working title
+<span class="signal">active manuscript</span> <span class="signal">pipeline study</span> <span class="signal">validation anchor</span>
+
+> Order does not need to erase novelty. It can make novelty return in inherited form.
+
+## 00 / Working title
 
 **Canonical Order, Ambiguity Compression, and Novelty Snap-Back in Centralized AI Interpretive Pipelines.**
 
-## Frame
+## 01 / Frame
 
 This project is not a hiring-systems study. Hiring is one semi-real anchor.
 
 The larger question is what happens when AI systems become interpretive infrastructure: when they retrieve the documentary field, rank what matters, summarize conflict, explain what a situation means, and produce the first usable account before a person has inspected the underlying materials.
 
-The claim is bounded but large: such pipelines can make inherited order feel complete. They do this by concentrating canonical source structures, compressing ambiguity, and routing novelty back through existing categories.
+The claim is bounded but large: such pipelines can make inherited order feel complete. They do this by concentrating **canonical source structures**, compressing **ambiguity**, and routing **novelty** back through existing categories.
 
-## Mechanism
+## 02 / Mechanism
 
 The pipeline has four layers:
 
@@ -51,11 +55,11 @@ The pipeline has four layers:
 - ranking
 - structured summary or explanation
 
-The experiment asks where order enters, where it concentrates, and where competing frames disappear.
+<span class="signal">mechanism</span> The experiment asks where order enters, where it concentrates, and where competing frames disappear.
 
 The important failure is not simple factual error. A system can remain factually grounded while still making conflict harder to see and novelty harder to preserve.
 
-## Empirical anchors
+## 03 / Empirical anchors
 
 The manuscript currently uses three empirical blocks:
 
@@ -65,6 +69,6 @@ The manuscript currently uses three empirical blocks:
 
 The employment anchor is useful because it is concrete, document-heavy, and governance-relevant. It should be read as a validation site for the mechanism, not as the conceptual scope of the work.
 
-## Current boundary
+## 04 / Current boundary
 
 The project is still being written. The public page gives only the frame, current stage, and questionnaire status. Manuscript drafts, raw responses, assignment manifests, internal source labels, and participant materials stay offline.

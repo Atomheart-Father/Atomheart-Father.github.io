@@ -591,6 +591,22 @@ Explain why the failure mode matters.
 - `<mark>...</mark>` 和 `<span class="reverse">...</span>` 适合需要反转色的短语
 - `<span class="signal">...</span>` 适合关键词、机制名、编号感标签
 
+公开 long note / work note 统一使用下面这个节奏，不要一篇写 `1. 2. 3.`，另一篇完全不编号：
+
+```md
+<span class="signal">long note</span> <span class="signal">theme</span>
+
+> 一句主旨句。
+
+## 00 / Entry frame
+
+## 01 / First mechanism
+
+## 02 / Second mechanism
+
+## References
+```
+
 ## 9. 如何写 Image Note
 
 Image Note 是 Journal 的轻视觉分支，不是摄影作品集。

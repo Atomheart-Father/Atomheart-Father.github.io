@@ -50,6 +50,22 @@ Journal and Work bodies are Markdown. Use these patterns directly in `.md` files
 
 Use `>` for one or two thesis sentences per article. Use `**...**` for central claims, not every keyword.
 
+Public long notes and work notes should use the same heading rhythm:
+
+```md
+<span class="signal">long note</span> <span class="signal">theme</span>
+
+> One thesis sentence.
+
+## 00 / Entry frame
+
+## 01 / First mechanism
+
+## 02 / Second mechanism
+
+## References
+```
+
 ## Publish Rules
 
 - A `journal` item appears at `/journal` only when `status: "published"`.
