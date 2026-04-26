@@ -143,6 +143,29 @@
 		@apply bg-paper-deep px-1.5 py-0.5 font-mono text-[0.88em] font-normal text-rust;
 	}
 
+	.copy-prose table {
+		@apply my-10 block w-full overflow-x-auto border-y border-black/80 py-2 font-mono text-[0.72rem] leading-5;
+		border-collapse: collapse;
+		white-space: nowrap;
+	}
+
+	.copy-prose thead {
+		@apply border-b border-black/50 text-ink;
+	}
+
+	.copy-prose th,
+	.copy-prose td {
+		@apply border-0 px-3 py-2 text-left align-top;
+	}
+
+	.copy-prose th {
+		@apply uppercase text-ash;
+	}
+
+	.copy-prose td {
+		@apply text-ink/88;
+	}
+
 	.copy-prose .signal {
 		@apply border border-rust px-1.5 pb-0.5 pt-0.5 font-mono text-[0.72em] uppercase leading-none text-rust;
 	}
