@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+	<title id="title">General capability retention after post-training</title>
+	<desc id="desc">Line chart of average benchmark delta for DPO and SFT across checkpoints, with callouts for MMLU, HellaSwag, and GSM8K.</desc>
+	<style>
+		text { font-family: "IBM Plex Mono", "SFMono-Regular", monospace; fill: #070807; }
+		.eyebrow { font-size: 13px; fill: #e83b24; }
+		.title { font-family: "Arial Narrow", "Source Sans 3", sans-serif; font-weight: 700; font-size: 58px; letter-spacing: -0.02em; }
+		.axis { font-size: 12px; fill: #667064; }
+		.label { font-size: 13px; fill: #070807; }
+		.grid { stroke: rgba(7,8,7,0.18); stroke-width: 1; }
+		.zero { stroke: #070807; stroke-width: 2; }
+		.sft { stroke: #e83b24; fill: none; stroke-width: 4; }
+		.dpo { stroke: #070807; fill: none; stroke-width: 4; }
+		.sft-dot { fill: #e83b24; stroke: #070807; stroke-width: 2; }
+		.dpo-dot { fill: #e7ebe4; stroke: #070807; stroke-width: 3; }
+		.card { fill: transparent; stroke: rgba(7,8,7,0.45); stroke-width: 1.5; }
+	</style>
+	<rect width="1200" height="680" fill="#e7ebe4"/>
+	<text x="54" y="58" class="eyebrow">FIG 03 / GENERAL CAPABILITY RETENTION</text>
+	<text x="54" y="118" class="title">RETENTION HAS ITS OWN SHAPE</text>
+	<text x="56" y="154" class="axis">Average delta over MMLU, HellaSwag, and GSM8K, measured in percentage points against the base checkpoint.</text>
+
+	<g transform="translate(0 70)">
+		<path d="M120 480H820M120 404H820M120 328H820M120 252H820M120 176H820M120 100H820" class="grid"/>
+		<path d="M170 100V480M320 100V480M470 100V480M620 100V480M770 100V480" class="grid"/>
+		<path d="M120 328H820" class="zero"/>
+		<path d="M120 100V480M120 480H820" class="zero"/>
+		<text x="102" y="484" class="axis" text-anchor="end">-1.0</text>
+		<text x="102" y="332" class="axis" text-anchor="end">0.0</text>
+		<text x="102" y="180" class="axis" text-anchor="end">+1.0</text>
+		<text x="102" y="104" class="axis" text-anchor="end">+1.5</text>
+		<text x="170" y="510" class="axis" text-anchor="middle">200</text>
+		<text x="320" y="510" class="axis" text-anchor="middle">400</text>
+		<text x="470" y="510" class="axis" text-anchor="middle">600</text>
+		<text x="620" y="510" class="axis" text-anchor="middle">800</text>
+		<text x="770" y="510" class="axis" text-anchor="middle">834</text>
+		<text x="470" y="554" class="axis" text-anchor="middle">CHECKPOINT STEP</text>
+		<text x="38" y="290" class="axis" transform="rotate(-90 38 290)" text-anchor="middle">AVG BENCHMARK DELTA (PP)</text>
+
+		<polyline class="dpo" points="170,337 320,284 470,220 620,117 770,170"/>
+		<polyline class="sft" points="170,212 320,281 470,329 620,330 770,473"/>
+
+		<circle class="dpo-dot" cx="170" cy="337" r="8"/><circle class="dpo-dot" cx="320" cy="284" r="8"/><circle class="dpo-dot" cx="470" cy="220" r="8"/><circle class="dpo-dot" cx="620" cy="117" r="8"/><circle class="dpo-dot" cx="770" cy="170" r="8"/>
+		<circle class="sft-dot" cx="170" cy="212" r="8"/><circle class="sft-dot" cx="320" cy="281" r="8"/><circle class="sft-dot" cx="470" cy="329" r="8"/><circle class="sft-dot" cx="620" cy="330" r="8"/><circle class="sft-dot" cx="770" cy="473" r="8"/>
+		<text x="634" y="108" class="label">DPO 800 / +1.39 pp</text>
+		<text x="626" y="352" class="label">SFT 800 / -0.01 pp</text>
+		<text x="655" y="476" class="label">SFT 834 / -0.95 pp</text>
+	</g>
+
+	<g transform="translate(880 182)">
+		<rect class="card" x="0" y="0" width="250" height="112"/>
+		<text x="18" y="30" class="eyebrow">DPO STEP 800</text>
+		<text x="18" y="58" class="label">avg delta +1.39 pp</text>
+		<text x="18" y="80" class="axis">MMLU +0.2 / HellaSwag 0.0</text>
+		<text x="18" y="100" class="axis">GSM8K +4.0</text>
+	</g>
+	<g transform="translate(880 324)">
+		<rect class="card" x="0" y="0" width="250" height="112"/>
+		<text x="18" y="30" class="eyebrow">SFT STEP 200</text>
+		<text x="18" y="58" class="label">avg delta +0.77 pp</text>
+		<text x="18" y="80" class="axis">strongest SFT average</text>
+		<text x="18" y="100" class="axis">before later drift</text>
+	</g>
+	<g transform="translate(880 466)">
+		<rect class="card" x="0" y="0" width="250" height="112"/>
+		<text x="18" y="30" class="eyebrow">RETENTION READ</text>
+		<text x="18" y="58" class="label">broad damage is limited</text>
+		<text x="18" y="80" class="axis">but benchmark movement has</text>
+		<text x="18" y="100" class="axis">method-specific shape.</text>
+	</g>
+</svg>

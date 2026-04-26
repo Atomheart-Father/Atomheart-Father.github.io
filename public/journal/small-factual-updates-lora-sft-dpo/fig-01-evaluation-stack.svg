@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+	<title id="title">Evaluation stack for small factual updates</title>
+	<desc id="desc">A diagram showing one factual update passing through targeted success, side-effect, and general capability checks.</desc>
+	<style>
+		text { font-family: "IBM Plex Mono", "SFMono-Regular", monospace; fill: #070807; }
+		.eyebrow { font-size: 13px; letter-spacing: 0.02em; fill: #e83b24; }
+		.title { font-family: "Arial Narrow", "Source Sans 3", sans-serif; font-weight: 700; font-size: 58px; letter-spacing: -0.02em; }
+		.small { font-size: 13px; fill: #667064; }
+		.label { font-size: 14px; font-weight: 500; }
+		.box { fill: transparent; stroke: #070807; stroke-width: 2; }
+		.thin { stroke: rgba(7,8,7,0.22); stroke-width: 1; }
+		.heavy { stroke: #070807; stroke-width: 2; }
+		.rust { fill: #e83b24; }
+	</style>
+	<rect width="1200" height="520" fill="#e7ebe4"/>
+	<g opacity="0.34">
+		<path d="M0 60H1200M0 120H1200M0 180H1200M0 240H1200M0 300H1200M0 360H1200M0 420H1200M0 480H1200" class="thin"/>
+		<path d="M80 0V520M160 0V520M240 0V520M320 0V520M400 0V520M480 0V520M560 0V520M640 0V520M720 0V520M800 0V520M880 0V520M960 0V520M1040 0V520M1120 0V520" class="thin"/>
+	</g>
+	<text x="54" y="58" class="eyebrow">FIG 01 / EVALUATION STACK</text>
+	<text x="54" y="118" class="title">ONE UPDATE, THREE FAILURE SURFACES</text>
+	<text x="56" y="154" class="small">The experiment treats factual revision as a measurement problem: insertion, spillover, and retention have to be read together.</text>
+
+	<g transform="translate(56 220)">
+		<rect class="box" x="0" y="0" width="188" height="138"/>
+		<text x="18" y="34" class="eyebrow">INPUT</text>
+		<text x="18" y="68" class="label">same subject</text>
+		<text x="18" y="92" class="label">same relation</text>
+		<text x="18" y="116" class="label">new number/date</text>
+	</g>
+	<path d="M260 289H332" class="heavy"/>
+	<path d="M332 289L318 281M332 289L318 297" class="heavy"/>
+
+	<g transform="translate(352 220)">
+		<rect class="box" x="0" y="0" width="188" height="138"/>
+		<text x="18" y="34" class="eyebrow">TRAINING</text>
+		<text x="18" y="68" class="label">LoRA-SFT</text>
+		<text x="18" y="92" class="label">LoRA-DPO</text>
+		<text x="18" y="116" class="small">matched adapter</text>
+	</g>
+	<path d="M556 289H628" class="heavy"/>
+	<path d="M628 289L614 281M628 289L614 297" class="heavy"/>
+
+	<g transform="translate(648 190)">
+		<rect class="box" x="0" y="0" width="192" height="82"/>
+		<text x="18" y="34" class="eyebrow">GATE 01</text>
+		<text x="18" y="62" class="label">targeted success</text>
+	</g>
+	<g transform="translate(648 296)">
+		<rect class="box" x="0" y="0" width="192" height="82"/>
+		<text x="18" y="34" class="eyebrow">GATE 02</text>
+		<text x="18" y="62" class="label">side-effect rate</text>
+	</g>
+	<path d="M856 289H928" class="heavy"/>
+	<path d="M928 289L914 281M928 289L914 297" class="heavy"/>
+
+	<g transform="translate(948 220)">
+		<rect class="box" x="0" y="0" width="198" height="138"/>
+		<text x="18" y="34" class="eyebrow">GATE 03</text>
+		<text x="18" y="68" class="label">MMLU</text>
+		<text x="18" y="92" class="label">HellaSwag</text>
+		<text x="18" y="116" class="label">GSM8K</text>
+	</g>
+
+	<rect x="54" y="430" width="1040" height="2" fill="#070807"/>
+	<circle cx="1116" cy="431" r="12" class="rust"/>
+	<text x="54" y="466" class="small">Reading rule: a useful edit protocol is a position on this stack rather than a single accuracy number.</text>
+</svg>

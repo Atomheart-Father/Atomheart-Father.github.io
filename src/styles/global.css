@@ -197,6 +197,38 @@
 		@apply mt-3 block font-mono text-[0.68rem] uppercase leading-5 text-rust;
 	}
 
+	.copy-prose .study-figure {
+		@apply my-14 border-y border-black/80 py-4;
+	}
+
+	.copy-prose .study-figure img {
+		@apply m-0 w-full max-w-none border-0 bg-transparent;
+	}
+
+	.copy-prose .study-caption {
+		@apply mt-4 grid gap-3 border-t border-black/25 pt-4 font-mono text-[0.72rem] uppercase leading-6 text-ash sm:grid-cols-[7rem_1fr];
+	}
+
+	.copy-prose .study-caption span:first-child {
+		@apply text-rust;
+	}
+
+	.copy-prose .argument-strip {
+		@apply my-12 grid gap-4 border-y border-black/80 py-4 sm:grid-cols-3;
+	}
+
+	.copy-prose .argument-step {
+		@apply border-t border-black/25 pt-3;
+	}
+
+	.copy-prose .argument-step span {
+		@apply mb-8 block font-mono text-[0.68rem] uppercase leading-none text-rust;
+	}
+
+	.copy-prose .argument-step p {
+		@apply m-0 font-mono text-[0.76rem] uppercase leading-6 text-ink;
+	}
+
 	.editorial-rule {
 		@apply border-t border-black/20 pt-5;
 	}

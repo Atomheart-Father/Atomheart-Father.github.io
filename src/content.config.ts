@@ -148,7 +148,7 @@ const journal = defineCollection({
 		dateLabel: z.string().optional(),
 		summary: z.string(),
 		status: z.enum(['draft', 'published']).default('draft'),
-		type: z.enum(['long_note', 'short_note', 'case_note', 'image_note', 'technical_note']),
+		type: z.enum(['long_note', 'short_note', 'case_note', 'image_note', 'technical_note', 'research_study']),
 		featured: z.boolean().default(false),
 		sortOrder: z.number().int().default(100),
 		tags: z.array(z.string()).default([]),
