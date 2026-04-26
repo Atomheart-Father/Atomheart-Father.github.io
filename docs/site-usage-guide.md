@@ -207,7 +207,7 @@ src/content/journal/*.md
 - 在顶部导航显示
 - 首页有 Work 入口
 - 读取 `src/content/work/*.md`
-- 当前公开项目是第四篇论文相关的 AI hiring / human validation 项目
+- 当前公开项目是第四篇论文相关的 centralized interpretive pipeline / human validation 项目
 
 公开规则：
 
@@ -411,7 +411,7 @@ featured: true
 sortOrder: 10
 stage: "Manuscript drafting; human validation package prepared"
 access: "public_summary"
-themes: ["AI interpretation", "hiring systems", "human validation"]
+themes: ["AI interpretation", "canonical order", "human validation"]
 publicMaterials:
   - "Public-safe project summary"
   - "Questionnaire workflow description"
