@@ -1,6 +1,6 @@
-# CHLOMEE STUDIO
+# Boxz Studio
 
-CHLOMEE STUDIO is a content-first Astro site for public writing and research notes.
+Boxz Studio is a content-first Astro site for public writing and research notes.
 The current public surface is deliberately small: Home, Work, Journal, About, and Contact.
 The architecture is typed, modular, and file-based so future services, samples, research notes, works, visual series, and dossier records can be prepared without presenting unfinished material.
 

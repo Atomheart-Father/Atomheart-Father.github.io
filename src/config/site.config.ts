@@ -1,5 +1,5 @@
 /**
- * CHLOMEE STUDIO 的全站文案配置。
+ * Boxz Studio 的全站文案配置。
  *
  * 你日常最常改的是这个文件和 src/content 里的 Markdown。
  * 这个文件适合放“页面壳层文案”：导航、首页模块标题、About 介绍、Contact 提示等。
@@ -28,7 +28,7 @@
  * - email / orcid / github 是公开信息，确认可以公开再放
  */
 export const siteMeta = {
-	title: 'CHLOMEE STUDIO',
+	title: 'Boxz Studio',
 	description:
 		'Independent writing and research notes on AI systems, judgment, and public consequences.',
 	email: 'bozhongxiao@gmail.com',
