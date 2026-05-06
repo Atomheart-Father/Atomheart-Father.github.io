@@ -15,7 +15,7 @@ const sitemapHiddenPrefixes = [
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://atomheart-father.github.io',
+	site: 'https://boxz-studio.github.io',
 	integrations: [
 		mdx(),
 		sitemap({

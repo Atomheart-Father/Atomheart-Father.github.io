@@ -1,0 +1,31 @@
+name: Sync to Boxz Studio Repository
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    if: github.repository == 'Atomheart-Father/Atomheart-Father.github.io'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Push main to organization repository
+        env:
+          BOXZ_SYNC_TOKEN: ${{ secrets.BOXZ_STUDIO_SYNC_TOKEN }}
+        run: |
+          if [ -z "$BOXZ_SYNC_TOKEN" ]; then
+            echo "::notice::BOXZ_STUDIO_SYNC_TOKEN is not configured; skipping mirror push."
+            exit 0
+          fi
+
+          git remote add boxz "https://x-access-token:${BOXZ_SYNC_TOKEN}@github.com/boxz-studio/boxz-studio.github.io.git"
+          git push boxz HEAD:main

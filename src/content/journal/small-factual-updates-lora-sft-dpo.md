@@ -117,13 +117,13 @@ The logical order matters. If the first metric improves while the second metric 
 	</div>
 </section>
 
-## 03 / Targeted result: the update-risk frontier
+## 03 / Targeted result: the update-risk trajectory
 
 The targeted evaluation shows a clear split between the two objectives. SFT reaches higher update success, but it also moves into a higher side-effect region as training continues. DPO reaches lower update success, but its hallucination-like rate stays lower across all measured checkpoints.
 
 <figure class="study-figure">
-	<img src="/journal/small-factual-updates-lora-sft-dpo/fig-02-targeted-risk-frontier.svg" alt="Risk frontier chart comparing SFT and DPO update success against hallucination-like rate across checkpoints." />
-	<figcaption class="study-caption"><span>Figure 02</span><span>SFT moves farther toward insertion but climbs upward on side-effect pressure. DPO stays in a lower-risk region while accepting weaker targeted insertion.</span></figcaption>
+	<img src="/journal/small-factual-updates-lora-sft-dpo/fig-02-targeted-risk-frontier.svg" alt="Trajectory chart comparing SFT and DPO update success against hallucination-like rate across checkpoints." />
+	<figcaption class="study-caption"><span>Figure 02</span><span>SFT moves farther toward insertion while accumulating side-effect pressure. DPO forms a smaller, cleaner edit trajectory.</span></figcaption>
 </figure>
 
 | Step | N | SFT success | DPO success | SFT hallucination-like | DPO hallucination-like | SFT Mean BS | DPO Mean BS |

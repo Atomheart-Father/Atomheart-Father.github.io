@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
-	<title id="title">Targeted update risk frontier</title>
-	<desc id="desc">Scatter and line chart comparing update success and hallucination-like rate for LoRA-SFT and LoRA-DPO across training checkpoints.</desc>
+	<title id="title">Targeted update trajectory</title>
+	<desc id="desc">Scatter and line chart comparing update success and hallucination-like rate for LoRA-SFT and LoRA-DPO across training checkpoints. Higher x is stronger insertion; lower y is cleaner behavior.</desc>
 	<style>
 		text { font-family: "IBM Plex Mono", "SFMono-Regular", monospace; fill: #070807; }
 		.eyebrow { font-size: 13px; fill: #e83b24; }
@@ -16,9 +16,9 @@
 		.card { fill: transparent; stroke: rgba(7,8,7,0.45); stroke-width: 1.5; }
 	</style>
 	<rect width="1200" height="780" fill="#e7ebe4"/>
-	<text x="54" y="58" class="eyebrow">FIG 02 / TARGETED UPDATE FRONTIER</text>
-	<text x="54" y="118" class="title">EDIT STRENGTH HAS A SIDE-EFFECT SHAPE</text>
-	<text x="56" y="154" class="axis">Each point is one checkpoint over 75 targeted checks. X = update success. Y = hallucination-like rate.</text>
+	<text x="54" y="58" class="eyebrow">FIG 02 / TARGETED UPDATE TRAJECTORY</text>
+	<text x="54" y="118" class="title">INSERTION HAS A COST CURVE</text>
+	<text x="56" y="154" class="axis">Each point is one checkpoint over 75 targeted checks. X = update success. Y = hallucination-like rate; lower is cleaner.</text>
 
 	<g transform="translate(0 70)">
 		<path d="M120 570H900M120 455H900M120 340H900M120 225H900M120 110H900" class="grid"/>
@@ -34,8 +34,8 @@
 		<text x="510" y="596" class="axis" text-anchor="middle">20</text>
 		<text x="705" y="596" class="axis" text-anchor="middle">30</text>
 		<text x="900" y="596" class="axis" text-anchor="middle">40</text>
-		<text x="510" y="642" class="axis" text-anchor="middle">UPDATE SUCCESS (%)</text>
-		<text x="34" y="340" class="axis" transform="rotate(-90 34 340)" text-anchor="middle">HALLUCINATION-LIKE RATE (%)</text>
+		<text x="510" y="642" class="axis" text-anchor="middle">UPDATE SUCCESS (%) / HIGHER INSERTION</text>
+		<text x="34" y="340" class="axis" transform="rotate(-90 34 340)" text-anchor="middle">HALLUCINATION-LIKE RATE (%) / LOWER CLEANER</text>
 
 		<polyline class="sft" points="666,348 848,317 640,179 666,179 770,148"/>
 		<polyline class="dpo" points="406,486 562,440 458,470 354,470 354,424"/>
@@ -43,9 +43,15 @@
 		<circle class="sft-dot" cx="666" cy="348" r="8"/><circle class="sft-dot" cx="848" cy="317" r="8"/><circle class="sft-dot" cx="640" cy="179" r="8"/><circle class="sft-dot" cx="666" cy="179" r="8"/><circle class="sft-dot" cx="770" cy="148" r="8"/>
 		<circle class="dpo-dot" cx="406" cy="486" r="8"/><circle class="dpo-dot" cx="562" cy="440" r="8"/><circle class="dpo-dot" cx="458" cy="470" r="8"/><circle class="dpo-dot" cx="354" cy="470" r="8"/><circle class="dpo-dot" cx="354" cy="424" r="8"/>
 
+		<text x="682" y="371" class="axis">200</text>
 		<text x="865" y="304" class="label">SFT 400</text>
-		<text x="578" y="434" class="label">DPO 400</text>
+		<text x="616" y="172" class="axis">600</text>
+		<text x="682" y="172" class="axis">800</text>
 		<text x="784" y="142" class="label">SFT 834</text>
+		<text x="421" y="509" class="axis">200</text>
+		<text x="578" y="434" class="label">DPO 400</text>
+		<text x="474" y="493" class="axis">600</text>
+		<text x="311" y="493" class="axis">800</text>
 		<text x="270" y="424" class="label">DPO 834</text>
 	</g>
 
@@ -65,9 +71,9 @@
 	</g>
 	<g transform="translate(950 418)">
 		<rect class="card" x="0" y="0" width="196" height="112"/>
-		<text x="18" y="30" class="eyebrow">FRONTIER</text>
-		<text x="18" y="58" class="label">SFT shifts right</text>
-		<text x="18" y="80" class="label">and upward.</text>
-		<text x="18" y="100" class="axis">DPO remains lower-risk.</text>
+		<text x="18" y="30" class="eyebrow">READING</text>
+		<text x="18" y="58" class="label">More insertion</text>
+		<text x="18" y="80" class="label">can buy noise.</text>
+		<text x="18" y="100" class="axis">Step order is shown as trajectory.</text>
 	</g>
 </svg>

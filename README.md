@@ -67,6 +67,14 @@ Generated output:
 
 ## Deployment
 
-The GitHub Actions workflow in `.github/workflows/deploy.yml` is configured for GitHub Pages. The site is set up for the user-site repository URL:
+The GitHub Actions workflow in `.github/workflows/deploy.yml` is configured for GitHub Pages. The production site is published from the organization user-site repository:
 
-`https://atomheart-father.github.io`
+`https://boxz-studio.github.io`
+
+Repository:
+
+`https://github.com/boxz-studio/boxz-studio.github.io`
+
+The previous personal repository can remain as a source mirror or backup:
+
+`https://github.com/Atomheart-Father/Atomheart-Father.github.io`
