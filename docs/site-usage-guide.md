@@ -106,35 +106,37 @@ https://boxz-studio.github.io/
 https://github.com/Atomheart-Father/Atomheart-Father.github.io
 ```
 
-本地仓库会把 `origin` 指向正式发布仓，同时保留一个 `personal` remote 指向旧个人仓。实际含义是：
+本地仓库会把 `origin` 指向正式发布仓，同时保留一个 `personal` remote 指向旧个人仓。`origin` 已经配置了两个 push URL，所以本地推送时会同时推到新旧两个仓。
 
 ```text
-origin   = 新组织发布仓库
-personal = 旧个人仓库
+origin fetch = 新组织发布仓库
+origin push  = 新组织发布仓库 + 旧个人仓库
+personal     = 旧个人仓库
 ```
 
-如果只想更新正式网页：
+常规发布：
 
 ```bash
 git push origin main
 ```
 
-如果想两个仓库都更新：
+这会同时更新 `boxz-studio/boxz-studio.github.io` 和 `Atomheart-Father/Atomheart-Father.github.io`。
+
+如果只想单独推旧个人仓：
 
 ```bash
-git push origin main
 git push personal main
 ```
 
-仓库里也放了一个自动同步工作流：`.github/workflows/sync-boxz-studio.yml`。它只会在旧个人仓库里运行；当你 push 到旧个人仓库时，它可以自动把 `main` 同步到 `boxz-studio/boxz-studio.github.io`。
+仓库里也保留了一个可选的 GitHub-to-GitHub 同步工作流：`.github/workflows/sync-boxz-studio.yml`。它只会在旧个人仓库里运行；当你直接在旧个人仓库网页上 commit 时，它可以把 `main` 同步到 `boxz-studio/boxz-studio.github.io`。
 
-这个自动同步需要你在旧个人仓库设置一个 GitHub secret：
+这个自动同步需要旧个人仓库里有一个 GitHub secret：
 
 ```text
 BOXZ_STUDIO_SYNC_TOKEN
 ```
 
-这个 token 需要有 `boxz-studio/boxz-studio.github.io` 的 contents write 权限。没有这个 secret 时，工作流会跳过同步，不会影响网站部署。
+这个 token 应该使用 fine-grained PAT，只给 `boxz-studio/boxz-studio.github.io` 的 contents write 权限。没有这个 secret 时，工作流会跳过同步，不会影响网站部署。本地 `git push origin main` 的双仓推送不依赖这个 secret。
 
 ## 2. 最常用命令
 
