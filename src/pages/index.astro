@@ -3,18 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentCard from '../components/studio/ContentCard.astro';
 import {
 	getActiveWorkItems,
-	getPublishedImageNotes,
-	getPublishedWriting,
+	getLatestSelectedItems,
 } from '../lib/content-api';
 import { homePage } from '../lib/site';
 
-const writing = await getPublishedWriting();
-const imageNotes = await getPublishedImageNotes();
 const workItems = await getActiveWorkItems();
+const selectedItems = await getLatestSelectedItems();
 
-const featuredWriting = writing.slice(0, 2);
-const featuredImageNote = imageNotes[0];
-const hasSelectedSurface = Boolean(featuredWriting.length > 0 || featuredImageNote);
+const hasSelectedSurface = selectedItems.length > 0;
 const activeWorkItems = workItems.slice(0, 3);
 ---
 
@@ -102,22 +98,14 @@ const activeWorkItems = workItems.slice(0, 3);
 				</div>
 
 				<div class="border-t border-black/35">
-					{featuredWriting.map((entry) => (
+					{selectedItems.map((entry) => (
 						<ContentCard
-							href={`/journal/${entry.data.slug}`}
-							kicker={entry.data.type.replaceAll('_', ' ')}
-							title={entry.data.title}
-							meta={entry.data.dateLabel ?? entry.data.date.toISOString().slice(0, 10)}
+							href={entry.href}
+							kicker={entry.kicker}
+							title={entry.title}
+							meta={entry.meta}
 						/>
 					))}
-					{featuredImageNote && (
-						<ContentCard
-							href={`/journal/${featuredImageNote.data.slug}`}
-							kicker="Image note"
-							title={featuredImageNote.data.title}
-							meta={featuredImageNote.data.dateLabel ?? featuredImageNote.data.date.toISOString().slice(0, 10)}
-						/>
-					)}
 				</div>
 			</section>
 		)

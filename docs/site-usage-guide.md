@@ -245,7 +245,7 @@ src/content.config.ts              内容 schema
 
 - 第一屏：一句强定位 + protocol field
 - 四个入口：Work / Journal / About / Contact
-- Selected surface：只有当 Journal 或 Image Note 有 published 内容时才出现
+- Selected Work：自动合并已公开的 Journal 写作与已公开的 Work 记录，按发布日期倒序显示最新两项
 - Contact CTA：引导到联系页
 
 主要编辑位置：
@@ -273,10 +273,20 @@ src/content/journal/*.md
 
 ```text
 visibility: "public"
-status: "active"
+status: "active" 或 "published"
 ```
 
-`draft` 或 `private` 都不会显示。
+`active` 显示在 Work 的当前项目区域及首页 Active Work；`published` 显示在 Work 的 Public Record。`draft` 或 `private` 都不会显示。
+
+首页 `Selected Work` 规则：
+
+```text
+已公开 Journal：使用 date
+已公开 Work：使用 publishedAt
+所有候选按真实日期倒序，自动取前两项
+```
+
+因此，公开预印本需要填写 `publishedAt`。`publicLabel` 和 `publicMeta` 只控制首页和列表上的显示文字，不影响排序。
 
 问卷规则：
 
@@ -495,6 +505,19 @@ links:
 - `publicMaterials`：说明哪些材料可以公开，但不要直接泄露内部文件
 - `questionnaire.status`：`manual_distribution`、`external_link`、`closed`、`not_public`
 - `questionnaire.href`：只有接外部问卷系统时才填写
+
+如果是已公开的预印本，再加：
+
+```yaml
+status: "published"
+publishedAt: 2026-08-19
+publicLabel: "Public preprint"
+publicMeta: "2026 / Zenodo preprint / August 2026"
+```
+
+- `publishedAt`：用于所有自动时间排序，使用 `YYYY-MM-DD`
+- `publicLabel`：例如 `Public preprint`
+- `publicMeta`：例如 `2026 / Zenodo preprint / August 2026`
 
 问卷要注意：GitHub Pages 是静态站，没有数据库和登录系统。它可以展示问卷入口、外部表单链接、下载材料，但不能自己安全收集答案。
 
@@ -1028,6 +1051,14 @@ Journal：
 ```text
 date 新的靠前
 同一天时 sortOrder 小的靠前
+```
+
+首页 Selected Work：
+
+```text
+合并已公开的 Journal 写作与有 publishedAt 的已公开 Work
+按 date / publishedAt 新的靠前
+只显示前两项
 ```
 
 Research：

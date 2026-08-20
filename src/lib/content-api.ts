@@ -7,6 +7,15 @@ export type SampleEntry = CollectionEntry<'samples'>;
 export type JournalEntry = CollectionEntry<'journal'>;
 export type EvidenceEntry = CollectionEntry<'evidence'>;
 
+export type SelectedHomepageItem = {
+	href: string;
+	kicker: string;
+	title: string;
+	meta: string;
+	date: Date;
+	sortOrder: number;
+};
+
 function bySortOrder<T extends { data: { sortOrder: number } }>(a: T, b: T) {
 	return a.data.sortOrder - b.data.sortOrder;
 }
@@ -81,6 +90,37 @@ export async function getPublishedWriting() {
 export async function getPublishedImageNotes() {
 	const entries = await getPublishedJournal();
 	return entries.filter((entry) => entry.data.type === 'image_note');
+}
+
+export async function getLatestSelectedItems(limit = 2): Promise<SelectedHomepageItem[]> {
+	const [writing, workItems] = await Promise.all([getPublishedWriting(), getPublicWorkItems()]);
+
+	const writingItems = writing.map((entry) => ({
+		href: `/journal/${entry.data.slug}`,
+		kicker: entry.data.type.replaceAll('_', ' '),
+		title: entry.data.title,
+		meta: entry.data.dateLabel ?? entry.data.date.toISOString().slice(0, 10),
+		date: entry.data.date,
+		sortOrder: entry.data.sortOrder,
+	}));
+
+	const publishedWorkItems = workItems
+		.filter((entry) => entry.data.status === 'published' && entry.data.publishedAt)
+		.map((entry) => ({
+			href: `/work/${entry.data.slug}`,
+			kicker: entry.data.publicLabel ?? entry.data.kind.replaceAll('_', ' '),
+			title: entry.data.title,
+			meta: entry.data.publicMeta ?? `${entry.data.year} / ${entry.data.stage}`,
+			date: entry.data.publishedAt as Date,
+			sortOrder: entry.data.sortOrder,
+		}));
+
+	return [...writingItems, ...publishedWorkItems]
+		.sort((a, b) => {
+			const dateOrder = b.date.getTime() - a.date.getTime();
+			return dateOrder !== 0 ? dateOrder : a.sortOrder - b.sortOrder;
+		})
+		.slice(0, limit);
 }
 
 export async function getPublicEvidence() {

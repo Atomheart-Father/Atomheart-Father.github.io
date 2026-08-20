@@ -6,6 +6,9 @@ kind: "manuscript"
 summary: "A conceptual mechanism study of agentic runtime architecture: how connectors, skills, harnesses, and observability shape available operations, execution paths, and the evidence available for later audit."
 status: "published"
 visibility: "public"
+publishedAt: 2026-08-19
+publicLabel: "Public preprint"
+publicMeta: "2026 / Zenodo preprint / August 2026"
 featured: true
 sortOrder: 20
 stage: "Zenodo preprint / August 2026"
