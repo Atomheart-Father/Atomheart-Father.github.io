@@ -85,6 +85,7 @@ export const homePage = {
 
 	activeWorkRail: {
 		// 首页首屏右侧直接读取 src/content/work 里公开的 active work。
+		// 已公开的论文会留在 /work 的 Public record 中，不占用这里的进行中位置。
 		// 不在这里硬写项目标题，避免首页变成自我解释或旧 slogan。
 		label: 'Active work',
 		empty: 'No public work yet.',
@@ -169,10 +170,18 @@ export const researchPrograms = [
 export const workPage = {
 	hero: {
 		kicker: 'Work',
-		title: 'Work in progress.',
+		title: 'Work.',
 		intro: '',
 		asideTitle: '',
 		aside: '',
+	},
+	active: {
+		kicker: 'Current',
+		title: 'In progress.',
+	},
+	published: {
+		kicker: 'Public record',
+		title: 'Preprints.',
 	},
 	bridge: {
 		// Work 页底部桥接到 Journal / Contact。

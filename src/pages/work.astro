@@ -2,10 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentCard from '../components/studio/ContentCard.astro';
 import PageHero from '../components/studio/PageHero.astro';
-import { getPublicWorkItems } from '../lib/content-api';
+import { getActiveWorkItems, getPublicWorkItems } from '../lib/content-api';
 import { workPage } from '../lib/site';
 
 const workItems = await getPublicWorkItems();
+const activeWorkItems = await getActiveWorkItems();
+const publishedWorkItems = workItems.filter((entry) => entry.data.status === 'published');
 ---
 
 <BaseLayout title="Work" description="Active research work, field validation, and questionnaire infrastructure from Boxz Studio.">
@@ -18,21 +20,45 @@ const workItems = await getPublicWorkItems();
 	/>
 
 	{
-		workItems.length > 0 && (
+		activeWorkItems.length > 0 && (
 			<section class="mt-20 grid gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
 				<div class="editorial-rule">
-					<p class="section-label">Active index</p>
-					<h2 class="protocol-title mt-4 text-[2.8rem] leading-[0.9] sm:text-[4rem]">Research work.</h2>
+					<p class="section-label">{workPage.active.kicker}</p>
+					<h2 class="protocol-title mt-4 text-[2.8rem] leading-[0.9] sm:text-[4rem]">{workPage.active.title}</h2>
 				</div>
 
 				<div class="border-t border-black/35">
-					{workItems.map((entry) => (
+					{activeWorkItems.map((entry) => (
 						<ContentCard
 							href={`/work/${entry.data.slug}`}
 							kicker={entry.data.kind.replaceAll('_', ' ')}
 							title={entry.data.title}
 							summary={entry.data.summary}
 							meta={`${entry.data.year} / ${entry.data.status}`}
+							tags={entry.data.themes}
+						/>
+					))}
+				</div>
+			</section>
+		)
+	}
+
+	{
+		publishedWorkItems.length > 0 && (
+			<section class="mt-24 grid gap-10 border-t border-black/80 pt-8 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)]">
+				<div class="editorial-rule">
+					<p class="section-label">{workPage.published.kicker}</p>
+					<h2 class="protocol-title mt-4 text-[2.8rem] leading-[0.9] sm:text-[4rem]">{workPage.published.title}</h2>
+				</div>
+
+				<div class="border-t border-black/35">
+					{publishedWorkItems.map((entry) => (
+						<ContentCard
+							href={`/work/${entry.data.slug}`}
+							kicker="public preprint"
+							title={entry.data.title}
+							summary={entry.data.summary}
+							meta={`${entry.data.year} / ${entry.data.stage}`}
 							tags={entry.data.themes}
 						/>
 					))}

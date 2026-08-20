@@ -33,6 +33,11 @@ export async function getPublicWorkItems() {
 		});
 }
 
+export async function getActiveWorkItems() {
+	const entries = await getPublicWorkItems();
+	return entries.filter((entry) => entry.data.status === 'active');
+}
+
 export async function getPublicResearch() {
 	const entries = await getCollection('research');
 	return entries

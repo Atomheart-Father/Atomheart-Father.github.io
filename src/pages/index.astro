@@ -2,15 +2,15 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentCard from '../components/studio/ContentCard.astro';
 import {
+	getActiveWorkItems,
 	getPublishedImageNotes,
 	getPublishedWriting,
-	getPublicWorkItems,
 } from '../lib/content-api';
 import { homePage } from '../lib/site';
 
 const writing = await getPublishedWriting();
 const imageNotes = await getPublishedImageNotes();
-const workItems = await getPublicWorkItems();
+const workItems = await getActiveWorkItems();
 
 const featuredWriting = writing.slice(0, 2);
 const featuredImageNote = imageNotes[0];

@@ -146,6 +146,13 @@ BOXZ_STUDIO_SYNC_TOKEN
 cd /Users/bozhongxiao/Desktop/ChlomeeTV/论文/boxz-studio-site
 ```
 
+这个项目使用 Node 22 LTS，与 GitHub Pages 的部署版本一致。如果终端里的 `node --version` 不是 22，先运行：
+
+```bash
+source /Users/bozhongxiao/.nvm/nvm.sh
+nvm use
+```
+
 如果是第一次在这台机器上跑，先安装依赖：
 
 ```bash
@@ -838,16 +845,16 @@ frontmatter：
 
 ```yaml
 ---
-title: "Drifting Capability, Collapsing Audit"
-slug: "drifting-capability-collapsing-audit"
+title: "From Connectors to Harnesses"
+slug: "from-connectors-to-harnesses"
 year: 2026
 kind: "paper"
-summary: "A socio-technical diagnosis..."
+summary: "A public preprint on agentic runtime architecture and AI audit."
 featured: true
 sortOrder: 30
-status: "under_review"
-access: "abstract_only"
-themes: ["surveillance governance", "audit", "agentic AI"]
+status: "published"
+access: "external"
+themes: ["agentic AI", "audit", "forensic readiness"]
 ---
 ```
 
@@ -861,8 +868,8 @@ themes: ["surveillance governance", "audit", "agentic AI"]
 
 安全规则：
 
-- 不放 PDF
-- 不放审稿中的全文
+- 审稿中的文章不放 PDF
+- 已公开的 preprint 可以链接到 Zenodo、DOI 或其他正式存档
 - 不放私人路径
 - 不放电话、证件、履历 PDF、学校证明
 

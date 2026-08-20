@@ -16,6 +16,9 @@ const sitemapHiddenPrefixes = [
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://boxz-studio.github.io',
+	redirects: {
+		'/work/drifting-capability-collapsing-audit': '/work/from-connectors-to-harnesses',
+	},
 	integrations: [
 		mdx(),
 		sitemap({
