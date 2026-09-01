@@ -86,14 +86,12 @@ export const homePage = {
 	activeWorkRail: {
 		// 首页首屏右侧直接读取 src/content/work 里公开的 active work。
 		// 已公开的论文会留在 /work 的 Public record 中，不占用这里的进行中位置。
-		// 不在这里硬写项目标题，避免首页变成自我解释或旧 slogan。
+		// 没有 active work 时，首页直接收起这个区域。
 		label: 'Active work',
-		empty: 'No public work yet.',
 	},
 
 	selected: {
-		// Selected surface 不是固定出现。只有 published journal / image note 存在时才渲染。
-		// 它的作用是展示真实公开内容，不把草稿或未来模块包装成成果。
+		// Selected surface 按日期读取公开 Journal 与公开 Work 的最新两项。
 		kicker: 'Selected',
 		title: 'Selected.',
 		intro: '',

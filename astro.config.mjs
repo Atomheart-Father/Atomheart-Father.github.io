@@ -18,6 +18,7 @@ export default defineConfig({
 	site: 'https://boxz-studio.github.io',
 	redirects: {
 		'/work/drifting-capability-collapsing-audit': '/work/from-connectors-to-harnesses',
+		'/work/canonical-order-interpretive-pipelines': '/work/when-ai-becomes-the-first-pass',
 	},
 	integrations: [
 		mdx(),

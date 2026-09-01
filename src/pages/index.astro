@@ -12,6 +12,9 @@ const selectedItems = await getLatestSelectedItems();
 
 const hasSelectedSurface = selectedItems.length > 0;
 const activeWorkItems = workItems.slice(0, 3);
+const heroFieldClass = activeWorkItems.length > 0
+	? 'protocol-field mt-10 min-h-[52rem] px-5 py-8 sm:px-10 lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-center lg:px-20'
+	: 'protocol-field mt-10 min-h-[52rem] px-5 py-8 sm:px-10 lg:px-20';
 ---
 
 <BaseLayout title="Boxz Studio">
@@ -24,7 +27,7 @@ const activeWorkItems = workItems.slice(0, 3);
 			)
 		}
 
-		<div class="protocol-field mt-10 min-h-[52rem] px-5 py-8 sm:px-10 lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-center lg:px-20">
+		<div class={heroFieldClass}>
 			<div>
 				<p class="section-label">{homePage.hero.kicker}</p>
 				<h1 class="protocol-title mt-20 max-w-5xl text-[3.6rem] leading-[0.86] sm:text-[5.2rem] lg:text-[6.2rem]">
@@ -32,12 +35,12 @@ const activeWorkItems = workItems.slice(0, 3);
 				</h1>
 			</div>
 
-			<aside class="mt-12 lg:mt-0">
-				<p class="section-label mb-4">{homePage.activeWorkRail.label}</p>
-				<div class="border-t border-black/30">
-					{
-						activeWorkItems.length > 0 ? activeWorkItems.map((entry, index) => {
-							return (
+			{
+				activeWorkItems.length > 0 && (
+					<aside class="mt-12 lg:mt-0">
+						<p class="section-label mb-4">{homePage.activeWorkRail.label}</p>
+						<div class="border-t border-black/30">
+							{activeWorkItems.map((entry, index) => (
 								<a
 									href={`/work/${entry.data.slug}`}
 									class="grid grid-cols-[3.5rem_1fr] gap-5 border-b border-black/25 py-4 font-mono text-[0.72rem] uppercase text-ink no-underline transition hover:text-rust"
@@ -45,19 +48,11 @@ const activeWorkItems = workItems.slice(0, 3);
 									<span>{String(index + 1).padStart(2, '0')}</span>
 									<span>{entry.data.title}</span>
 								</a>
-							);
-						}) : (
-							<a
-								href="/work"
-								class="grid grid-cols-[3.5rem_1fr] gap-5 border-b border-black/25 py-4 font-mono text-[0.72rem] uppercase text-ink no-underline transition hover:text-rust"
-							>
-								<span>00</span>
-								<span>{homePage.activeWorkRail.empty}</span>
-							</a>
-						)
-					}
-				</div>
-			</aside>
+							))}
+						</div>
+					</aside>
+				)
+			}
 		</div>
 	</section>
 
