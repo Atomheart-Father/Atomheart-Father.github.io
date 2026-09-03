@@ -30,7 +30,7 @@
 export const siteMeta = {
 	title: 'Boxz Studio',
 	description:
-		'Independent writing and research notes on AI systems, judgment, and public consequences.',
+		'Independent AI research and system development across LLM systems, agentic AI, evaluation, and interactive narrative.',
 	email: 'bozhongxiao@gmail.com',
 	orcid: 'https://orcid.org/0009-0004-1734-4894',
 	github: 'https://github.com/Atomheart-Father',
@@ -71,16 +71,16 @@ export const primaryNav = [
 export const homePage = {
 	hero: {
 		// kicker 是第一屏里的小标签，保持短、冷、像系统字段。
-		kicker: 'Studio field',
+		kicker: 'Independent AI research & development',
 
 		// topStatement 是首页最上方那句硬判断。它的作用是先给世界观，不急着解释你是谁。
-		topStatement: 'AI / order / public life.',
+		topStatement: 'LLM systems / agentic AI / interactive worlds.',
 
 		// 首页大标题被拆成三段，是为了保留 09 风格里的黑底高亮。
 		// 改的时候保持一句完整判断：动词 + 风险判断 + 下一步。
-		titleStart: 'Order',
-		titleHighlight: 'learns',
-		titleEnd: 'to look natural.',
+		titleStart: 'Build',
+		titleHighlight: 'systems',
+		titleEnd: 'that persist.',
 	},
 
 	activeWorkRail: {
@@ -101,7 +101,7 @@ export const homePage = {
 		// 首页 Work 入口。这里的 Work 是 ongoing research work，不是咨询服务。
 		kicker: 'Work',
 		title: 'Active work.',
-		intro: 'Manuscripts. Fieldwork. Instruments.',
+		intro: 'Research. Systems. Interactive projects.',
 	},
 
 	researchProgram: {
@@ -143,14 +143,14 @@ export const homePage = {
  */
 export const researchPrograms = [
 	{
-		title: 'AI systems and institutional judgment',
+		title: 'LLM and agentic systems',
 		summary:
-			'How automated systems change what people and institutions can see, trust, measure, ignore, and act on.',
+			'How language-model systems act through tools, runtime environments, persistent state, and structured workflows.',
 	},
 	{
-		title: 'Platform convenience and reorganized life',
+		title: 'Interactive AI and narrative systems',
 		summary:
-			'How convenient interfaces absorb attention, labor, payment, communication, and everyday decision-making into platform order.',
+			'How stateful characters, persistent worlds, and designed constraints can support responsive narrative without replacing game design with generation.',
 	},
 	{
 		title: 'Human review, evaluation, and audit',
@@ -238,7 +238,7 @@ export const aboutPage = {
 		intro: '',
 	},
 	current:
-		'Independent research, software practice, and visual observation around AI systems, platforms, convenience, audit, and institutional judgment.',
+		'Independent AI research and software development, following three years of industrial R&D at Huawei. Current work spans LLM systems, agentic AI, evaluation, and interactive narrative systems.',
 	focusTitle: 'Current focus',
 	journalTitle: 'Index',
 	journalIntro: '',

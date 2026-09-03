@@ -73,19 +73,49 @@ The study follows a deliberately simple pipeline:
 
 **source field → retrieval → ranking → model-visible evidence → structured synthesis → category or action**
 
+<figure class="study-figure">
+  <img
+    src="/journal/when-ai-becomes-the-first-pass/pipeline.png"
+    alt="Diagram of the experimental pipeline from source field through retrieval, ranking, model-visible evidence, synthesis, and classification."
+    loading="lazy"
+  />
+  <figcaption class="study-caption">
+    <span>FIG. 01</span>
+    <span>
+      The auditable first-pass pipeline. Each stage is evaluated separately so that
+      source availability, selection, synthesis, and classification are not collapsed
+      into a single output measure.
+    </span>
+  </figcaption>
+</figure>
+
 Each stage changes the problem inherited by the next one.
 
-If a source is absent from retrieval, synthesis cannot use it.
+<div class="argument-strip">
+  <div class="argument-step">
+    <span>01 / Selection</span>
+    <p>
+      Evidence can be available to the system without surviving retrieval,
+      ranking, or context construction.
+    </p>
+  </div>
 
-If it is retrieved but ranked out, its availability does not matter.
+  <div class="argument-step">
+    <span>02 / Synthesis</span>
+    <p>
+      Evidence can survive selection while the disagreement it contains
+      disappears from the first-pass account.
+    </p>
+  </div>
 
-If it reaches the model but its disagreement is compressed into a single account, source diversity has not survived synthesis.
-
-And even if the disagreement is explicitly mentioned, a new case can still be routed through an old classification.
-
-These are not different names for the same failure.
-
-They are sequential filters.
+  <div class="argument-step">
+    <span>03 / Classification</span>
+    <p>
+      Disagreement can remain visible without changing the category or
+      action route assigned to a materially new case.
+    </p>
+  </div>
+</div>
 
 That distinction became the central organising idea of the paper.
 
@@ -298,10 +328,25 @@ The free pipeline produces a very narrow result.
 
 Across the 32 protocol-defined new cases:
 
-- Qwen reclassifies **32 / 32**;
-- Gemma reclassifies **31 / 32**;
-- preservation is **0** for both;
-- final external-source share is **0**.
+<div class="evidence-grid">
+  <div class="evidence-cell">
+    <span class="evidence-label">Qwen / Reclassification</span>
+    <span class="evidence-value">32 / 32</span>
+    <span class="evidence-note">Protocol-defined new cases</span>
+  </div>
+
+  <div class="evidence-cell">
+    <span class="evidence-label">Gemma / Reclassification</span>
+    <span class="evidence-value">31 / 32</span>
+    <span class="evidence-note">Protocol-defined new cases</span>
+  </div>
+
+  <div class="evidence-cell">
+    <span class="evidence-label">External-source share</span>
+    <span class="evidence-value">0</span>
+    <span class="evidence-note">Final selected / cited evidence</span>
+  </div>
+</div>
 
 But this baseline cannot tell us whether narrowing comes from source selection or synthesis.
 
@@ -315,10 +360,25 @@ Only the synthesis instruction changes.
 
 Under the conflict-retention policy:
 
-- Qwen conflict loss falls from **0.8286 to 0.4642**;
-- Gemma conflict loss falls from **0.8241 to 0.4642**;
-- preservation rises to **0.4688**;
-- reclassification falls to **0.5313** for both.
+<div class="evidence-grid">
+  <div class="evidence-cell">
+    <span class="evidence-label">Qwen / Conflict loss</span>
+    <span class="evidence-value">.83 → .46</span>
+    <span class="evidence-note">Same sources / synthesis changed</span>
+  </div>
+
+  <div class="evidence-cell">
+    <span class="evidence-label">Gemma / Conflict loss</span>
+    <span class="evidence-value">.82 → .46</span>
+    <span class="evidence-note">Same sources / synthesis changed</span>
+  </div>
+
+  <div class="evidence-cell">
+    <span class="evidence-label">Reclassification</span>
+    <span class="evidence-value">.53</span>
+    <span class="evidence-note">Both model families</span>
+  </div>
+</div>
 
 This isolates a synthesis-policy effect.
 
@@ -351,6 +411,22 @@ It is:
 **availability → selection → synthesis → classification**
 
 and narrowing can occur at more than one transition.
+
+<figure class="study-figure">
+  <img
+    src="/journal/when-ai-becomes-the-first-pass/hiring-mechanism-split.png"
+    alt="Comparison of the free hiring pipeline and the fixed-source conflict-retention intervention."
+    loading="lazy"
+  />
+  <figcaption class="study-caption">
+    <span>FIG. 02</span>
+    <span>
+      Mechanism separation in the 32-query hiring anchor. Holding the selected
+      evidence fixed while changing synthesis substantially reduces conflict loss
+      and changes many novel-case classifications.
+    </span>
+  </figcaption>
+</figure>
 
 ---
 
