@@ -22,7 +22,7 @@ const work = defineCollection({
 		title: z.string(),
 		slug: z.string(),
 		year: z.number().int(),
-		kind: z.enum(['research_project', 'field_study', 'manuscript', 'questionnaire_system', 'tool']),
+		kind: z.enum(['research_project', 'field_study', 'manuscript', 'questionnaire_system', 'tool', 'interactive_project']),
 		summary: z.string(),
 		status: z.enum(['active', 'published', 'paused', 'archived', 'draft']).default('draft'),
 		visibility: z.enum(['public', 'private']).default('private'),
