@@ -105,7 +105,7 @@ A harness can coordinate those operations across time, state, authority, and mul
 
 <figure class="study-figure">
   <img
-    src="/work/from-connectors-to-harnesses/runtime-audit-model.png"
+    src="/journal/from-connectors-to-harnesses/runtime-audit-model.png"
     alt="Analytical progression from connectors, skills, and harnesses to action-enabling configuration, model-visible context, execution trajectory, surviving evidence, and forensic reconstruction."
     loading="lazy"
   />
