@@ -1,80 +1,25 @@
 # Boxz Studio
 
-Boxz Studio is a content-first Astro site for public writing and research notes.
-The current public surface is deliberately small: Home, Work, Journal, About, and Contact.
-The architecture is typed, modular, and file-based so future services, samples, research notes, works, visual series, and dossier records can be prepared without presenting unfinished material.
+**Boxz Studio** is an independent research and creative technology studio exploring the space between artificial intelligence, interactive systems, and digital culture.
+
+We build experiments, research projects, and interactive works around questions such as:
+
+- How should AI systems be designed when they become active participants in complex workflows?
+- How can persistent worlds, agents, and narrative systems evolve beyond fixed scripts?
+- What new forms of software, games, and creative tools become possible when AI is treated as part of the system rather than simply an interface?
+
+Our work spans **AI research, agentic systems, interactive narrative, game development, and experimental digital media**.
+
+Current projects include research on AI-mediated workflows and system architecture, as well as **REVOLUTION**, an experimental narrative game built around persistent social state, evolving relationships, organisations, and player-driven consequences.
+
+Much of the work here is exploratory. Some projects are published openly as papers, prototypes, or technical notes; others remain in active development.
 
 ## Stack
 
-- Astro
-- TypeScript
-- Tailwind CSS v4
-- MDX
-- GitHub Pages deployment via `withastro/action`
+`Python` · `PyTorch` · `LLMs` · `Agents` · `RAG` · `Evaluation` · `Game Systems` · `Web`
 
-## Commands
+---
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the local development server |
-| `npm run build` | Build the production site |
-| `npm run check` | Run Astro's type and content checks |
-| `npm run preview` | Preview the production build locally |
-| `npm run new:content -- work "Title"` | Create a typed work/journal/sample/research/evidence/service entry |
-| `npm run import:photos -- private/photo_manifests/<slug>.yaml` | Import curated photo manifests into site assets |
+**Research · Systems · Games · Experiments**
 
-## Studio content workflow
-
-The short content interface is documented in `docs/content-interface.md`.
-
-The detailed Chinese operation guide is documented in `docs/site-usage-guide.md`.
-
-Content collections:
-
-- `src/content/work`: active research projects, field validation, and questionnaire infrastructure
-- `src/content/services`: draft templates for future services; not public by default
-- `src/content/research`: future research entries; current public page is closed
-- `src/content/samples`: future samples and articles; current public page is closed
-- `src/content/works`: future works entries; current public detail pages are closed
-- `src/content/evidence`: dossier records and external proof
-
-Create a new Work project:
-
-```sh
-npm run new:content -- work "New Research Project"
-```
-
-Then edit the generated Markdown file, switch `visibility` to `public` and `status` to `active` when ready, and run `npm run check`.
-
-## Photo import workflow
-
-Photography stays in a private archive outside the public site repo. The site only stores curated, web-sized derivatives plus public metadata.
-
-1. Copy `scripts/photo_manifest.example.yaml` into `private/photo_manifests/<slug>.yaml`
-2. Fill in absolute source paths and alt text
-3. Run:
-
-```sh
-npm run import:photos -- private/photo_manifests/<slug>.yaml
-```
-
-4. Add or update the matching `src/content/visual-series/<slug>.md` entry when the series is ready to publish
-
-Generated output:
-
-- `src/assets/visual-series/<slug>/`
-- `src/data/visual-series/<slug>.json`
-
-## Deployment
-
-The GitHub Actions workflow in `.github/workflows/deploy.yml` is configured for GitHub Pages. The production site is published from the organization user-site repository:
-
-`https://boxz-studio.github.io`
-
-Repository:
-
-`https://github.com/boxz-studio/boxz-studio.github.io`
-
-The previous personal repository can remain as a source mirror or backup:
-
-`https://github.com/Atomheart-Father/Atomheart-Father.github.io`
+[boxz-studio.github.io](https://boxz-studio.github.io)
