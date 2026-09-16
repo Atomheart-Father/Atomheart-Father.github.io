@@ -104,8 +104,8 @@ export async function getLatestSelectedItems(limit = 2): Promise<SelectedHomepag
 		sortOrder: entry.data.sortOrder,
 	}));
 
-	const publishedWorkItems = workItems
-		.filter((entry) => entry.data.status === 'published' && entry.data.publishedAt)
+	const selectedWorkItems = workItems
+		.filter((entry) => Boolean(entry.data.publishedAt) &&(entry.data.status === 'published' || entry.data.homepageSelected),)
 		.map((entry) => ({
 			href: `/work/${entry.data.slug}`,
 			kicker: entry.data.publicLabel ?? entry.data.kind.replaceAll('_', ' '),
@@ -115,7 +115,7 @@ export async function getLatestSelectedItems(limit = 2): Promise<SelectedHomepag
 			sortOrder: entry.data.sortOrder,
 		}));
 
-	return [...writingItems, ...publishedWorkItems]
+	return [...writingItems, ...selectedWorkItems]
 		.sort((a, b) => {
 			const dateOrder = b.date.getTime() - a.date.getTime();
 			return dateOrder !== 0 ? dateOrder : a.sortOrder - b.sortOrder;
