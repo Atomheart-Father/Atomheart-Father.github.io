@@ -8,7 +8,7 @@ import {
 import { homePage } from '../lib/site';
 
 const workItems = await getActiveWorkItems();
-const selectedItems = await getLatestSelectedItems();
+const selectedItems = await getLatestSelectedItems(3);
 
 const hasSelectedSurface = selectedItems.length > 0;
 const activeWorkItems = workItems.slice(0, 3);
