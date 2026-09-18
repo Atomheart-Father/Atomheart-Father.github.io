@@ -31,7 +31,7 @@ The detailed Chinese operation guide is documented in `docs/site-usage-guide.md`
 
 Content collections:
 
-- `src/content/work`: active research projects, field validation, and questionnaire infrastructure
+- `src/content/work`: active research projects, public preprints, visual projects, and questionnaire infrastructure
 - `src/content/services`: draft templates for future services; not public by default
 - `src/content/research`: future research entries; current public page is closed
 - `src/content/samples`: future samples and articles; current public page is closed
@@ -44,7 +44,23 @@ Create a new Work project:
 npm run new:content -- work "New Research Project"
 ```
 
-Then edit the generated Markdown file, switch `visibility` to `public` and `status` to `active` when ready, and run `npm run check`.
+Then edit the generated Markdown file, switch `visibility` to `public` and `status` to `active` or `published` when ready, and run `npm run check`.
+
+## MAD EATER episode links
+
+The visual serial is stored in `src/content/work/mad-eater.md`. Add episode links in its existing `links:` field:
+
+```yaml
+- label: "EP01 / YouTube"
+  href: "https://www.youtube.com/watch?v=..."
+  type: "external"
+
+- label: "EP01 / TikTok"
+  href: "https://www.tiktok.com/@.../video/..."
+  type: "external"
+```
+
+Leave `href: ""` when an episode is not available on a platform yet. The page keeps that platform inactive and does not create a broken link. Add the next episode by copying its YouTube and TikTok entries; the page sorts the episode panel by episode number.
 
 ## Photo import workflow
 

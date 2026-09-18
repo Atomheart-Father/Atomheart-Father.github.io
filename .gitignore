@@ -30,3 +30,6 @@ private/photo_manifests/*.yml
 # local verification artifacts
 output/playwright/
 output/image-note-boards/
+
+# local update packages
+MAD_EATER_episode_panel_files.zip
