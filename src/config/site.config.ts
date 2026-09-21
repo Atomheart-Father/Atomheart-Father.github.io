@@ -69,6 +69,16 @@ export const primaryNav = [
  * 4. Contact CTA
  */
 export const homePage = {
+	// headline 是首页最顶部的发布条幅（头条位），一次只放一条最新公开发布。
+	// 有新发布时更新这里的四个字段；没有待发布的头条时，整块置为 null 即可收起条幅。
+	// href 指向站内报告页，不要直接外链；meta 保持系统字段式的短句（日期 / 版本 / 许可）。
+	headline: {
+		kicker: 'New release',
+		title: 'gguf2mlx-stream',
+		meta: '2026-09-21 / v0.1.0a1 · Alpha / MIT',
+		href: '/work/gguf2mlx-stream',
+	},
+
 	hero: {
 		// kicker 是第一屏里的小标签，保持短、冷、像系统字段。
 		kicker: 'Independent AI research & development',
@@ -91,7 +101,7 @@ export const homePage = {
 	},
 
 	selected: {
-		// Selected surface 按日期读取公开 Journal 与公开 Work 的最新两项。
+		// Selected surface 按日期读取公开 Journal 与公开 Work 的最新四项。
 		kicker: 'Selected',
 		title: 'Selected.',
 		intro: '',

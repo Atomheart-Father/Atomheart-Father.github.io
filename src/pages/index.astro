@@ -8,7 +8,7 @@ import {
 import { homePage } from '../lib/site';
 
 const workItems = await getActiveWorkItems();
-const selectedItems = await getLatestSelectedItems();
+const selectedItems = await getLatestSelectedItems(4);
 
 const hasSelectedSurface = selectedItems.length > 0;
 const activeWorkItems = workItems.slice(0, 3);
@@ -19,6 +19,22 @@ const heroFieldClass = activeWorkItems.length > 0
 
 <BaseLayout title="Boxz Studio">
 	<section class="pt-10">
+		{
+			homePage.headline && (
+				<a
+					href={homePage.headline.href}
+					class="group mb-8 flex items-baseline justify-between gap-4 border-b border-black/80 pb-3 font-mono text-[0.72rem] uppercase leading-6 text-ink no-underline transition"
+				>
+					<span class="flex flex-wrap items-baseline gap-x-3">
+						<span class="text-rust">{homePage.headline.kicker}</span>
+						<span class="font-semibold">{homePage.headline.title}</span>
+						<span class="text-ash">{homePage.headline.meta}</span>
+					</span>
+					<span aria-hidden="true" class="shrink-0 transition group-hover:text-rust">→</span>
+				</a>
+			)
+		}
+
 		{
 			homePage.hero.topStatement && (
 				<p class="max-w-xl font-mono text-[0.86rem] font-semibold uppercase leading-tight text-ink">

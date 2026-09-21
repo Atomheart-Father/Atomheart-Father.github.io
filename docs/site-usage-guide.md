@@ -245,7 +245,7 @@ src/content.config.ts              内容 schema
 
 - 第一屏：一句强定位 + protocol field
 - 四个入口：Work / Journal / About / Contact
-- Selected Work：自动合并已公开的 Journal 写作与已公开的 Work 记录，按发布日期倒序显示最新两项
+- Selected Work：自动合并已公开的 Journal 写作与已公开的 Work 记录，按发布日期倒序显示最新四项
 - Contact CTA：引导到联系页
 
 主要编辑位置：
@@ -283,7 +283,7 @@ status: "active" 或 "published"
 ```text
 已公开 Journal：使用 date
 已公开 published Work：使用 publishedAt；active Work 只有 homepageSelected 为 true 时参与
-所有候选按真实日期倒序，自动取前两项
+所有候选按真实日期倒序，自动取前四项
 ```
 
 因此，公开预印本需要填写 `publishedAt`。`publicLabel` 和 `publicMeta` 只控制首页和列表上的显示文字，不影响排序。
@@ -1058,7 +1058,7 @@ date 新的靠前
 ```text
 合并已公开的 Journal 写作、有 publishedAt 的 published Work，以及标记 homepageSelected 的 active Work
 按 date / publishedAt 新的靠前
-只显示前两项
+只显示前四项
 ```
 
 Research：

@@ -17,7 +17,7 @@ const { Content } = await render(entry);
 const questionnaire = entry.data.questionnaire;
 const hasQuestionnaireLink = questionnaire.status === 'external_link' && Boolean(questionnaire.href);
 const showQuestionnaire = questionnaire.status !== 'not_public';
-const statusLabel = entry.data.status === 'published' ? 'public preprint' : entry.data.status;
+const statusLabel = entry.data.publicLabel ?? (entry.data.status === 'published' ? 'public preprint' : entry.data.status);
 
 /*
  * Episode links are stored inside the existing `links` field so no schema change is needed.
