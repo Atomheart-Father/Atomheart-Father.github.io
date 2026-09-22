@@ -33,3 +33,6 @@ output/image-note-boards/
 
 # local update packages
 MAD_EATER_episode_panel_files.zip
+
+# serena MCP tool metadata
+.serena/
