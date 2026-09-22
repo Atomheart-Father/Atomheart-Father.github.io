@@ -96,11 +96,13 @@ Measured on Apple M4 Pro (24 GB unified memory), mlx-lm 0.31.3:
 
 Peak RSS includes the mmap'd source page cache, which the OS can evict; it is not live memory. Numbers come from the converter's own statistics and are reproducible via the integration matrix scripts in the repository.
 
-Since the v0.1.0a1 tag, `main` has added the case §00 argued about at full scale: Nyx-RP-9B-Instruct (9.2B, Qwen3.5 hybrid GDN), converted from its official Q4_K_M GGUF with `--bits auto` to MLX affine 4-bit. <u>Peak RSS 9.56 GiB</u> on the same M4 Pro — against the ~18 GiB full-precision intermediate §00 ruled out. Conversion took 149 s into 4.69 GiB across 2 shards; verify returned ALL OK across 427 tensors. A 45-question capability evaluation against the llama.cpp source (identical protocol, temp 0, strict anomaly gating) scored 65.0% source vs 60.0% MLX with 85% verdict agreement and 31.2 vs 31.8 tok/s; the −5 pp is anomaly-gating at the shared 1536-token thinking budget, not knowledge loss.
+Since the v0.1.0a1 tag, `main` has added the case §00 argued about at full scale: Nyx-RP-9B-Instruct (9.2B, Qwen3.5 hybrid GDN), converted from its official Q4_K_M GGUF with `--bits auto` to MLX affine 4-bit. <u>Peak RSS 9.56 GiB</u> on the same M4 Pro — against the ~18 GiB full-precision intermediate §00 ruled out. Conversion took 149 s into 4.69 GiB across 2 shards; verify returned ALL OK across 427 tensors.
+
+A 45-question capability evaluation against the llama.cpp source (identical protocol, temp 0, strict anomaly gating) scored **70.0% source vs 60.0% MLX**, with 90% verdict agreement and 31.2 vs 31.8 tok/s. The −10 pp is anomaly-gating at the shared 1536-token thinking budget, not knowledge loss: all four remaining flips are MLX-side truncation or repetition-loop blocks on answers whose content was actually correct.
 
 The unquantized path is proven exact, separately from the quantized one. Converting the same pinned BF16 GGUF the official MLX exports were built from matches every reference tensor — **320/320 for Qwen3.5-0.8B, 146/146 bit-equal for Llama-3.2-1B** — covering the mappings, the GDN v-head reorder, and the config semantics before quantization is involved. At matched settings, the converter's MLX quantization also reproduces mlx-lm's own requantization error profile to 4+ significant digits; the residual fidelity question belongs to the quantization grid, not the conversion.
 
-The grid has a measured edge: paired-oracle calibration on Qwen3.5-0.8B found a **3-bit cliff**. Uniform 3-bit costs +1.007 nats/token over the BF16 reference against +0.213 for uniform 4-bit, and no mixed 3/4 or 3/6 profile recovered the gap — hence the recommendation of 4-bit or higher, and the fidelity warning printed on auto-derived 3-bit targets. The 35B MoE regression behind that warning is real: JoyFox Qwen3.6-35B-A3B, IQ3_M → 3-bit auto (14.14 GiB / 4 shards, verify ALL OK), failed its capability gate.
+The grid has a measured edge: paired-oracle calibration on Qwen3.5-0.8B found a **3-bit cliff**. Uniform 3-bit costs +1.007 nats/token over the BF16 reference against +0.213 for uniform 4-bit, and no mixed 3/4 or 3/6 profile recovered the gap — hence the recommendation of 4-bit or higher, and the fidelity warning printed on auto-derived 3-bit targets, which now states the observed capability-gate cost: ARC clean accuracy 48% → 29–31% on the 1B calibration, 90% → 55% on Qwen3.6-35B-A3B — whose IQ3_M → 3-bit auto conversion (14.14 GiB / 4 shards, verify ALL OK) failed that gate.
 
 ## 04 / Scope and boundaries
 
@@ -115,6 +117,7 @@ The tool is deliberately narrow:
 
 - Source and documentation: [Atomheart-Father/gguf2mlx-stream](https://github.com/Atomheart-Father/gguf2mlx-stream)
 - `CHANGELOG.md`, `docs/CONFIG_SPEC.md`, `docs/ARCHITECTURE.md`, `docs/TESTING.md` in the repository
+- `eval/reports/nyx9b-q4km/report.md` — the 9B end-to-end evaluation report
 - `research/paired_oracle/REPORT_BF16_ORACLE.md` in the repository
 
 <span class="reverse">5 architecture configs · 8/8 integration matrix · 9.2B proven end-to-end</span>
