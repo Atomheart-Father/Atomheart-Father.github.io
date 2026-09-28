@@ -3,16 +3,16 @@ title: "MAD EATER: An AI-Made Serial That Starts at a Buffet and Ends in the Gal
 slug: "mad-eater"
 year: 2026
 kind: "visual_project"
-summary: "An ongoing AI-made absurd science-fiction serial about a man who invents a machine that lets him keep eating, and watches the idea grow from a restaurant problem into a planetary—and eventually galactic—mess."
-status: "active"
+summary: "A completed AI-made absurd science-fiction serial about a man who invents a machine that lets him keep eating, and watches the idea grow from a restaurant problem into a planetary—and eventually galactic—mess."
+status: "published"
 visibility: "public"
 publishedAt: 2026-09-16
 publicLabel: "AI serial"
-publicMeta: "2026 / Season 1 · 9 episodes / vertical shorts"
-homepageSelected: true
+publicMeta: "2026 / Series complete · 9 episodes / vertical shorts"
+homepageSelected: false
 featured: false
 sortOrder: 20
-stage: "Season 1 complete (EP01–09) / EP10–12 scripted"
+stage: "Series complete · 9 episodes"
 access: "public_summary"
 
 themes:
@@ -34,7 +34,7 @@ questionnaire:
 
 links:
   # Fill the URLs you have. Leave a URL empty if that episode is not on that platform yet.
-  # Season 1 is nine episodes. EP10 onward: copy two lines and change the episode number.
+  # Episode links for the completed nine-episode series.
   - label: "EP01 / YouTube"
     href: "https://www.youtube.com/shorts/iiiJDEVSJyQ"
     type: "external"
@@ -91,13 +91,13 @@ links:
     type: "external"
 ---
 
-<span class="signal">ongoing series</span> <span class="signal">AI filmmaking</span> <span class="signal">absurd science fiction</span>
+<span class="signal">completed series</span> <span class="signal">AI filmmaking</span> <span class="signal">absurd science fiction</span>
 
 > What happens if someone who loves eating can simply stop getting full?
 
 MAD EATER is an AI-made absurd science-fiction serial, published as two-to-four-minute vertical shorts on TikTok and YouTube Shorts.
 
-Season 1 is complete: nine episodes, from a restaurant buffet to a galactic energy program.
+The series is complete: nine episodes, from a restaurant buffet to a galactic energy program.
 
 A man builds a machine that keeps the nutrition his body needs and transfers the rest somewhere else.
 
@@ -295,7 +295,7 @@ News broadcasts, surveillance footage, newspapers, public announcements, and fas
 
 The process is less about asking a model to "make a film" and more about finding enough usable pieces to make the film in the edit.
 
-## 04 / Still growing
+## 04 / Where it ends
 
 MAD EATER was not planned from the beginning as a giant universe.
 
@@ -317,8 +317,6 @@ The club became a world system.
 
 The world reached the galaxy.
 
-The galaxy kept going.
+That was the final scale.
 
-Season 1 is complete — nine episodes. The scripts for the next three are already written.
-
-<span class="reverse">The appetite keeps expanding.</span>
+<span class="reverse">Nine episodes. The story ends here.</span>

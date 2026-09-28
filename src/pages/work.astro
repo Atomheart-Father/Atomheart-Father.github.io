@@ -55,7 +55,7 @@ const publishedWorkItems = workItems.filter((entry) => entry.data.status === 'pu
 					{publishedWorkItems.map((entry) => (
 						<ContentCard
 							href={`/work/${entry.data.slug}`}
-							kicker="public preprint"
+							kicker={entry.data.publicLabel ?? entry.data.kind.replaceAll('_', ' ')}
 							title={entry.data.title}
 							summary={entry.data.summary}
 							meta={`${entry.data.year} / ${entry.data.stage}`}

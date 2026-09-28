@@ -29,7 +29,7 @@ const work = defineCollection({
 		publishedAt: z.coerce.date().optional(),
 		publicLabel: z.string().optional(),
 		publicMeta: z.string().optional(),
-		homepageSelected: z.boolean().default(false),
+		homepageSelected: z.boolean().optional(),
 		featured: z.boolean().default(false),
 		sortOrder: z.number().int().default(100),
 		stage: z.string(),

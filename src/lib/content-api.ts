@@ -107,7 +107,8 @@ export async function getLatestSelectedItems(limit = 2): Promise<SelectedHomepag
 	const selectedWorkItems = workItems
 		.filter(
 			(entry) =>
-				(entry.data.status === 'published' || (entry.data.status === 'active' && entry.data.homepageSelected)) &&
+				((entry.data.status === 'published' && entry.data.homepageSelected !== false) ||
+					(entry.data.status === 'active' && entry.data.homepageSelected === true)) &&
 				entry.data.publishedAt,
 		)
 		.map((entry) => ({

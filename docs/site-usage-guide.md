@@ -282,7 +282,8 @@ status: "active" 或 "published"
 
 ```text
 已公开 Journal：使用 date
-已公开 published Work：使用 publishedAt；active Work 只有 homepageSelected 为 true 时参与
+已公开 published Work：使用 publishedAt；homepageSelected 明确为 false 时排除
+active Work：只有 homepageSelected 为 true 且填写 publishedAt 时参与
 所有候选按真实日期倒序，自动取前四项
 ```
 
@@ -1056,7 +1057,7 @@ date 新的靠前
 首页 Selected Work：
 
 ```text
-合并已公开的 Journal 写作、有 publishedAt 的 published Work，以及标记 homepageSelected 的 active Work
+合并已公开的 Journal 写作、未显式排除的 published Work，以及标记 homepageSelected 的 active Work（Work 需填写 publishedAt）
 按 date / publishedAt 新的靠前
 只显示前四项
 ```

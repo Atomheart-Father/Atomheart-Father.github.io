@@ -28,7 +28,7 @@ Schema defaults hide content. An item is publicly rendered only when:
 
 ## Homepage Selected logic
 
-`src/lib/content-api.ts` `getLatestSelectedItems()` merges: published journal (by `date`) + published work (by `publishedAt`) + `active` work only if `homepageSelected: true` **and** `publishedAt` set. Newest first, top 4 (index.astro passes the limit). A new preprint never appears on the homepage without `publishedAt: YYYY-MM-DD`.
+`src/lib/content-api.ts` `getLatestSelectedItems()` merges: published journal (by `date`) + published work with `publishedAt` unless `homepageSelected: false` + `active` work only if `homepageSelected: true` and `publishedAt` set. Newest first, top 4 (`index.astro` passes the limit).
 
 ## Where to edit what
 
