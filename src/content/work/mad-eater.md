@@ -34,7 +34,7 @@ questionnaire:
 
 links:
   # Fill the URLs you have. Leave a URL empty if that episode is not on that platform yet.
-  # To add EP11 later, copy two lines and change 10 -> 11.
+  # Season 1 is nine episodes. EP10 onward: copy two lines and change the episode number.
   - label: "EP01 / YouTube"
     href: "https://www.youtube.com/shorts/iiiJDEVSJyQ"
     type: "external"
@@ -88,12 +88,6 @@ links:
     type: "external"
   - label: "EP09 / TikTok"
     href: "https://www.tiktok.com/@boxz_og/video/7686227160289316118"
-    type: "external"
-  - label: "EP10 / YouTube"
-    href: ""
-    type: "external"
-  - label: "EP10 / TikTok"
-    href: ""
     type: "external"
 ---
 
@@ -154,6 +148,22 @@ Membership is not decided by net worth.
 
 First, you have to prove how much you can eat.
 
+<figure class="study-figure">
+  <img
+    src="/work/mad-eater/ep02-world-power.jpg"
+    alt="Episode 2 cover: food pouring from an industrial pipe into a city while a man in a suit is carried away by the stream."
+    class="mx-auto w-full max-w-[19rem]"
+    loading="lazy"
+  />
+  <figcaption class="study-caption">
+    <span>EP02</span>
+    <span>
+      The premise at full volume. What started as a private problem with dinner
+      becomes a force that can redirect a city, and then a planet.
+    </span>
+  </figcaption>
+</figure>
+
 ## 01 / The club
 
 The club fills with billionaires, politicians, celebrities, officials, and other people who are very used to getting what they want.
@@ -182,6 +192,23 @@ Faces change.
 
 A machine built so one person could have another course of dinner has somehow become everybody else's problem.
 
+<figure class="study-figure">
+  <img
+    src="/work/mad-eater/ep05-aristocracy.jpg"
+    alt="Episode 5 cover: a giant billboard showing a suited man above a crowd filming him with phones."
+    class="mx-auto w-full max-w-[19rem]"
+    loading="lazy"
+  />
+  <figcaption class="study-caption">
+    <span>EP05</span>
+    <span>
+      A club becomes a caste system. Membership is no longer about money; it is
+      about demonstrated capacity, and the rest of the world is told to keep
+      eating without it.
+    </span>
+  </figcaption>
+</figure>
+
 ## 02 / It keeps getting bigger
 
 People resist.
@@ -193,6 +220,22 @@ Both sides eventually discover that eating itself can be used as a weapon.
 Then aliens arrive.
 
 They reveal that the machine is using a form of space-transfer technology that never belonged to Earth in the first place.
+
+<figure class="study-figure">
+  <img
+    src="/work/mad-eater/ep08-aliens.jpg"
+    alt="Episode 8 cover: a small uniformed figure in a peaked cap reading from a tablet, explosions and aircraft filling the sky behind."
+    class="mx-auto w-full max-w-[19rem]"
+    loading="lazy"
+  />
+  <figcaption class="study-caption">
+    <span>EP08</span>
+    <span>
+      The turn the title promised. Overeating stops being a terrestrial
+      inconvenience and becomes the reason the planet meets its visitors.
+    </span>
+  </figcaption>
+</figure>
 
 That should probably be the point where the story gets smaller.
 
